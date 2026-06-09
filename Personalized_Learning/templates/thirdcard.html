@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WebApp Features - LearnSmart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #121212;
+      font-family: 'Poppins', sans-serif;
+      color: #f1f1f1;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #00ffcc;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-top: 60px;
+      border-bottom: 1px solid #00ffcc33;
+      padding-bottom: 10px;
+    }
+
+    .section-wrapper {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .feature-card {
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #333;
+      box-shadow: 0 0 12px rgba(0, 255, 204, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .feature-card h3 {
+      color: #00ffcc;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .feature-card p {
+      color: #bbbbbb;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      transition: color 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: #00ffcc;
+      box-shadow:
+        0 0 10px #00ffcc,
+        0 0 20px #00ffcc,
+        0 0 40px rgba(0, 255, 204, 0.5);
+    }
+
+    .feature-card:hover h3,
+    .feature-card:hover p {
+      color: #00ffcc;
+      text-shadow: 0 0 4px #00ffcc, 0 0 10px rgba(0, 255, 204, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚀 Features of LearnSmart</h1>
+
+  <!-- User Dashboard Features -->
+  <div class="section-wrapper">
+    <h2>👨‍🎓 User Dashboard</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>📚 View Subjects</h3>
+        <p>Explore subjects like C++, Java, DBMS, OS, and more with structured learning paths.</p>
+      </div>
+      <div class="feature-card">
+        <h3>👥 Study Room</h3>
+        <p>Join live collaborative rooms to discuss, chat, and learn with peers in real time.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🤖 AI Tutor</h3>
+        <p>Ask academic questions to the integrated AI assistant and get instant smart answers.</p>
+      </div>
+      <div class="feature-card">
+        <h3>✅ Progress Tracker</h3>
+        <p>Track progress using a personal To-Do checklist. Mark modules as complete easily.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🎯 Smart Recommendations</h3>
+        <p>Get the best curated resources (videos, docs, tutorials) based on your subject interest.</p>
+      </div>
+      <div class="feature-card">
+        <h3>📝 Take a Test</h3>
+        <p>Assess your knowledge via quizzes. Get suggestions and a performance breakdown.</p>
+      </div>
+      <div class="feature-card">
+        <h3>📄 Download Report</h3>
+        <p>Generate a downloadable PDF report with quiz feedback and improvement areas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Homepage / Public Features -->
+  <div class="section-wrapper">
+    <h2>🏠 Homepage</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>🎮 Sample Quiz</h3>
+        <p>Try a sample quiz before registering. Understand the test flow and feedback format.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🙋 About Us</h3>
+        <p>Get to know our team and the mission behind the LearnSmart personalized platform.</p>
+      </div>
+      <div class="feature-card">
+        <h3>📬 Contact Us</h3>
+        <p>Send feedback or questions to our team. Admins can view and respond via dashboard.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🔐 Admin Login</h3>
+        <p>Admins can securely log in to manage user queries, add subjects, and view reports.</p>
+      </div>
+      <div class="feature-card">
+        <h3>👤 User Login</h3>
+        <p>Students can log in to access their dashboard, take quizzes, and view achievements.</p>
+      </div>
+      <div class="feature-card">
+        <h3>📝 Register</h3>
+        <p>New users can sign up to create an account and unlock access to personalized learning paths, quizzes, and progress tracking.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Panel Features -->
+  <div class="section-wrapper">
+    <h2>🛠️ Admin Panel</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>📊 Admin Dashboard</h3>
+        <p>Central hub for managing users, courses, feedback, and platform settings.</p>
+      </div>
+      <div class="feature-card">
+        <h3>👥 Members</h3>
+        <p>View all registered users, their activity, and manage permissions or roles.</p>
+      </div>
+      <div class="feature-card">
+        <h3>📈 Analytics (Future Scope)</h3>
+        <p>Visualize platform-wide stats like quiz trends, user activity, and subject popularity.</p>
+      </div>
+      <div class="feature-card">
+        <h3>📩 User Feedback & Doubts</h3>
+        <p>View messages submitted by users, answer queries, and resolve issues effectively.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🚪 Logout</h3>
+        <p>Securely log out from the admin panel to end your session.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

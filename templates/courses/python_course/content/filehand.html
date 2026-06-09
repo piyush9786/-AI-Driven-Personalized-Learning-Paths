@@ -1,0 +1,170 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>File Handling - Python Course - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\python_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>File Handling in Python</h1>
+    <p class="description">
+      File handling is an essential part of programming. In Python, you can easily handle files, including reading, writing, and modifying them. This page will guide you through the basic file operations, such as opening, closing, reading, and writing files.
+    </p>
+
+    <h2>🔎 Introduction to File Handling</h2>
+    <p>
+      File handling is the process of reading from and writing to files. It allows us to interact with files on the filesystem and is essential for tasks like data storage, logging, configuration management, and many other real-world applications.
+    </p>
+    <p>
+      In Python, file handling can be done using built-in functions, specifically using the <code>open()</code> function. This function is used to open a file, and once a file is opened, you can read from or write to it. After finishing your operations, it's important to close the file to free up system resources.
+    </p>
+
+    <h2>🔄 Opening a File</h2>
+    <p>
+      To open a file in Python, we use the <code>open()</code> function. It takes at least one argument, the filename, and an optional second argument, the mode in which the file should be opened.
+    </p>
+    <h3>Syntax:</h3>
+    <pre>
+file = open("filename", "mode")
+    </pre>
+    <p>
+      <strong>Modes:</strong>
+      <ul>
+        <li><code>r</code>: Read (default mode). Opens the file for reading.</li>
+        <li><code>w</code>: Write. Opens the file for writing. If the file does not exist, it creates a new one. If the file exists, it truncates the file.</li>
+        <li><code>a</code>: Append. Opens the file for writing, but it doesn't truncate the file. Data is written at the end of the file.</li>
+        <li><code>x</code>: Exclusive creation. Opens the file for writing, but it fails if the file already exists.</li>
+        <li><code>b</code>: Binary mode. This is used when working with non-text files like images.</li>
+        <li><code+t</code>: Text mode. This is the default mode and is used for reading and writing text files.</li>
+      </ul>
+    </p>
+    <p>Example:</p>
+    <pre>
+file = open("example.txt", "r")
+    </pre>
+
+    <h2>📖 Reading from a File</h2>
+    <p>
+      After opening a file in read mode, you can read its contents. Python provides various methods to read files:
+    </p>
+    <h3>Methods for Reading Files:</h3>
+    <ul>
+      <li><strong><code>read()</code></strong>: Reads the entire content of the file as a string.</li>
+      <li><strong><code>readline()</code></strong>: Reads one line at a time.</li>
+      <li><strong><code>readlines()</code></strong>: Reads all lines in a file and returns them as a list of strings.</li>
+    </ul>
+    <p>Example of reading a file:</p>
+    <pre>
+file = open("example.txt", "r")
+content = file.read()
+print(content)
+file.close()
+    </pre>
+    <p>
+      In this example, the entire content of the file is read and printed. It's important to close the file after you're done with it to free up resources.
+    </p>
+
+    <h2>✏️ Writing to a File</h2>
+    <p>
+      To write to a file, you need to open it in write, append, or exclusive creation mode. Writing to a file overwrites the existing content unless you open it in append mode.
+    </p>
+    <p>Example of writing to a file:</p>
+    <pre>
+file = open("example.txt", "w")
+file.write("This is a new line of text.")
+file.close()
+    </pre>
+    <p>
+      In this example, the text "This is a new line of text." will be written to the file. If the file doesn't exist, Python will create it.
+    </p>
+
+    <h2>📝 Appending to a File</h2>
+    <p>
+      If you want to add content to a file without overwriting it, you can use the append mode <code>a</code>. This will ensure that new content is added to the end of the file.
+    </p>
+    <p>Example of appending to a file:</p>
+    <pre>
+file = open("example.txt", "a")
+file.write("\nThis is an appended line.")
+file.close()
+    </pre>
+    <p>
+      Here, the text "This is an appended line." will be added at the end of the file without removing the existing content.
+    </p>
+
+    <h2>🔒 Closing a File</h2>
+    <p>
+      It's crucial to close a file after you're done with it to ensure that all data is written and system resources are freed. Use the <code>close()</code> method to close a file.
+    </p>
+    <p>Example:</p>
+    <pre>
+file = open("example.txt", "r")
+# read or write operations
+file.close()  <!-- Always close the file after use -->
+    </pre>
+
+    <h2>💾 Working with File Paths</h2>
+    <p>
+      You can specify relative or absolute file paths when opening a file.
+    </p>
+    <h3>Relative File Path:</h3>
+    <p>
+      A relative path is based on the current working directory. For example, if the file is in a folder named <code>data</code> within the current directory, you can use:
+    </p>
+    <pre>
+file = open("data/example.txt", "r")
+    </pre>
+    <h3>Absolute File Path:</h3>
+    <p>
+      An absolute path specifies the complete path from the root directory. For example:
+    </p>
+    <pre>
+file = open("/home/user/data/example.txt", "r")
+    </pre>
+
+    <h2>🚨 Handling Errors</h2>
+    <p>
+      When dealing with files, errors can occur, such as trying to open a file that doesn't exist or trying to write to a read-only file. To prevent the program from crashing, we use <code>try</code> and <code>except</code> blocks.
+    </p>
+    <p>Example of error handling:</p>
+    <pre>
+try:
+    file = open("example.txt", "r")
+    content = file.read()
+    print(content)
+except FileNotFoundError:
+    print("The file does not exist.")
+finally:
+    file.close()  <!-- Ensure the file is closed even if an error occurs -->
+    </pre>
+    <p>
+      In this example, if the file doesn't exist, a message is printed instead of crashing the program. The <code>finally</code> block ensures that the file is closed properly, even if an error occurs.
+    </p>
+
+    <h2>🔁 File Iteration</h2>
+    <p>
+      Instead of reading a file all at once or line by line, you can iterate through the file line by line using a loop. This is more efficient for large files.
+    </p>
+    <p>Example of iterating through a file:</p>
+    <pre>
+with open("example.txt", "r") as file:
+    for line in file:
+        print(line, end="")
+    </pre>
+    <p>
+      The <code>with</code> statement is used here to automatically close the file when the block of code finishes executing, ensuring better resource management.
+    </p>
+
+    <h2>📝 File Handling Summary</h2>
+    <p>
+      In this section, we've learned how to open, read, write, and append to files in Python. We've also explored error handling, closing files, and working with file paths. Remember to always close your files and handle potential errors when working with them.
+    </p>
+
+    <a href="{% url 'python_course' %}" class="view-content-link">⬅ Back to Python Course</a>
+  </div>
+</body>
+</html>

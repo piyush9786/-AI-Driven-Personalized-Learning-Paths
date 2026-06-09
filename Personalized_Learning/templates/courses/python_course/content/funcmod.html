@@ -1,0 +1,163 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Functions & Modules - Python Course - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\python_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Functions & Modules</h1>
+    <p class="description">
+      Functions and modules are essential concepts in Python programming. Functions allow you to bundle reusable pieces of code, while modules enable you to organize and reuse code across multiple files. Mastering both is key to writing efficient, maintainable, and organized code.
+    </p>
+
+    <h2>🔎 Functions: Bundling Code</h2>
+    <p>
+      Functions in Python allow you to bundle code into reusable blocks that can be executed by calling the function. They make your code modular, more readable, and easier to maintain.
+    </p>
+
+    <h3>1. Defining a Function</h3>
+    <p>
+      Functions are defined using the <code>def</code> keyword followed by the function name and parentheses. You can pass parameters to a function to make it flexible.
+    </p>
+    <p>Syntax:</p>
+    <pre>
+def function_name(parameters):
+    # code block
+    return value
+    </pre>
+    <p>Example:</p>
+    <pre>
+def greet(name):
+    return f"Hello, {name}!"
+
+print(greet("Alice"))
+    </pre>
+    <p>
+      In this example, the function <code>greet()</code> takes one parameter <code>name</code> and returns a greeting message.
+    </p>
+
+    <h3>2. Function Arguments</h3>
+    <p>
+      Functions can accept arguments that allow you to pass values into the function when calling it. There are different types of arguments:
+    </p>
+    <ul>
+      <li><strong>Positional Arguments</strong>: These are passed in the order the parameters are defined.</li>
+      <li><strong>Keyword Arguments</strong>: These are passed by specifying the name of the parameter.</li>
+      <li><strong>Default Arguments</strong>: These allow you to specify default values for parameters.</li>
+      <li><strong>Variable-Length Arguments</strong>: These allow you to pass a variable number of arguments using <code>*args</code> (for non-keyword arguments) and <code>**kwargs</code> (for keyword arguments).</li>
+    </ul>
+
+    <p>Example with different argument types:</p>
+    <pre>
+def describe_pet(name, animal_type='dog'):
+    print(f"I have a {animal_type} named {name}.")
+
+describe_pet("Buddy")  # Uses default value for animal_type
+describe_pet("Mittens", animal_type="cat")  # Uses specified animal_type
+    </pre>
+
+    <h3>3. Returning Values</h3>
+    <p>
+      Functions can return values using the <code>return</code> statement. If no <code>return</code> is specified, the function will return <code>None</code> by default.
+    </p>
+    <p>Example:</p>
+    <pre>
+def add(a, b):
+    return a + b
+
+result = add(3, 5)
+print(result)  # Output: 8
+    </pre>
+
+    <h3>4. Lambda Functions</h3>
+    <p>
+      Lambda functions are small anonymous functions that are defined using the <code>lambda</code> keyword. They are typically used for short, throwaway functions.
+    </p>
+    <p>Example:</p>
+    <pre>
+multiply = lambda x, y: x * y
+print(multiply(3, 4))  # Output: 12
+    </pre>
+
+    <h2>🔄 Modules: Organizing Code</h2>
+    <p>
+      A module in Python is a file containing Python code that defines functions, classes, and variables. Modules allow you to organize your code into separate files and reuse them across different projects.
+    </p>
+
+    <h3>1. Importing Modules</h3>
+    <p>
+      You can import an entire module using the <code>import</code> statement or import specific functions from a module using <code>from ... import</code>.
+    </p>
+    <p>Example:</p>
+    <pre>
+import math
+print(math.sqrt(16))  # Output: 4.0
+
+from math import pi
+print(pi)  # Output: 3.141592653589793
+    </pre>
+
+    <h3>2. Creating a Module</h3>
+    <p>
+      You can create your own Python module by saving your functions or variables in a file with a <code>.py</code> extension. Then, you can import and use them in other Python scripts.
+    </p>
+    <p>Example:</p>
+    <pre>
+# mymodule.py
+def greet(name):
+    return f"Hello, {name}!"
+
+# main.py
+import mymodule
+print(mymodule.greet("Alice"))
+    </pre>
+
+    <h3>3. The <code>__name__</code> Special Variable</h3>
+    <p>
+      In Python, the <code>__name__</code> variable is used to check whether a module is being run as a script or being imported into another script. If a module is being run directly, <code>__name__</code> is set to <code>"__main__"</code>. Otherwise, it’s set to the name of the module.
+    </p>
+    <p>Example:</p>
+    <pre>
+# mymodule.py
+def greet(name):
+    return f"Hello, {name}!"
+
+if __name__ == "__main__":
+    print(greet("Alice"))  # This will run only if this file is executed directly
+    </pre>
+
+    <h3>4. The <code>import as</code> Statement</h3>
+    <p>
+      You can use the <code>as</code> keyword to give an imported module or function an alias. This is particularly useful for reducing long module names or when importing multiple modules with similar names.
+    </p>
+    <p>Example:</p>
+    <pre>
+import numpy as np
+import pandas as pd
+
+arr = np.array([1, 2, 3])
+df = pd.DataFrame([1, 2, 3])
+    </pre>
+
+    <h2>🔧 Best Practices for Functions and Modules</h2>
+    <ul>
+      <li>Keep functions focused on a single task to improve readability and reusability.</li>
+      <li>Use descriptive names for functions and parameters to make your code more readable.</li>
+      <li>Group related functions into modules and avoid writing large monolithic scripts.</li>
+      <li>Test functions thoroughly and make use of return values instead of relying on side effects.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>
+      Functions and modules are key concepts for writing modular, maintainable, and reusable code. By mastering these, you will be able to create more complex programs with ease and organization.
+    </p>
+
+    <a href="{% url 'python_course' %}" class="view-content-link">⬅ Back to Python Course</a>
+  </div>
+</body>
+</html>

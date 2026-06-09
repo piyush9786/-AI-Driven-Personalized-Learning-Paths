@@ -1,0 +1,184 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Memory Management - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\os_css.css' %}">
+</head>
+<body>
+  <div class="container">
+
+    <h1>Memory Management in Operating Systems</h1>
+    <p>
+      Memory management is a fundamental function of an operating system that handles the allocation and deallocation of memory space to processes. 
+      It ensures efficient utilization of the main memory (RAM) and protects the memory space assigned to different programs from unauthorized access.
+    </p>
+
+    <h2>🔎 Why Memory Management is Important?</h2>
+    <ul>
+      <li>Allows multiple processes to run simultaneously by sharing memory.</li>
+      <li>Prevents one process from interfering with another’s memory space (protection).</li>
+      <li>Manages swapping of processes in and out of memory (efficient resource use).</li>
+      <li>Supports large programs by using concepts like virtual memory.</li>
+    </ul>
+
+    <h2>📚 Memory Management Techniques</h2>
+    <ul>
+      <li><strong>Contiguous Memory Allocation:</strong> Assigns each process a single continuous block of memory. Simple but prone to fragmentation.</li>
+      <li><strong>Paging:</strong> Divides memory into fixed-sized pages and frames, allowing non-contiguous allocation.</li>
+      <li><strong>Segmentation:</strong> Divides memory into variable-sized logical segments like code, stack, and data segments.</li>
+      <li><strong>Virtual Memory:</strong> Uses disk storage to extend the apparent amount of RAM, allowing execution of larger programs.</li>
+    </ul>
+
+    <h2>📦 Paging</h2>
+    <p>
+      Paging is a memory management scheme that eliminates the need for contiguous allocation of physical memory. 
+      It divides the process's logical memory into blocks of the same size called <strong>pages</strong> and the physical memory into blocks of the same size called <strong>frames</strong>.
+    </p>
+
+    <h3>🔄 How Paging Works</h3>
+    <ul>
+      <li>The operating system maintains a <strong>page table</strong> for each process that maps logical pages to physical frames.</li>
+      <li>When a process needs data, the page table is consulted to find out which frame in RAM contains the required page.</li>
+      <li>If the page is not in memory, a <strong>page fault</strong> occurs, and the OS loads it from disk (swap space).</li>
+    </ul>
+
+    <h3>📐 Advantages of Paging</h3>
+    <ul>
+      <li>Eliminates external fragmentation.</li>
+      <li>Efficient use of memory by allowing non-contiguous allocation.</li>
+      <li>Easy to implement virtual memory.</li>
+    </ul>
+
+    <h3>⚠️ Disadvantages of Paging</h3>
+    <ul>
+      <li>Internal fragmentation within the last page.</li>
+      <li>Overhead due to maintaining page tables.</li>
+      <li>Page faults can slow down performance if they occur frequently.</li>
+    </ul>
+
+    <h2>📊 Example of Paging</h2>
+    <p>Suppose we have a logical address space divided into 4 pages (P0 to P3) and physical memory has 4 frames (F0 to F3).</p>
+
+    <table>
+      <tr>
+        <th>Logical Page</th>
+        <th>Physical Frame</th>
+      </tr>
+      <tr>
+        <td>P0</td>
+        <td>F2</td>
+      </tr>
+      <tr>
+        <td>P1</td>
+        <td>F0</td>
+      </tr>
+      <tr>
+        <td>P2</td>
+        <td>F3</td>
+      </tr>
+      <tr>
+        <td>P3</td>
+        <td>F1</td>
+      </tr>
+    </table>
+
+    <h2>🧩 Segmentation</h2>
+    <p>
+      Segmentation is another memory management scheme that divides a program's memory into variable-sized logical segments, such as the code segment, stack segment, and data segment.
+      Unlike paging, which divides memory into fixed-size pages, segmentation divides memory according to the logical divisions in the program.
+    </p>
+
+    <h3>🔄 How Segmentation Works</h3>
+    <ul>
+      <li>Each segment has a <strong>base address</strong> and a <strong>limit</strong> (size).</li>
+      <li>The logical address is specified using two components: <strong>segment number</strong> and <strong>offset</strong>.</li>
+      <li>The OS checks if the offset is within the segment limit before translating to a physical address.</li>
+    </ul>
+
+    <h3>📐 Advantages of Segmentation</h3>
+    <ul>
+      <li>Reflects the logical view of memory used by programmers (code, data, stack).</li>
+      <li>Facilitates sharing and protection by isolating segments.</li>
+      <li>Allows dynamic growth of segments like stack and heap.</li>
+    </ul>
+
+    <h3>⚠️ Disadvantages of Segmentation</h3>
+    <ul>
+      <li>Leads to external fragmentation as segments vary in size.</li>
+      <li>Complex memory allocation algorithms are needed.</li>
+    </ul>
+
+    <h2>📊 Example of Segmentation</h2>
+    <p>Consider a program with the following segments:</p>
+
+    <table>
+      <tr>
+        <th>Segment Name</th>
+        <th>Base Address</th>
+        <th>Limit (Size)</th>
+      </tr>
+      <tr>
+        <td>Code</td>
+        <td>1000</td>
+        <td>400</td>
+      </tr>
+      <tr>
+        <td>Data</td>
+        <td>2000</td>
+        <td>300</td>
+      </tr>
+      <tr>
+        <td>Stack</td>
+        <td>3000</td>
+        <td>500</td>
+      </tr>
+    </table>
+
+    <p>
+      If a logical address refers to segment 1 (Data) with an offset 50, the physical address will be calculated as: 
+      <code>Base + Offset = 2000 + 50 = 2050</code>
+    </p>
+
+    <h2>🔀 Difference Between Paging and Segmentation</h2>
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>Paging</th>
+        <th>Segmentation</th>
+      </tr>
+      <tr>
+        <td>Division</td>
+        <td>Divides memory into fixed-size pages and frames.</td>
+        <td>Divides memory into variable-sized logical segments.</td>
+      </tr>
+      <tr>
+        <td>Fragmentation</td>
+        <td>Internal fragmentation possible.</td>
+        <td>External fragmentation possible.</td>
+      </tr>
+      <tr>
+        <td>Address Structure</td>
+        <td>Page number + offset</td>
+        <td>Segment number + offset</td>
+      </tr>
+      <tr>
+        <td>Logical View</td>
+        <td>Physical division of memory.</td>
+        <td>Logical division (code, data, stack, etc.).</td>
+      </tr>
+    </table>
+
+    <h2>🎯 Pro Tip</h2>
+    <p>
+      Modern operating systems like Linux and Windows often use a combination of <strong>paging and segmentation</strong> to get the best of both worlds. For example, Intel x86 architecture supports segmentation with paging enabled for efficient virtual memory.
+    </p>
+
+    <a href="{% url 'os_course' %}" class="view-content-link">⬅ Back to OS Course</a>
+
+  </div>
+</body>
+</html>

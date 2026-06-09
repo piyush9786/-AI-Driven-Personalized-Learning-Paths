@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Recommendation</title>
+    <link rel="stylesheet" href="{% static 'css/resource_styles.css' %}">
+</head>
+<body>
+    <!-- <a href="../../index.html"></a> -->
+    <a href="{% url 'qr_gen' %}"></a>
+
+    <nav>
+        <h1>Resource Recommendations</h1>
+        <button id="qrButton" data-url="{% url 'qr_gen' %}">QR Code Generator</button>
+    </nav>
+
+    <div id="home">
+
+        <div class="resource-container">
+            <!-- Resource 1: React Resources -->
+            <div class="resource-card">
+                <h3>React Resources</h3>
+                <p>Explore the official documentation and tutorials for learning React.js</p>
+                <a href="https://reactjs.org" target="_blank">Visit Site</a>
+            </div>
+
+            <!-- Resource 2: Web dev resources -->
+            <div class="resource-card">
+                <h3>Web Dev Resources</h3>
+                <p>Learn everything about web development from HTML, CSS to JavaScript.</p>
+                <a href="https://developer.mozilla.org" target="_blank">Visit Site</a>
+            </div>
+
+            <!-- Resource 3: Tailwind CSS -->
+            <div class="resource-card">
+                <h3>Learn Tailwind</h3>
+                <p>Get started with the utility-first CSS framework, Tailwind CSS.</p>
+                <a href="https://tailwindcss.com" target="_blank">Visit Site</a>
+            </div>
+
+            <!-- Resource 4: DBMS Resources -->
+            <div class="resource-card">
+                <h3>DBMS Resources</h3>
+                <p>Comprehensive resources for learning Database Management Systems concepts.</p>
+                <a href="https://www.geeksforgeeks.org/dbms/" target="_blank">Visit Site</a>
+            </div>
+
+            <!-- Resource 5: Operating Systems -->
+            <div class="resource-card">
+                <h3>Operating Systems</h3>
+                <p>Learn about the core concepts and working of operating systems.</p>
+                <a href="https://www.geeksforgeeks.org/operating-systems/" target="_blank">Visit Site</a>
+            </div>
+
+            <!-- Resource 6: Computer Networking -->
+            <div class="resource-card">
+                <h3>Computer Networking</h3>
+                <p>Understand networking protocols, concepts, and network designs.</p>
+                <a href="https://www.geeksforgeeks.org/computer-network-tutorials/" target="_blank">Visit Site</a>
+            </div>
+
+            <!-- Resource 7: Data Structures and Algorithms -->
+            <div class="resource-card">
+                <h3>Data Structures & Algorithms</h3>
+                <p>A great collection of resources for mastering data structures and algorithms.</p>
+                <a href="https://www.geeksforgeeks.org/data-structures/" target="_blank">Visit Site</a>
+            </div>
+
+            <!-- Resource 8: DevOps Resources -->
+            <div class="resource-card">
+                <h3>DevOps Resources</h3>
+                <p>Learn DevOps practices, tools, and techniques to improve software development lifecycle.</p>
+                <a href="https://www.geeksforgeeks.org/devops-tutorial/" target="_blank">Visit Site</a>
+            </div>
+
+            <!-- Resource 9: Cloud Computing -->
+            <div class="resource-card">
+                <h3>Cloud Computing</h3>
+                <p>Explore the principles and applications of cloud computing technologies.</p>
+                <a href="https://www.geeksforgeeks.org/cloud-computing/" target="_blank">Visit Site</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/resource_script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="{% static 'css/admin_styles.css' %}" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+
+      <h2>Admin</h2>
+
+      <nav>
+        <a href="#">Dashboard</a>
+        <!-- <a href="#">Create Test</a> -->
+        
+
+          <a href="{% url 'members' %}">
+            <i class="fas fa-users"></i> Members
+          </a>
+    
+            <a href="{% url 'analytics' %}">
+              <i class="fas fa-chart-line"></i> Analytics
+            </a>
+
+            <a href="{% url 'study_rooms' %}">
+              <i class="fas fa-chalkboard-teacher"></i> Study Room Monitor
+            </a>
+
+
+            <a href="{% url 'classes' %}">
+              <i class="fas fa-chart-line"></i> Classes
+            </a>
+            <a href="{% url 'index' %}">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+
+      <header class="header">
+        <h3>Hello, Admin!</h3>
+        <div class="notif">{{ new_feedback_count }}</div>
+      </header>
+
+      <div class="cards">
+        <div class="card glow">
+          <div class="icon">📊</div>
+          <h4>Total Users</h4>
+          <p>{{ total_users }}</p>
+        </div>
+        <div class="card glow">
+          <div class="icon">📅</div>
+          <h4>Today's Active</h4>
+          <p>{{ todays_active_users }}</p>
+        </div>
+        <div class="card glow">
+          <div class="icon">📝</div>
+          <h4>Total Tests</h4>
+          <p><strong>Created:</strong> {{ total_tests_created }}</p> 
+          <p><strong>Submitted:</strong> {{ total_tests_submitted }}</p> 
+        </div>
+        <div class="card glow">
+          <div class="icon">💬</div>
+          <h4>User Feedback</h4>
+          <p>New Feedbacks:{{ new_feedback_count }}</p>
+          <a href="{% url 'feedbacks' %}">View feedbacks</a>
+        </div>
+      </div>
+
+      <div class="growth-section">
+        <h3>Monthly User Growth</h3>
+        <div class="bar"><span style="width: 80%;">80%</span></div>
+        <div class="bar"><span style="width: 60%;">60%</span></div>
+        <div class="bar"><span style="width: 40%;">40%</span></div>
+        <div class="bar"><span style="width: 90%;">90%</span></div>
+      </div>
+
+       <!-- chart -->
+
+       <div class="chart-card">
+        <h3 class="chart-title">Student Performance Over Time</h3>
+        <canvas id="performanceChart"></canvas>
+      </div>
+      
+    <!-- chart ends -->
+
+    <!-- platform user growth -->
+
+    <div class="chart-card">
+        <h3 class="chart-title">Platform User Growth</h3>
+        <canvas id="userGrowthChart"></canvas>
+      </div>
+      
+    <!-- platform user growth ends -->
+
+    <div class="chart-card">
+        <h3 class="chart-title">Course Category Engagement</h3>
+        <canvas id="courseEngagementChart"></canvas>
+      </div>
+      
+      <div class="chart-card">
+        <h3 class="chart-title">Weekly Login Patterns</h3>
+        <canvas id="weeklyLoginChart"></canvas>
+      </div>
+      
+      <div class="chart-card">
+        <h3 class="chart-title">Learner Age Demographics</h3>
+        <canvas id="ageDemographicsChart"></canvas>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+  
+    const performanceChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        datasets: [{
+          label: 'Average Score',
+          data: [72, 75, 78, 80, 85, 87, 90],
+          borderColor: '#00ffe1',
+          backgroundColor: 'rgba(0, 255, 225, 0.1)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: '#00ffe1',
+          pointRadius: 5,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: {
+              color: '#fff'
+            }
+          },
+          tooltip: {
+            backgroundColor: '#111',
+            titleColor: '#0ff',
+            bodyColor: '#fff',
+            borderColor: '#0ff',
+            borderWidth: 1
+          }
+        },
+        scales: {
+          x: {
+            ticks: {
+              color: '#fff'
+            },
+            grid: {
+              color: '#333'
+            }
+          },
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: '#fff'
+            },
+            grid: {
+              color: '#333'
+            }
+          }
+        }
+      }
+    });
+  </script>
+    
+    <!-- platform user growth js -->
+    <script>
+        const userGrowthCtx = document.getElementById('userGrowthChart').getContext('2d');
+      
+        const userGrowthChart = new Chart(userGrowthCtx, {
+          type: 'line',
+          data: {
+            labels: [
+              'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+              'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+            ],
+            datasets: [{
+              label: 'Users',
+              data: [1500, 1650, 1780, 1900, 2050, 2180, 2240, 2320, 2390, 2470, 2530, 2610],
+              borderColor: '#457B9D',
+              backgroundColor: 'rgba(69, 123, 157, 0.2)',
+              tension: 0.4,
+              pointRadius: 5,
+              pointHoverRadius: 8,
+              fill: true,
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                labels: { color: '#fff' }
+              },
+              tooltip: {
+                callbacks: {
+                  label: context => `${context.parsed.y} users`
+                }
+              }
+            },
+            scales: {
+              x: {
+                ticks: { color: '#ccc' },
+                grid: { color: '#444' }
+              },
+              y: {
+                ticks: { color: '#ccc' },
+                grid: { color: '#444' }
+              }
+            }
+          }
+        });
+      </script>
+      
+      <script>
+        const courseEngagementCtx = document.getElementById('courseEngagementChart').getContext('2d');
+      
+        const courseEngagementChart = new Chart(courseEngagementCtx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Programming', 'Design', 'Marketing', 'Business', 'AI/ML'],
+            datasets: [{
+              label: 'Engagement %',
+              data: [35, 25, 15, 15, 10],
+              backgroundColor: ['#E63946', '#457B9D', '#4CAF50', '#FF9800', '#9C27B0'],
+              borderColor: '#222',
+              borderWidth: 1,
+              hoverOffset: 10
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'bottom',
+                labels: { color: '#fff' }
+              },
+              tooltip: {
+                callbacks: {
+                  label: context => `${context.label}: ${context.parsed}%`
+                }
+              }
+            }
+          }
+        });
+      </script>
+      
+      <script>
+        const weeklyLoginCtx = document.getElementById('weeklyLoginChart').getContext('2d');
+
+new Chart(weeklyLoginCtx, {
+  type: 'bar',
+  data: {
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    datasets: [
+      {
+        label: 'Morning',
+        data: [35, 28, 32, 25, 40, 50, 30],
+        backgroundColor: '#00B4D8',
+        borderRadius: 6,
+        barThickness: 20
+      },
+      {
+        label: 'Evening',
+        data: [45, 40, 38, 30, 50, 55, 33],
+        backgroundColor: '#FF6B6B',
+        borderRadius: 6,
+        barThickness: 20
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          color: '#ccc'
+        },
+        grid: {
+          color: '#333'
+        }
+      },
+      x: {
+        ticks: {
+          color: '#ccc'
+        },
+        grid: {
+          display: false
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: '#ccc'
+        }
+      },
+      tooltip: {
+        backgroundColor: '#1e1e2f',
+        titleColor: '#fff',
+        bodyColor: '#fff',
+        borderColor: '#00B4D8',
+        borderWidth: 1
+      }
+    }
+  }
+});
+      </script>
+
+      <script>
+        const ageDemographicsCtx = document.getElementById('ageDemographicsChart').getContext('2d');
+
+new Chart(ageDemographicsCtx, {
+  type: 'bar',
+  data: {
+    labels: ['18-24', '25-34', '35-44', '45-54', '55+'],
+    datasets: [
+      {
+        label: 'Male',
+        data: [300, 450, 320, 200, 180],
+        backgroundColor: '#3A86FF',
+        borderRadius: 6,
+        barThickness: 14
+      },
+      {
+        label: 'Female',
+        data: [400, 480, 280, 220, 160],
+        backgroundColor: '#FF006E',
+        borderRadius: 6,
+        barThickness: 14
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        beginAtZero: true,
+        ticks: {
+          color: '#ccc'
+        },
+        grid: {
+          color: '#333'
+        }
+      },
+      y: {
+        ticks: {
+          color: '#ccc'
+        },
+        grid: {
+          display: false
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: '#ccc'
+        }
+      },
+      tooltip: {
+        backgroundColor: '#1e1e2f',
+        titleColor: '#fff',
+        bodyColor: '#fff',
+        borderColor: '#3A86FF',
+        borderWidth: 1
+      }
+    }
+  }
+});
+      </script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Tracker</title>
+    <link rel="stylesheet" href="{% static 'css/progress.css' %}">
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo" style="font-weight: bolder;">ProgressTracker</a>
+            <ul class="nav-links">
+                <!-- Add nav items here if needed -->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <h1>Track Your Progress, Stay Motivated</h1>
+            <p>Start by adding tasks and monitor your achievements.</p>
+            <!-- Button to Open To Do List -->
+            <a href="{% url 'todo_list' %}">
+                <button id="open-todo-btn">Open To Do List</button>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <p style="font-weight: bold;">&copy; 2025 ProgressTracker. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/progress.js' %}"></script>
+</body>
+</html>

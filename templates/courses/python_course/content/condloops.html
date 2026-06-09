@@ -1,0 +1,261 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conditionals & Loops - Python Course - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\python_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Conditionals & Loops</h1>
+    <p class="description">
+      In Python, conditionals and loops are essential building blocks of logic and flow control in a program. Conditionals allow you to execute code based on certain conditions, while loops allow you to repeat code multiple times. Understanding how to use both will help you create more powerful and dynamic programs.
+    </p>
+
+    <h2>🔎 Conditionals: Making Decisions</h2>
+    <p>
+      Conditionals allow the program to execute different blocks of code based on certain conditions. In Python, we use <code>if</code>, <code>elif</code>, and <code>else</code> statements to control the flow of the program.
+    </p>
+    
+    <h3>1. The <code>if</code> Statement</h3>
+    <p>
+      The <code>if</code> statement is used to test a condition. If the condition evaluates to <code>True</code>, the code inside the <code>if</code> block will execute. If it's <code>False</code>, the program will skip over the block.
+    </p>
+    <p>
+      Syntax:
+      <pre>
+if condition:
+    # code to execute if condition is True
+      </pre>
+    </p>
+    <p>Example:</p>
+    <pre>
+age = 18
+if age >= 18:
+    print("You are an adult.")
+      </pre>
+    <p>
+      In this example, the condition <code>age >= 18</code> is <code>True</code>, so the message "You are an adult." will be printed.
+    </p>
+
+    <h3>2. The <code>elif</code> Statement</h3>
+    <p>
+      The <code>elif</code> (else if) statement allows you to test additional conditions if the initial <code>if</code> condition is <code>False</code>. You can have multiple <code>elif</code> statements in a chain.
+    </p>
+    <p>
+      Syntax:
+      <pre>
+if condition1:
+    # code to execute if condition1 is True
+elif condition2:
+    # code to execute if condition1 is False and condition2 is True
+else:
+    # code to execute if all conditions are False
+      </pre>
+    </p>
+    <p>Example:</p>
+    <pre>
+age = 16
+if age >= 18:
+    print("You are an adult.")
+elif age >= 13:
+    print("You are a teenager.")
+else:
+    print("You are a child.")
+      </pre>
+    <p>
+      In this example, since <code>age = 16</code>, the <code>elif</code> condition is <code>True</code>, so "You are a teenager." will be printed.
+    </p>
+
+    <h3>3. The <code>else</code> Statement</h3>
+    <p>
+      The <code>else</code> statement defines a block of code that will execute if all preceding conditions in the <code>if</code> and <code>elif</code> statements are <code>False</code>.
+    </p>
+    <p>Example:</p>
+    <pre>
+age = 10
+if age >= 18:
+    print("You are an adult.")
+elif age >= 13:
+    print("You are a teenager.")
+else:
+    print("You are a child.")
+      </pre>
+    <p>
+      In this example, since <code>age = 10</code>, neither the <code>if</code> nor the <code>elif</code> conditions are true, so the code inside the <code>else</code> block runs, printing "You are a child."
+    </p>
+
+    <h3>4. Combining Conditions</h3>
+    <p>
+      You can combine multiple conditions using <code>and</code>, <code>or</code>, and <code>not</code> to form complex logical expressions.
+    </p>
+    <ul>
+      <li><strong>and</strong>: Both conditions must be <code>True</code> for the entire expression to be <code>True</code>.</li>
+      <li><strong>or</strong>: At least one condition must be <code>True</code> for the entire expression to be <code>True</code>.</li>
+      <li><strong>not</strong>: Reverses the result of the condition.</li>
+    </ul>
+    <p>Example:</p>
+    <pre>
+age = 20
+has_ticket = True
+if age >= 18 and has_ticket:
+    print("You can enter the event.")
+else:
+    print("You cannot enter the event.")
+      </pre>
+    <p>
+      In this example, since both conditions are <code>True</code>, the message "You can enter the event." will be printed.
+    </p>
+
+    <h2>🔄 Loops: Repeating Code</h2>
+    <p>
+      Loops allow you to execute a block of code multiple times, either for a fixed number of times or until a certain condition is met. Python supports two main types of loops: <code>for</code> loops and <code>while</code> loops.
+    </p>
+
+    <h3>1. The <code>for</code> Loop</h3>
+    <p>
+      The <code>for</code> loop is used to iterate over a sequence (like a list, string, tuple, or range) and execute a block of code for each item in the sequence.
+    </p>
+    <p>
+      Syntax:
+      <pre>
+for item in sequence:
+    # code to execute for each item
+      </pre>
+    </p>
+    <p>Example:</p>
+    <pre>
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+      </pre>
+    <p>
+      This will print each fruit in the list:
+      <ul>
+        <li>apple</li>
+        <li>banana</li>
+        <li>cherry</li>
+      </ul>
+    </p>
+
+    <h3>2. The <code>range()</code> Function</h3>
+    <p>
+      The <code>range()</code> function generates a sequence of numbers, which is commonly used with <code>for</code> loops when you want to iterate over a specific range of numbers.
+    </p>
+    <p>Example:</p>
+    <pre>
+for i in range(5):
+    print(i)
+      </pre>
+    <p>
+      This will print the numbers from 0 to 4:
+      <ul>
+        <li>0</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+    </p>
+
+    <h3>3. The <code>while</code> Loop</h3>
+    <p>
+      The <code>while</code> loop runs as long as the specified condition is <code>True</code>. It’s commonly used when you don’t know beforehand how many times the loop will run.
+    </p>
+    <p>
+      Syntax:
+      <pre>
+while condition:
+    # code to execute while the condition is True
+      </pre>
+    </p>
+    <p>Example:</p>
+    <pre>
+count = 0
+while count < 5:
+    print(count)
+    count += 1  # Increase count by 1
+      </pre>
+    <p>
+      This will print:
+      <ul>
+        <li>0</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+    </p>
+
+    <h3>4. Breaking Out of Loops</h3>
+    <p>
+      The <code>break</code> statement is used to exit a loop prematurely when a condition is met. The <code>continue</code> statement skips the current iteration and moves to the next one.
+    </p>
+    <p>Example with <code>break</code>:</p>
+    <pre>
+for i in range(10):
+    if i == 5:
+        break
+    print(i)
+      </pre>
+    <p>
+      This will print:
+      <ul>
+        <li>0</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+    </p>
+
+    <p>Example with <code>continue</code>:</p>
+    <pre>
+for i in range(5):
+    if i == 2:
+        continue
+    print(i)
+      </pre>
+    <p>
+      This will print:
+      <ul>
+        <li>0</li>
+        <li>1</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+    </p>
+
+    <h2>📝 Nested Loops & Conditionals</h2>
+    <p>
+      You can nest loops and conditionals inside each other to create more complex logic. For example, you might want to loop over a list of lists or check multiple conditions within a loop.
+    </p>
+    <p>Example of a nested loop:</p>
+    <pre>
+for i in range(3):
+    for j in range(2):
+        print(f"i: {i}, j: {j}")
+      </pre>
+    <p>
+      This will print:
+      <ul>
+        <li>i: 0, j: 0</li>
+        <li>i: 0, j: 1</li>
+        <li>i: 1, j: 0</li>
+        <li>i: 1, j: 1</li>
+        <li>i: 2, j: 0</li>
+        <li>i: 2, j: 1</li>
+      </ul>
+    </p>
+
+    <h2> Conclusion</h2>
+<p>
+Understanding conditionals and loops is crucial for controlling the flow of your Python programs. With conditionals, you can make decisions based on certain conditions, while loops allow you to repeat actions multiple times. Combined, they are powerful tools for creating dynamic, efficient, and logical programs.
+</p>
+
+ <a href="{% url 'python_course' %}" class="view-content-link">⬅ Back to Python Course</a>
+
+</div> </body> </html>

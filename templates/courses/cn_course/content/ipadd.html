@@ -1,0 +1,177 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IP Addressing & Subnetting - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\cn_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>IP Addressing & Subnetting</h1>
+    <p class="description">
+      IP addressing and subnetting are fundamental concepts in computer networking that define how devices communicate over the internet and private networks.
+    </p>
+
+    <h2>🔎 What is an IP Address?</h2>
+    <p>
+      An <strong>IP address</strong> (Internet Protocol address) is a unique identifier assigned to each device connected to a network. 
+      It allows devices to find and communicate with each other across local and global networks.
+    </p>
+    <p>Example: <code>192.168.1.10</code></p>
+
+    <h2>📚 Types of IP Addresses</h2>
+    <ul>
+      <li><strong>IPv4:</strong> 32-bit address, written in dotted decimal format (e.g., 192.168.0.1). Supports ~4.3 billion addresses.</li>
+      <li><strong>IPv6:</strong> 128-bit address, written in hexadecimal (e.g., 2001:0db8:85a3::8a2e:0370:7334). Supports trillions of devices.</li>
+    </ul>
+
+    <h2>📊 IPv4 Address Classes</h2>
+    <table>
+      <tr>
+        <th>Class</th>
+        <th>Range</th>
+        <th>Default Subnet Mask</th>
+        <th>Usage</th>
+      </tr>
+      <tr>
+        <td>Class A</td>
+        <td>1.0.0.0 to 126.255.255.255</td>
+        <td>255.0.0.0</td>
+        <td>Large networks</td>
+      </tr>
+      <tr>
+        <td>Class B</td>
+        <td>128.0.0.0 to 191.255.255.255</td>
+        <td>255.255.0.0</td>
+        <td>Medium networks</td>
+      </tr>
+      <tr>
+        <td>Class C</td>
+        <td>192.0.0.0 to 223.255.255.255</td>
+        <td>255.255.255.0</td>
+        <td>Small networks</td>
+      </tr>
+      <tr>
+        <td>Class D</td>
+        <td>224.0.0.0 to 239.255.255.255</td>
+        <td>N/A</td>
+        <td>Multicast</td>
+      </tr>
+      <tr>
+        <td>Class E</td>
+        <td>240.0.0.0 to 255.255.255.255</td>
+        <td>N/A</td>
+        <td>Experimental</td>
+      </tr>
+    </table>
+
+    <h2>🏠 Private vs Public IP Addresses</h2>
+    <ul>
+      <li><strong>Private IPs:</strong> Used within local networks (e.g., 192.168.x.x, 10.x.x.x). Not routable on the internet.</li>
+      <li><strong>Public IPs:</strong> Unique globally and used to identify devices on the internet.</li>
+    </ul>
+
+    <h2>📏 What is Subnetting?</h2>
+    <p>
+      <strong>Subnetting</strong> is the process of dividing a large network into smaller, manageable sub-networks (subnets). 
+      It helps in efficient IP address allocation and improves network security and performance.
+    </p>
+
+    <h2>📚 Subnet Mask Explained</h2>
+    <p>
+      A <strong>subnet mask</strong> separates the network portion from the host portion in an IP address.
+      Example:
+    </p>
+    <ul>
+      <li>IP Address: <code>192.168.1.10</code></li>
+      <li>Subnet Mask: <code>255.255.255.0</code></li>
+      <li>Network Portion: <code>192.168.1</code></li>
+      <li>Host Portion: <code>.10</code></li>
+    </ul>
+
+    <h2>🧮 CIDR Notation</h2>
+    <p>
+      <strong>CIDR</strong> (Classless Inter-Domain Routing) is a more flexible method of representing subnet masks.
+    </p>
+    <ul>
+      <li><code>/24</code> = 255.255.255.0</li>
+      <li><code>/16</code> = 255.255.0.0</li>
+      <li><code>/8</code> = 255.0.0.0</li>
+    </ul>
+
+    <h2>📊 Common Subnets</h2>
+    <table>
+      <tr>
+        <th>CIDR</th>
+        <th>Subnet Mask</th>
+        <th>Usable Hosts</th>
+      </tr>
+      <tr>
+        <td>/30</td>
+        <td>255.255.255.252</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>/29</td>
+        <td>255.255.255.248</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>/28</td>
+        <td>255.255.255.240</td>
+        <td>14</td>
+      </tr>
+      <tr>
+        <td>/27</td>
+        <td>255.255.255.224</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>/24</td>
+        <td>255.255.255.0</td>
+        <td>254</td>
+      </tr>
+    </table>
+
+    <h2>✅ Subnetting Example</h2>
+    <p>Let’s subnet the network <code>192.168.1.0/24</code> into 4 subnets:</p>
+    <ul>
+      <li>New Subnet Mask: <code>/26</code> (255.255.255.192)</li>
+      <li>Each subnet has 62 usable hosts.</li>
+      <li>Subnets:
+        <ul>
+          <li>192.168.1.0/26 → Hosts: 192.168.1.1 to 192.168.1.62</li>
+          <li>192.168.1.64/26 → Hosts: 192.168.1.65 to 192.168.1.126</li>
+          <li>192.168.1.128/26 → Hosts: 192.168.1.129 to 192.168.1.190</li>
+          <li>192.168.1.192/26 → Hosts: 192.168.1.193 to 192.168.1.254</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>🔄 How Subnetting Helps</h2>
+    <ul>
+      <li>Efficient IP address utilization</li>
+      <li>Improves network performance by reducing broadcast traffic</li>
+      <li>Enhances security by isolating network segments</li>
+    </ul>
+
+    <h2>❓ Common Questions</h2>
+    <p><strong>Q: Why is subnetting important?</strong></p>
+    <p>A: It allows better management of IP addresses, improves security, and reduces congestion in large networks.</p>
+
+    <p><strong>Q: What’s the difference between public and private IPs?</strong></p>
+    <p>A: Private IPs work within local networks; public IPs are used globally on the internet.</p>
+
+    <p><strong>Q: Can I subnet a Class C network?</strong></p>
+    <p>A: Yes! For example, a Class C <code>/24</code> can be split into multiple smaller subnets like <code>/26</code> or <code>/27</code>.</p>
+
+    <h2>🎯 Pro Tip</h2>
+    <p>Use the formula <code>2^n - 2</code> (where n = host bits) to calculate usable hosts in a subnet.</p>
+    <a href="{% url 'cn_course' %}" class="view-content-link">⬅ Back to Networking Course</a>
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Networking Protocols - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\cn_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Networking Protocols</h1>
+    <p class="description">
+      Protocols are rules that define how data is transmitted over networks. They ensure devices can communicate effectively, securely, and reliably.
+    </p>
+
+    <h2>🌐 1. HTTP (HyperText Transfer Protocol)</h2>
+    <p>
+      HTTP is the foundation of data communication on the web. It is used to load webpages by transferring hypertext between a client (browser) and server.
+    </p>
+    <ul>
+      <li>Uses port <strong>80</strong>.</li>
+      <li>Stateless protocol (each request is independent).</li>
+      <li>Not secure (data is sent in plain text).</li>
+    </ul>
+
+    <h2>🔒 2. HTTPS (HTTP Secure)</h2>
+    <p>
+      HTTPS is the secure version of HTTP. It encrypts the data using SSL/TLS to protect against interception.
+    </p>
+    <ul>
+      <li>Uses port <strong>443</strong>.</li>
+      <li>Encrypts communication between browser and server.</li>
+      <li>Essential for e-commerce, banking, and secure logins.</li>
+    </ul>
+
+    <h2>📦 3. FTP (File Transfer Protocol)</h2>
+    <p>
+      FTP is used to transfer files between computers over a network. It allows uploading and downloading files from servers.
+    </p>
+    <ul>
+      <li>Uses ports <strong>20</strong> (data) and <strong>21</strong> (control).</li>
+      <li>Does not encrypt data (use SFTP/FTPS for secure transfer).</li>
+      <li>Commonly used in website management and file sharing.</li>
+    </ul>
+
+    <h2>📧 4. SMTP (Simple Mail Transfer Protocol)</h2>
+    <p>
+      SMTP is used to send emails from clients to servers and between mail servers.
+    </p>
+    <ul>
+      <li>Uses port <strong>25</strong> (unencrypted) or <strong>587</strong> (encrypted).</li>
+      <li>Handles <strong>sending</strong> emails, not receiving.</li>
+      <li>Works with POP3/IMAP for complete email service.</li>
+    </ul>
+
+    <h2>📥 5. POP3 (Post Office Protocol version 3)</h2>
+    <p>
+      POP3 is used by email clients to retrieve emails from a server. It downloads and usually deletes mail from the server.
+    </p>
+    <ul>
+      <li>Uses port <strong>110</strong> (unencrypted) or <strong>995</strong> (secure).</li>
+      <li>Emails are stored locally after download.</li>
+      <li>Simple but doesn't sync across multiple devices.</li>
+    </ul>
+
+    <h2>📧 6. IMAP (Internet Message Access Protocol)</h2>
+    <p>
+      IMAP is a protocol that allows email clients to access and manage mail on the server without downloading.
+    </p>
+    <ul>
+      <li>Uses port <strong>143</strong> (unencrypted) or <strong>993</strong> (secure).</li>
+      <li>Emails stay on the server and sync across devices.</li>
+      <li>Preferred for modern email apps (Gmail, Outlook, etc.).</li>
+    </ul>
+
+    <h2>📡 7. DNS (Domain Name System)</h2>
+    <p>
+      DNS translates human-readable domain names (like google.com) into IP addresses that computers understand.
+    </p>
+    <ul>
+      <li>Uses port <strong>53</strong>.</li>
+      <li>Acts like the internet's "phonebook."</li>
+      <li>Vital for browsing websites by name.</li>
+    </ul>
+
+    <h2>📨 8. DHCP (Dynamic Host Configuration Protocol)</h2>
+    <p>
+      DHCP automatically assigns IP addresses and network configuration to devices on a network.
+    </p>
+    <ul>
+      <li>Uses ports <strong>67</strong> (server) and <strong>68</strong> (client).</li>
+      <li>Simplifies network management by avoiding manual IP assignment.</li>
+      <li>Common in home routers and enterprise networks.</li>
+    </ul>
+
+    <h2>📊 9. SNMP (Simple Network Management Protocol)</h2>
+    <p>
+      SNMP is used to monitor and manage network devices like routers, switches, and servers.
+    </p>
+    <ul>
+      <li>Uses port <strong>161</strong>.</li>
+      <li>Collects performance and usage data from devices.</li>
+      <li>Used in network monitoring tools.</li>
+    </ul>
+
+    <h2>💬 10. Telnet</h2>
+    <p>
+      Telnet is an old protocol used to remotely access devices via command-line. It's insecure because data is transmitted in plain text.
+    </p>
+    <ul>
+      <li>Uses port <strong>23</strong>.</li>
+      <li>Replaced by SSH for secure remote access.</li>
+      <li>Still used in testing environments.</li>
+    </ul>
+
+    <h2>🔐 11. SSH (Secure Shell)</h2>
+    <p>
+      SSH is a protocol for secure remote login and command execution on network devices and servers.
+    </p>
+    <ul>
+      <li>Uses port <strong>22</strong>.</li>
+      <li>Encrypts data, unlike Telnet.</li>
+      <li>Widely used by system administrators and developers.</li>
+    </ul>
+
+    <h2>📶 12. NTP (Network Time Protocol)</h2>
+    <p>
+      NTP synchronizes clocks of computers and devices across a network to ensure time consistency.
+    </p>
+    <ul>
+      <li>Uses port <strong>123</strong>.</li>
+      <li>Critical for logs, security, and scheduling tasks.</li>
+      <li>Used by servers, routers, and security appliances.</li>
+    </ul>
+
+    <h2>✅ 13. ARP (Address Resolution Protocol)</h2>
+    <p>
+      ARP resolves IP addresses to MAC (hardware) addresses on a local network. It's crucial for LAN communication.
+    </p>
+    <ul>
+      <li>Operates at the network layer (Layer 3).</li>
+      <li>Enables devices to locate each other on the same network.</li>
+      <li>Used in switches and routers for routing decisions.</li>
+    </ul>
+
+    <h2>❓ Common Questions</h2>
+    <p><strong>Q: What’s the difference between HTTP and HTTPS?</strong></p>
+    <p>A: HTTPS encrypts the data using SSL/TLS, making it secure. HTTP does not provide encryption.</p>
+
+    <p><strong>Q: Why is SSH preferred over Telnet?</strong></p>
+    <p>A: SSH encrypts the connection, protecting against eavesdropping, while Telnet transmits data in plain text.</p>
+
+    <p><strong>Q: Do I need both POP3 and IMAP for emails?</strong></p>
+    <p>A: No, they serve similar purposes but work differently. IMAP is preferred for syncing across multiple devices.</p>
+
+    <h2>🎯 Pro Tip</h2>
+    <p>Remember key protocol ports! Example: HTTPS (443), FTP (21), SSH (22), DNS (53).</p>
+    <a href="{% url 'cn_course' %}" class="view-content-link">⬅ Back to Networking Course</a>
+  </div>
+</body>
+</html>

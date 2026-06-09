@@ -1,0 +1,133 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Process Management - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\os_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Process Management in Operating Systems</h1>
+    <p class="description">
+      <strong>Process Management</strong> is one of the core functions of an Operating System. It is responsible for creating, scheduling, and terminating processes, as well as handling communication and synchronization between them.
+    </p>
+
+    <h2>🔎 What is a Process?</h2>
+    <p>
+      A process is an instance of a program in execution. It includes the program code, current activity (values in registers, program counter), stack, heap, and data section. Processes are the active entities, whereas programs are passive.
+    </p>
+
+    <h2>📊 Process States</h2>
+    <table>
+      <tr>
+        <th>State</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>New</td>
+        <td>The process is being created.</td>
+      </tr>
+      <tr>
+        <td>Ready</td>
+        <td>Process is waiting to be assigned to the CPU.</td>
+      </tr>
+      <tr>
+        <td>Running</td>
+        <td>Process instructions are being executed by the CPU.</td>
+      </tr>
+      <tr>
+        <td>Waiting (Blocked)</td>
+        <td>Process is waiting for some event (like I/O completion).</td>
+      </tr>
+      <tr>
+        <td>Terminated</td>
+        <td>Process has finished execution.</td>
+      </tr>
+    </table>
+
+    <h2>📝 Process Control Block (PCB)</h2>
+    <p>
+      Every process is represented in the OS by a <strong>Process Control Block (PCB)</strong>, which contains crucial information:
+    </p>
+    <ul>
+      <li><strong>Process ID (PID):</strong> Unique identifier for the process</li>
+      <li><strong>Process State:</strong> Current state (ready, running, waiting)</li>
+      <li><strong>Program Counter:</strong> Address of the next instruction</li>
+      <li><strong>CPU Registers:</strong> Values that the process is using</li>
+      <li><strong>Memory Management Info:</strong> Page tables, segment tables</li>
+      <li><strong>I/O Status:</strong> List of I/O devices allocated to the process</li>
+    </ul>
+
+    <h2>⚙️ Process Scheduling</h2>
+    <p>
+      The OS uses <strong>schedulers</strong> to decide which process gets to use the CPU next. This is key to efficient multitasking.
+    </p>
+
+    <h3>Types of Schedulers</h3>
+    <table>
+      <tr>
+        <th>Scheduler</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Long-Term Scheduler</td>
+        <td>Decides which processes are admitted to the system for processing.</td>
+      </tr>
+      <tr>
+        <td>Short-Term Scheduler</td>
+        <td>Selects from among the ready processes and allocates the CPU.</td>
+      </tr>
+      <tr>
+        <td>Medium-Term Scheduler</td>
+        <td>Removes processes from memory (swapping) to reduce load.</td>
+      </tr>
+    </table>
+
+    <h2>🔄 Context Switching</h2>
+    <p>
+      <strong>Context Switching</strong> is the mechanism where the OS saves the context (state) of a running process and loads the context of another process. It allows multiple processes to share a single CPU.
+    </p>
+    <ul>
+      <li>Stores the current process's PCB</li>
+      <li>Loads the next process's PCB</li>
+      <li>Resumes execution of the next process</li>
+    </ul>
+
+    <h2>🔗 Inter-Process Communication (IPC)</h2>
+    <p>
+      Processes often need to communicate and synchronize. <strong>IPC</strong> mechanisms include:
+    </p>
+    <ul>
+      <li><strong>Pipes</strong> - for communication between related processes</li>
+      <li><strong>Message Queues</strong> - for sending and receiving messages</li>
+      <li><strong>Shared Memory</strong> - multiple processes access the same memory area</li>
+      <li><strong>Sockets</strong> - for network communication between processes</li>
+    </ul>
+
+    <h2>📚 Example Process Commands</h2>
+    <ul>
+      <li>List running processes: <code>ps -aux</code></li>
+      <li>Kill a process by PID: <code>kill 1234</code></li>
+      <li>View process tree: <code>pstree</code></li>
+    </ul>
+
+    <h2>❓ Common Questions</h2>
+    <p><strong>Q: What's the difference between a process and a thread?</strong></p>
+    <p>A: A process is an independent execution unit with its own memory space, while a thread is a lightweight process sharing memory within a process.</p>
+
+    <p><strong>Q: Why is context switching expensive?</strong></p>
+    <p>A: Context switching involves saving and loading register states and memory maps, which takes CPU time and slows down performance.</p>
+
+    <p><strong>Q: Can multiple processes run at the same time?</strong></p>
+    <p>A: Yes, on multicore systems, multiple processes can execute truly in parallel. On single-core systems, multitasking is simulated using context switching.</p>
+
+    <h2>🎯 Pro Tip</h2>
+    <p>Efficient process management and scheduling is crucial for building scalable, high-performance applications!</p>
+
+    <a href="{% url 'os_course' %}" class="view-content-link">⬅ Back to OS Course</a>
+  </div>
+</body>
+</html>

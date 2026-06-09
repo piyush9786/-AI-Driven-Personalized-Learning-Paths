@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Current Course</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d0f2b;
+      color: white;
+    }
+    .container {
+      padding: 2rem;
+    }
+    h1 {
+      color: #00ffd5;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background-color: #1c1d32;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .card:hover {
+      box-shadow: 0 0 12px #00ffd5, 0 0 25px #00ffd5;
+      transform: scale(1.02);
+    }
+    .card h2 {
+      color: #00ffd5;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .progress-bar {
+      height: 12px;
+      background-color: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+    .progress-fill {
+      height: 100%;
+      background-color: #00ffd5;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>My Courses</h1>
+    <div class="grid">
+
+      {% for course in progress_data %}
+        <a href="{% url course.course_name %}" class="card">
+          <h2>{{ course.course_name }}</h2>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: {{ course.progress }}%;"></div>
+          </div>
+          <p>Progress: {{ course.progress }}%</p>
+        </a>
+      {% endfor %}
+      
+    </div>
+  </div>
+</body>
+
+
+</html>

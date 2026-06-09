@@ -1,0 +1,189 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transactions & Concurrency Control - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\dbms_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Transactions and Concurrency Control in DBMS</h1>
+    <p class="description">
+      Transactions and Concurrency Control are critical for ensuring that databases remain accurate and consistent, even when multiple users are accessing or modifying the data at the same time. Let's dive deep into both topics!
+    </p>
+
+    <h2>🔄 What is a Transaction?</h2>
+    <p>
+      A <strong>Transaction</strong> in a database is a single unit of work that consists of one or more operations (like INSERT, UPDATE, DELETE, SELECT) executed as a whole. A transaction should either be completed fully or not executed at all.
+    </p>
+
+    <h3>📚 Example:</h3>
+    <p>Consider a banking system where you transfer ₹1000 from Account A to Account B.</p>
+    <ol>
+      <li>Deduct ₹1000 from Account A.</li>
+      <li>Add ₹1000 to Account B.</li>
+    </ol>
+    <p>Both these steps must succeed together — if only one succeeds, money would be lost or created unfairly. This is why both must be treated as a single <strong>transaction</strong>.</p>
+
+    <h2>💎 ACID Properties</h2>
+    <p>Transactions must satisfy the <strong>ACID</strong> properties to ensure correctness:</p>
+    <ul>
+      <li><strong>A</strong>tomicity: All operations in a transaction either complete fully or not at all.</li>
+      <li><strong>C</strong>onsistency: The database moves from one valid state to another.</li>
+      <li><strong>I</strong>solation: Multiple transactions execute independently without interfering.</li>
+      <li><strong>D</strong>urability: Once a transaction is committed, changes are permanent even in case of failures.</li>
+    </ul>
+
+    <h2>💥 Problems Without Proper Concurrency Control</h2>
+    <p>When multiple transactions execute at the same time, they may lead to problems:</p>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Problem</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lost Update</td>
+          <td>Two transactions overwrite each other's updates.</td>
+          <td>Two users update balance at the same time, and one update gets lost.</td>
+        </tr>
+        <tr>
+          <td>Dirty Read</td>
+          <td>Transaction reads uncommitted changes from another transaction.</td>
+          <td>Transaction reads temporary changes which are later rolled back.</td>
+        </tr>
+        <tr>
+          <td>Non-Repeatable Read</td>
+          <td>Data read twice gives different results because of concurrent updates.</td>
+          <td>Same query returns different balances during a transaction.</td>
+        </tr>
+        <tr>
+          <td>Phantom Read</td>
+          <td>New rows are added/removed by another transaction between queries.</td>
+          <td>A count query gives different row counts during execution.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>🔒 Concurrency Control Techniques</h2>
+    <p>To prevent these problems, DBMSs use various <strong>concurrency control</strong> methods:</p>
+
+    <h3>1. Lock-Based Protocols</h3>
+    <ul>
+      <li><strong>Shared Lock (S):</strong> Allows reading but no writing.</li>
+      <li><strong>Exclusive Lock (X):</strong> Allows reading and writing but prevents others from reading/writing.</li>
+      <li><strong>Two-Phase Locking (2PL):</strong> Has a growing phase (acquire locks) and shrinking phase (release locks). Guarantees serializability.</li>
+    </ul>
+
+    <h3>2. Timestamp-Based Protocols</h3>
+    <ul>
+      <li>Each transaction gets a unique timestamp.</li>
+      <li>Older transactions get priority.</li>
+      <li>Helps avoid deadlock situations.</li>
+    </ul>
+
+    <h3>3. Validation-Based Protocols (Optimistic Concurrency)</h3>
+    <ul>
+      <li>Transactions execute without restrictions.</li>
+      <li>Validation is done before commit to check for conflicts.</li>
+      <li>Efficient for systems with less conflict probability.</li>
+    </ul>
+
+    <h2>💡 Isolation Levels</h2>
+    <p>SQL provides different isolation levels to control concurrency behavior:</p>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Isolation Level</th>
+          <th>Dirty Read</th>
+          <th>Non-Repeatable Read</th>
+          <th>Phantom Read</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Read Uncommitted</td>
+          <td>✅ Allowed</td>
+          <td>✅ Allowed</td>
+          <td>✅ Allowed</td>
+        </tr>
+        <tr>
+          <td>Read Committed</td>
+          <td>❌ Prevented</td>
+          <td>✅ Allowed</td>
+          <td>✅ Allowed</td>
+        </tr>
+        <tr>
+          <td>Repeatable Read</td>
+          <td>❌ Prevented</td>
+          <td>❌ Prevented</td>
+          <td>✅ Allowed</td>
+        </tr>
+        <tr>
+          <td>Serializable</td>
+          <td>❌ Prevented</td>
+          <td>❌ Prevented</td>
+          <td>❌ Prevented</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>🕹️ SQL Commands for Transactions</h2>
+    <p>Here are standard SQL commands used to manage transactions:</p>
+    <ul>
+      <li><code>BEGIN TRANSACTION;</code> — Start a new transaction.</li>
+      <li><code>COMMIT;</code> — Save the changes made by the transaction.</li>
+      <li><code>ROLLBACK;</code> — Undo the changes if there's an error.</li>
+      <li><code>SAVEPOINT savepoint_name;</code> — Set a savepoint to roll back partially.</li>
+      <li><code>SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;</code> — Set isolation level.</li>
+    </ul>
+
+    <h3>✔️ Example SQL Transaction</h3>
+    <pre>
+BEGIN TRANSACTION;
+
+UPDATE Accounts
+SET Balance = Balance - 1000
+WHERE Acc_ID = 1;
+
+UPDATE Accounts
+SET Balance = Balance + 1000
+WHERE Acc_ID = 2;
+
+COMMIT;
+    </pre>
+
+    <h2>⚠️ Deadlock in DBMS</h2>
+    <p>Deadlock occurs when two or more transactions wait for each other's resources, resulting in a cycle where none can proceed.</p>
+
+    <h3>👉 Deadlock Prevention Techniques</h3>
+    <ul>
+      <li><strong>Wait-Die</strong> scheme: Older transaction waits, younger one is rolled back.</li>
+      <li><strong>Wound-Wait</strong> scheme: Older transaction forces younger to rollback.</li>
+      <li><strong>Timeouts</strong>: Abort transactions waiting for too long.</li>
+    </ul>
+
+    <h2>🎯 Pro Tips</h2>
+    <ul>
+      <li>Use <strong>Serializable</strong> isolation for highest consistency but expect slower performance.</li>
+      <li>Use <strong>Read Committed</strong> in systems where high concurrency is more important than strict consistency.</li>
+      <li>Always handle <strong>deadlocks</strong> in your application logic for large-scale databases!</li>
+    </ul>
+
+    <h2>💬 Common Questions</h2>
+    <p><strong>Q: Why not always use Serializable isolation?</strong></p>
+    <p>A: It reduces concurrency and can slow down high-traffic applications. Use when correctness is critical (e.g., banking).</p>
+
+    <p><strong>Q: What's the difference between commit and rollback?</strong></p>
+    <p>A: <strong>COMMIT</strong> makes changes permanent; <strong>ROLLBACK</strong> undoes all changes in the current transaction.</p>
+
+    <a href="{% url 'dbms_course' %}" class="view-content-link">⬅ Back to DBMS Course</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analytics</title>
+  <link rel="stylesheet" href="{% static 'css/admin_styles.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/analytics.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+  <main class="main-content">
+    <h1>Analytics Dashboard</h1>
+    
+    <div class="analytics-cards">
+      <div class="card">
+        <i class="fas fa-users"></i>
+        <div>
+          <h2>Active Learners</h2>
+          <p>1,200 <span class="change">+10% this month</span></p>
+        </div>
+      </div>
+      <div class="card">
+        <i class="fas fa-book"></i>
+        <div>
+          <h2>Courses Completed</h2>
+          <p>850 <span class="change">+6.5%</span></p>
+        </div>
+      </div>
+      <div class="card">
+        <i class="fas fa-chart-line"></i>
+        <div>
+          <h2>Avg. Progress</h2>
+          <p>72% <span class="change up">↑</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="charts-section">
+      <canvas id="performanceChart"></canvas>
+      <canvas id="growthChart"></canvas>
+    </div>
+
+    <div class="charts-section">
+      <canvas id="categoryEngagement"></canvas>
+      <canvas id="loginPatterns"></canvas>
+    </div>
+
+    <div class="charts-section">
+      <canvas id="ageDemographics"></canvas>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{% static 'js/analytics.js' %}"></script>
+</body>
+</html>

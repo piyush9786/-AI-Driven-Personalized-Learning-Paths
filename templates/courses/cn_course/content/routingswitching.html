@@ -1,0 +1,152 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Routing & Switching - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\cn_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Routing & Switching</h1>
+    <p class="description">
+      Routing and Switching are the core functions that allow data to move across computer networks. Switching connects devices within the same network, while Routing connects different networks together.
+    </p>
+
+    <h2>🔀 What is Switching?</h2>
+    <p>
+      Switching is the process of forwarding data frames between devices within the same network (LAN). Switches operate at the <strong>Data Link Layer (Layer 2)</strong> of the OSI model and use MAC addresses to make forwarding decisions.
+    </p>
+    <h3>🔎 Key Functions of Switching</h3>
+    <ul>
+      <li><strong>MAC Address Learning:</strong> Switches learn the MAC addresses of devices connected to their ports.</li>
+      <li><strong>Frame Forwarding:</strong> Based on MAC address tables, switches forward frames only to the correct destination port.</li>
+      <li><strong>Loop Prevention:</strong> Using protocols like STP (Spanning Tree Protocol), switches prevent loops that can crash the network.</li>
+    </ul>
+
+    <h3>📊 Types of Switching</h3>
+    <ul>
+      <li><strong>Cut-Through Switching:</strong> Starts forwarding frames as soon as the destination MAC address is read, reducing latency.</li>
+      <li><strong>Store-and-Forward Switching:</strong> Receives the entire frame, checks for errors, and then forwards it. More reliable but slower.</li>
+    </ul>
+
+    <h3>⚡ Benefits of Switching</h3>
+    <ul>
+      <li>Reduces network congestion by creating separate collision domains per port.</li>
+      <li>Improves performance by forwarding frames only to intended recipients.</li>
+      <li>Supports VLANs (Virtual LANs) for segmenting networks logically.</li>
+    </ul>
+
+    <h2>🌐 What is Routing?</h2>
+    <p>
+      Routing is the process of forwarding data packets between different networks. Routers operate at the <strong>Network Layer (Layer 3)</strong> and use IP addresses to make forwarding decisions.
+    </p>
+
+    <h3>🔎 Key Functions of Routing</h3>
+    <ul>
+      <li><strong>Path Selection:</strong> Routers choose the best path for forwarding packets based on routing tables.</li>
+      <li><strong>Packet Forwarding:</strong> Uses destination IP address to forward packets to next hop or final destination.</li>
+      <li><strong>Inter-Network Communication:</strong> Connects multiple LANs or WANs together, enabling global communication.</li>
+    </ul>
+
+    <h3>📚 Types of Routing</h3>
+    <ul>
+      <li><strong>Static Routing:</strong> Routes are manually configured by network admins. Simple but doesn’t adapt to changes automatically.</li>
+      <li><strong>Dynamic Routing:</strong> Uses protocols (like OSPF, EIGRP, RIP) to automatically adjust routes based on network changes.</li>
+    </ul>
+
+    <h3>🚀 Common Routing Protocols</h3>
+    <table>
+      <tr>
+        <th>Protocol</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>RIP (Routing Information Protocol)</td>
+        <td>Uses hop count as metric, simple but not suitable for large networks.</td>
+      </tr>
+      <tr>
+        <td>OSPF (Open Shortest Path First)</td>
+        <td>Link-state protocol, scalable and widely used in enterprises.</td>
+      </tr>
+      <tr>
+        <td>EIGRP (Enhanced Interior Gateway Routing Protocol)</td>
+        <td>Hybrid protocol used mainly in Cisco networks, combines best of RIP and OSPF.</td>
+      </tr>
+      <tr>
+        <td>BGP (Border Gateway Protocol)</td>
+        <td>Used to route between different organizations (Internet routing protocol).</td>
+      </tr>
+    </table>
+
+    <h2>⚔️ Routing vs Switching</h2>
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>Switching</th>
+        <th>Routing</th>
+      </tr>
+      <tr>
+        <td>OSI Layer</td>
+        <td>Layer 2 (Data Link)</td>
+        <td>Layer 3 (Network)</td>
+      </tr>
+      <tr>
+        <td>Address Used</td>
+        <td>MAC Address</td>
+        <td>IP Address</td>
+      </tr>
+      <tr>
+        <td>Function</td>
+        <td>Connects devices within the same network</td>
+        <td>Connects different networks</td>
+      </tr>
+      <tr>
+        <td>Speed</td>
+        <td>Faster (hardware-based)</td>
+        <td>Slower (software + hardware)</td>
+      </tr>
+      <tr>
+        <td>Device</td>
+        <td>Switch</td>
+        <td>Router</td>
+      </tr>
+    </table>
+
+    <h2>🔧 VLANs (Virtual LANs)</h2>
+    <p>
+      VLANs are used in switches to segment a physical network into multiple logical networks. Devices in different VLANs cannot communicate without a router.
+    </p>
+    <ul>
+      <li>Improves security by isolating sensitive data.</li>
+      <li>Optimizes performance by reducing broadcast traffic.</li>
+      <li>Requires Layer 3 routing to connect between VLANs.</li>
+    </ul>
+
+    <h2>🚦 Inter-VLAN Routing</h2>
+    <p>
+      To allow communication between VLANs, routers (or Layer 3 switches) perform Inter-VLAN Routing. This enables devices in different VLANs to talk to each other.
+    </p>
+    <ul>
+      <li><strong>Router-on-a-Stick:</strong> A single router interface handles multiple VLANs using sub-interfaces.</li>
+      <li><strong>Layer 3 Switches:</strong> Can route between VLANs without needing an external router.</li>
+    </ul>
+
+    <h2>❓ Common Questions</h2>
+    <p><strong>Q: Can a switch perform routing?</strong></p>
+    <p>A: Yes, Layer 3 switches can perform routing functions between VLANs or networks.</p>
+
+    <p><strong>Q: Why do we use routers instead of just switches?</strong></p>
+    <p>A: Switches connect devices in the same network, but routers are needed to connect different networks (e.g., LAN to the Internet).</p>
+
+    <p><strong>Q: What is dynamic routing?</strong></p>
+    <p>A: Dynamic routing uses protocols to automatically update routing tables based on changes in the network topology.</p>
+
+    <h2>🎯 Pro Tip</h2>
+    <p>Remember: Switches use MAC addresses (Layer 2), Routers use IP addresses (Layer 3). VLANs need routing to communicate across each other.</p>
+    <a href="{% url 'cn_course' %}" class="view-content-link">⬅ Back to Networking Course</a>
+  </div>
+</body>
+</html>

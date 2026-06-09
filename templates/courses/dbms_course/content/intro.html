@@ -1,0 +1,149 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Introduction to DBMS - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\dbms_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Introduction to DBMS</h1>
+    <p class="description">
+      A Database Management System (DBMS) is a collection of software programs that allow users to define, create, maintain, and control access to databases. It helps in storing, retrieving, and managing data in an organized manner.
+    </p>
+
+    <!-- DBMS Info Card -->
+    <div class="card">
+      <h2>🔎 What is a DBMS?</h2>
+      <p>A Database Management System (DBMS) is an organized collection of data. It provides an interface to store, retrieve, and manage data in a structured way. The DBMS is crucial for managing large volumes of data in various applications like banking systems, online shopping, and inventory systems.</p>
+      <p>The primary role of a DBMS is to ensure that data is stored efficiently and is easily accessible while maintaining data integrity, security, and consistency. It acts as a middle layer between the raw data and the end-user applications.</p>
+    </div>
+
+    <!-- Key Components Card -->
+    <div class="card">
+      <h2>🏗️ Key Components of a DBMS</h2>
+      <ul>
+        <li><strong>DBMS Engine:</strong> Responsible for data storage, query processing, and transaction management.</li>
+        <li><strong>Database Schema:</strong> The logical structure that defines how the data is organized, including tables, views, and indexes.</li>
+        <li><strong>Query Processor:</strong> Interprets and executes SQL queries to retrieve data from the database.</li>
+        <li><strong>Data Definition Language (DDL):</strong> Provides commands like CREATE, ALTER, and DROP for defining the database structure.</li>
+        <li><strong>Data Manipulation Language (DML):</strong> Used for querying and updating data in the database (e.g., SELECT, INSERT, UPDATE, DELETE).</li>
+        <li><strong>Transaction Management:</strong> Ensures that database operations are executed correctly and maintain consistency, even in the event of system failures.</li>
+        <li><strong>Security and Authorization:</strong> Manages user permissions and controls access to sensitive data.</li>
+      </ul>
+    </div>
+
+    <!-- Types of DBMS Card -->
+    <div class="card">
+      <h2>🔄 Types of DBMS</h2>
+      <p>There are four primary types of DBMS, based on the data model they use:</p>
+      <ul>
+        <li><strong>Hierarchical DBMS:</strong> Organizes data in a tree-like structure. Each record has a parent-child relationship. Examples: IBM's IMS.</li>
+        <li><strong>Network DBMS:</strong> Uses a graph structure where records can have multiple parent-child relationships. Example: Integrated Data Store (IDS).</li>
+        <li><strong>Relational DBMS (RDBMS):</strong> Uses tables (relations) to store data, with rows and columns. This is the most widely used type. Examples: MySQL, PostgreSQL, Oracle.</li>
+        <li><strong>Object-Oriented DBMS (OODBMS):</strong> Integrates object-oriented programming principles into the DBMS, allowing for complex data types. Example: db4o, ObjectDB.</li>
+      </ul>
+    </div>
+
+    <!-- DBMS Architecture Card -->
+    <div class="card">
+      <h2>📊 DBMS Architecture</h2>
+      <p>DBMS architecture refers to the structure of a database system and how it is implemented. It includes the following levels:</p>
+      <ul>
+        <li><strong>Internal Level:</strong> Describes the physical storage of the data and how it's stored on disk.</li>
+        <li><strong>Conceptual Level:</strong> Represents the logical structure of the entire database, showing all the entities and their relationships without focusing on how the data is stored physically.</li>
+        <li><strong>External Level:</strong> Represents how the data is viewed by individual users or applications, also known as views or schemas. Each user may have a different view of the data.</li>
+      </ul>
+    </div>
+
+    <!-- Importance of DBMS Card -->
+    <div class="card">
+      <h2>🔑 Importance of DBMS</h2>
+      <ul>
+        <li><strong>Data Integrity:</strong> Ensures accuracy and consistency of data over its lifecycle.</li>
+        <li><strong>Data Security:</strong> Manages user access control and protects sensitive information.</li>
+        <li><strong>Efficient Data Retrieval:</strong> Uses indexing and optimization techniques to quickly retrieve data.</li>
+        <li><strong>Concurrent Access:</strong> Allows multiple users to access the database simultaneously without conflicts.</li>
+        <li><strong>Backup and Recovery:</strong> Provides mechanisms to back up data and restore it in case of failures.</li>
+        <li><strong>Data Redundancy Elimination:</strong> Prevents unnecessary duplication of data through normalization techniques.</li>
+      </ul>
+    </div>
+
+    <!-- DBMS Models Card -->
+    <div class="card">
+      <h2>🔄 DBMS Models</h2>
+      <p>The DBMS models define how data is organized and managed. They are as follows:</p>
+      <ul>
+        <li><strong>Relational Model:</strong> Data is organized in tables (relations), with each table having rows and columns. This model uses Structured Query Language (SQL) for data manipulation.</li>
+        <li><strong>Hierarchical Model:</strong> Data is organized in a tree-like structure, where each record has a parent-child relationship.</li>
+        <li><strong>Network Model:</strong> Similar to the hierarchical model but allows more complex relationships between records.</li>
+        <li><strong>Object-Oriented Model:</strong> Data is stored as objects (like in OOP), making it easier to handle complex data types.</li>
+      </ul>
+    </div>
+
+    <!-- Common DBMS Tools Card -->
+    <div class="card">
+      <h2>📚 Common DBMS Tools</h2>
+      <table>
+        <tr>
+          <th>Category</th>
+          <th>Examples</th>
+        </tr>
+        <tr>
+          <td>Relational DBMS</td>
+          <td>MySQL, PostgreSQL, Oracle, SQL Server</td>
+        </tr>
+        <tr>
+          <td>NoSQL DBMS</td>
+          <td>MongoDB, Cassandra, CouchDB</td>
+        </tr>
+        <tr>
+          <td>Cloud DBMS</td>
+          <td>AWS RDS, Google Cloud SQL, Microsoft Azure SQL</td>
+        </tr>
+        <tr>
+          <td>In-memory DBMS</td>
+          <td>Redis, Memcached</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Example DBMS Workflow Card -->
+    <div class="card">
+      <h2>🚀 Example DBMS Workflow</h2>
+      <p>Let’s consider an example workflow of a DBMS handling a user registration process:</p>
+      <ul>
+        <li>A user submits registration data via a web form.</li>
+        <li>The web application sends an SQL query to the database to insert the user's details.</li>
+        <li>The DBMS processes the query and inserts the data into the appropriate table (e.g., Users table).</li>
+        <li>The DBMS ensures data integrity and consistency using ACID properties (Atomicity, Consistency, Isolation, Durability).</li>
+        <li>The user receives a confirmation message once the registration is successful.</li>
+      </ul>
+    </div>
+
+    <!-- Common Questions Card -->
+    <div class="card">
+      <h2>❓ Common Questions</h2>
+      <p><strong>Q: What is the difference between a DBMS and RDBMS?</strong></p>
+      <p>A: A DBMS can be used for any type of database, while an RDBMS specifically handles relational databases that use tables and SQL for data manipulation.</p>
+
+      <p><strong>Q: Can I use a DBMS for large-scale applications?</strong></p>
+      <p>A: Yes, DBMSs like MySQL, PostgreSQL, and Oracle are widely used in large-scale applications. However, NoSQL DBMSs are also an option for applications that require scalability and flexibility (e.g., MongoDB).</p>
+
+      <p><strong>Q: What are the advantages of using DBMS?</strong></p>
+      <p>A: DBMS provides data integrity, security, backup, recovery, and efficient query processing, making it essential for managing large-scale and mission-critical data.</p>
+    </div>
+
+    <!-- Pro Tip Card -->
+    <div class="card">
+      <h2>🎯 Pro Tip</h2>
+      <p>Focus on mastering SQL! SQL is the most commonly used language for querying and managing data in relational databases. Having strong SQL skills will significantly boost your database management skills!</p>
+    </div>
+
+    <a href="{% url 'dbms_course' %}" class="view-content-link">⬅ Back to DBMS Course</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,210 @@
+{% load tz %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ room.name }} - Chat Room</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #f1f1f1;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 30px 8px;
+            border-bottom: 1px solid #333;
+            background-color: #121212;
+        }
+
+        .top-bar .room-title {
+            color: #00ffcc;
+            font-size: 1.4rem;
+            margin: 0;
+        }
+
+        .top-bar .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-danger {
+            background-color: #ff4d4d;
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .btn-danger:hover {
+            background-color: #e60000;
+        }
+
+        .btn-warning {
+            background-color: #ffaa33;
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .btn-warning:hover {
+            background-color: #e69500;
+        }
+
+        .main-layout {
+            display: flex;
+            padding: 30px 40px;
+            gap: 40px;
+        }
+
+        .left-panel {
+            flex: 7;
+        }
+
+        .right-panel {
+            flex: 3;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            height: fit-content;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.1);
+        }
+
+        .room-details {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+        }
+
+        .room-details p {
+            margin: 6px 0;
+            color: #bbbbbb;
+        }
+
+        .messages-box {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #1e1e1e;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .messages-box p {
+            margin: 10px 0;
+        }
+
+        form {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background-color: #2b2b2b;
+            color: #f1f1f1;
+        }
+
+        button {
+            background-color: #00ffcc;
+            color: #1a1a1a;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00e6b8;
+        }
+
+        .right-panel h4 {
+            color: #00e6b8;
+            margin-bottom: 10px;
+        }
+
+        .right-panel ol {
+            margin: 0;
+            padding-left: 20px;
+            color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <h2 class="room-title">{{ room.name }}</h2>
+        <div class="button-group">
+            {% if is_admin_view %}
+                <a href="{% url 'leave_study_room' room.id %}" class="btn-warning">Leave Room</a>
+                <a href="{% url 'delete_study_room' room.id %}" class="btn-danger">Delete Room</a>
+            {% elif user == room.created_by %}
+                <a href="{% url 'study_rooms' %}" class="btn-warning">Leave Room</a>
+                <a href="{% url 'delete_study_room' room.id %}" class="btn-danger">Delete Room</a>
+            {% else %}
+                <a href="{% url 'leave_study_room' room.id %}" class="btn-warning">Leave Room</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="main-layout">
+        <div class="left-panel">
+
+            <div class="room-details">
+                <p><strong>Course:</strong> {{ room.course_name }}</p>
+                <p><strong>Created by:</strong> {{ room.created_by.username }}</p>
+                <p><strong>Description:</strong> {{ room.description }}</p>
+            </div>
+
+            <div class="messages-box">
+                {% for message in messages %}
+                    <p>
+                        <strong>{{ message.sender.username }}:</strong>
+                        {{ message.content }}
+                        <small style="color: #888;">({{ message.timestamp|localtime|date:"H:i" }})</small>
+                    </p>
+                {% empty %}
+                    <p>No messages yet.</p>
+                {% endfor %}
+            </div>
+
+            {% if not is_admin_view %}
+            <form method="POST" action="{% url 'send_message' room.id %}">
+                {% csrf_token %}
+                <input type="text" name="content" placeholder="Type your message..." required autocomplete="off">
+                <button type="submit">Send</button>
+            </form>
+            {% endif %}
+        </div>
+
+        <div class="right-panel">
+            <h4>Participants ({{ participants.count }})</h4>
+            <ol>
+                {% for p in participants %}
+                <li>{{ p.username }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+
+</body>
+
+</html>

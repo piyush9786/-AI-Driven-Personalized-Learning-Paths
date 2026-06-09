@@ -1,0 +1,149 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Collections & Streams - Java Course</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\java_css.css' %}"> <!-- Linked CSS file -->
+</head>
+<body>
+  <div class="container">
+    <h1>Collections & Streams</h1>
+    <p><strong>Introduction:</strong> Collections in Java are frameworks that provide a way to store and manipulate groups of data. Streams provide a way to process sequences of elements (e.g., from a collection) in a functional style.</p>
+
+    <p><strong>Collections Framework:</strong> The Collections Framework provides various interfaces, implementations, and algorithms to store and manipulate data. Some important interfaces include:</p>
+    <ul>
+      <li><strong>List:</strong> An ordered collection that allows duplicate elements. Examples: `ArrayList`, `LinkedList`.</li>
+      <li><strong>Set:</strong> A collection that does not allow duplicate elements. Examples: `HashSet`, `TreeSet`.</li>
+      <li><strong>Map:</strong> A collection of key-value pairs. Examples: `HashMap`, `TreeMap`.</li>
+    </ul>
+
+    <p><strong>ArrayList Example:</strong> The `ArrayList` class implements the `List` interface and allows dynamic resizing of arrays.</p>
+    <pre>
+import java.util.ArrayList;
+
+public class ArrayListExample {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Java");
+        list.add("Python");
+        list.add("C++");
+
+        // Accessing elements by index
+        System.out.println("First element: " + list.get(0));
+
+        // Removing an element
+        list.remove("Python");
+
+        // Checking if an element exists
+        if (list.contains("C++")) {
+            System.out.println("C++ is in the list.");
+        }
+
+        System.out.println("List: " + list);
+    }
+}
+    </pre>
+
+    <p><strong>LinkedHashSet Example:</strong> The `LinkedHashSet` class implements the `Set` interface and maintains the insertion order. It does not allow duplicate values.</p>
+    <pre>
+import java.util.LinkedHashSet;
+
+public class LinkedHashSetExample {
+    public static void main(String[] args) {
+        LinkedHashSet<String> set = new LinkedHashSet<>();
+        set.add("Java");
+        set.add("Python");
+        set.add("Java");  // Duplicate element, will not be added
+
+        System.out.println("LinkedHashSet (insertion order): " + set);
+    }
+}
+    </pre>
+
+    <p><strong>Set Example:</strong> The `HashSet` class implements the `Set` interface and does not allow duplicate values.</p>
+    <pre>
+import java.util.HashSet;
+
+public class SetExample {
+    public static void main(String[] args) {
+        HashSet<String> set = new HashSet<>();
+        set.add("Java");
+        set.add("Python");
+        set.add("Java");  // Duplicate element, will not be added
+        
+        System.out.println("Set: " + set);
+    }
+}
+    </pre>
+
+    <p><strong>Map Example:</strong> The `HashMap` class implements the `Map` interface and stores key-value pairs.</p>
+    <pre>
+import java.util.HashMap;
+
+public class MapExample {
+    public static void main(String[] args) {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("Java", 90);
+        map.put("Python", 85);
+        
+        System.out.println("Map: " + map);
+    }
+}
+    </pre>
+
+    <p><strong>Streams:</strong> Streams provide a functional approach to processing data. They allow you to perform operations such as filtering, mapping, and reducing in a concise and expressive way.</p>
+
+    <p><strong>Stream Example:</strong> A simple example of filtering even numbers from a list using streams.</p>
+    <pre>
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StreamExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+        
+        List<Integer> evenNumbers = numbers.stream()
+                                           .filter(n -> n % 2 == 0)  // Filter even numbers
+                                           .collect(Collectors.toList());
+        
+        System.out.println("Even Numbers: " + evenNumbers);
+    }
+}
+    </pre>
+
+    <p><strong>Stream Operations:</strong> Streams support various intermediate and terminal operations. Some common operations include:</p>
+    <ul>
+      <li><strong>filter:</strong> Filters elements based on a condition.</li>
+      <li><strong>map:</strong> Transforms elements using a function.</li>
+      <li><strong>reduce:</strong> Aggregates elements into a single result.</li>
+      <li><strong>forEach:</strong> Performs an action on each element of the stream.</li>
+    </ul>
+
+    <p><strong>Example of map and reduce:</strong> This example multiplies each number by 2 and then sums them up.</p>
+    <pre>
+import java.util.Arrays;
+import java.util.List;
+
+public class MapReduceExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        
+        int sum = numbers.stream()
+                         .map(n -> n * 2)  // Multiply each number by 2
+                         .reduce(0, Integer::sum);  // Sum the results
+        
+        System.out.println("Sum of doubled numbers: " + sum);
+    }
+}
+    </pre>
+
+    <p><strong>Additional Tip:</strong> Streams make your code more readable and concise, especially when dealing with collections and performing multiple operations on data.</p>
+
+   <a href="{% url 'java_course' %}" class="view-content-link">⬅ Back to Java Course</a>
+  </div>
+</body>
+</html>

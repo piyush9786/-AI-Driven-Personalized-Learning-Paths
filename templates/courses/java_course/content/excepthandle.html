@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exception Handling - Java Course</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\java_css.css' %}"> <!-- Linked CSS file -->
+</head>
+<body>
+  <div class="container">
+    <h1>Exception Handling</h1>
+    <p><strong>Introduction:</strong> Exception handling is a mechanism in Java to handle runtime errors. It allows the normal flow of the program to be maintained even when an exception occurs.</p>
+
+    <p><strong>What is an Exception?</strong> An exception is an event that disrupts the normal flow of the program. Examples include dividing by zero, accessing an invalid index in an array, etc.</p>
+
+    <p><strong>Try-Catch Block:</strong> The basic way of handling exceptions is by using a try-catch block. Code that might throw an exception is placed in the `try` block, and if an exception occurs, it is caught and handled in the `catch` block.</p>
+    <pre>
+try {
+    int result = 10 / 0;  // Division by zero will throw an ArithmeticException
+} catch (ArithmeticException e) {
+    System.out.println("Error: " + e.getMessage());  // Handle exception
+}
+    </pre>
+
+    <p><strong>Finally Block:</strong> The `finally` block is always executed after the `try` and `catch` blocks, regardless of whether an exception was thrown or not. It is used for cleanup actions, such as closing file streams or database connections.</p>
+    <pre>
+try {
+    int[] arr = new int[5];
+    arr[5] = 10;  // ArrayIndexOutOfBoundsException
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Error: " + e.getMessage());
+} finally {
+    System.out.println("This will always run.");
+}
+    </pre>
+
+    <p><strong>Throwing an Exception:</strong> You can manually throw exceptions using the `throw` keyword. This is useful when you want to enforce custom error handling.</p>
+    <pre>
+public class Main {
+    static void checkAge(int age) {
+        if (age < 18) {
+            throw new IllegalArgumentException("Age must be 18 or older.");
+        } else {
+            System.out.println("Age is valid.");
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(16);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+    </pre>
+
+    <p><strong>Custom Exceptions:</strong> You can define your own exceptions by extending the `Exception` class. This allows you to create specialized exception types for your application.</p>
+    <pre>
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+public class Main {
+    static void checkAge(int age) throws InvalidAgeException {
+        if (age < 18) {
+            throw new InvalidAgeException("Age must be 18 or older.");
+        } else {
+            System.out.println("Age is valid.");
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(16);
+        } catch (InvalidAgeException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+    </pre>
+
+    <p><strong>Exception Hierarchy:</strong> All exceptions in Java are subclasses of the `Throwable` class. There are two main types of exceptions:
+      - **Checked Exceptions**: Exceptions that are checked at compile-time. For example, `IOException`.
+      - **Unchecked Exceptions**: Exceptions that occur during runtime. For example, `ArithmeticException` or `ArrayIndexOutOfBoundsException`.</p>
+
+    <p><strong>Additional Tip:</strong> Proper exception handling ensures that your program can recover from unexpected errors, providing a more robust and user-friendly experience.</p>
+
+    <a href="{% url 'java_course' %}" class="view-content-link">⬅ Back to Java Course</a>
+  </div>
+</body>
+</html>

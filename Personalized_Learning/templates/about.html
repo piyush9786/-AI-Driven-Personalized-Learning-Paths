@@ -1,0 +1,266 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a1a2e;
+            color: #d3d3d3;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #0f0f1f;
+        }
+
+        .navbar .logo a {
+            color: #00ffcc;
+            font-size: 24px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .glow-button {
+            background-color: #00ffcc;
+            color: #1a1a2e;
+            padding: 12px 30px;
+            border: none;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .glow-button:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 204, 1), 0 0 30px rgba(0, 255, 204, 0.8);
+            transform: scale(1.05);
+        }
+
+        /* About Us Section */
+        .about-us {
+            padding: 50px;
+            text-align: center;
+            background: linear-gradient(45deg, #1a1a2e, #0f0f1f);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: #00ffcc;
+            margin-bottom: 30px;
+        }
+
+        .about-description {
+            font-size: 1.2rem;
+            margin: 30px 0;
+            line-height: 1.8;
+            color: #d3d3d3;
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #292b44;
+            border-radius: 8px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-photo img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 204, 51, 0.8), 0 0 30px rgba(255, 204, 51, 0.6);
+        }
+
+        .card-content h2 {
+            font-size: 1.5rem;
+            color: #00ffcc;
+        }
+
+        .card-content p {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        .card-detail {
+            display: none;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+
+        .card.active .card-detail {
+            display: block;
+        }
+
+        /* Read More Button */
+        .read-more {
+            background: linear-gradient(45deg, #ffb142, #ffcc33);
+            color: #1a1a2e;
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .read-more:hover {
+            box-shadow: 0 0 20px rgba(255, 204, 51, 1), 0 0 30px rgba(255, 204, 51, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0f0f1f;
+            color: #d3d3d3;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .cards-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <a href="#">Personalized Learning</a>
+        </div>
+        <a href="/">
+            <button class="glow-button">Home</button>
+        </a>
+    </div>
+
+    <section class="about-us">
+        <h1 class="section-title">Meet Our Team</h1>
+        <p class="about-description">
+            Personalized Learning is a platform dedicated to delivering tailored educational experiences to students, empowering them to succeed in their own way and at their own pace.
+            <br><br>
+            We believe that every student has unique learning needs, and our team works tirelessly to create an experience that adapts to those needs, making learning engaging and effective. Our mission is to redefine education by making it more accessible, personalized, and impactful for everyone.
+        </p>
+        <div class="cards-container">
+            <!-- Card for Smit -->
+            <div class="card" id="smit">
+                <div class="card-photo">
+                    <img src="{% static 'images/Smit.jpg' %}" alt="Smit Joshi's photo" />
+                </div>
+                <div class="card-content">
+                    <h2>Smit Joshi</h2>
+                    <p style="font-weight: bold">Lead Developer</p>
+                    <button class="read-more" onclick="toggleDetails('smit')">Read More</button>
+                </div>
+                <div class="card-detail">
+                    <p>Smit is the Lead Developer at LearnSmart. He specializes in both Front-end & back-end. He has led numerous successful projects. Passionate about coding, he is the backbone of our team.</p>
+                </div>
+            </div>
+
+            <!-- Card for Om -->
+            <div class="card" id="om">
+                <div class="card-photo">
+                    <img src="{% static 'images/Om.jpg' %}" alt="Om Murhekar's photo" />
+                </div>
+                <div class="card-content">
+                    <h2>Om Murhekar</h2>
+                    <p style="font-weight: bold">Front-end Developer</p>
+                    <button class="read-more" onclick="toggleDetails('om')">Read More</button>
+                </div>
+                <div class="card-detail">
+                    <p>Om is our talented Front-end Developer. He ensures our website is visually stunning and user-friendly, creating seamless designs for all devices.</p>
+                </div>
+            </div>
+
+            <!-- Card for Piyush -->
+            <div class="card" id="piyush">
+                <div class="card-photo">
+                    <img src="{% static 'images/Piyush.jpg' %}" alt="Piyush Shinde's photo" />
+                </div>
+                <div class="card-content">
+                    <h2>Piyush Shinde</h2>
+                    <p style="font-weight: bold">UI/UX Designer</p>
+                    <button class="read-more" onclick="toggleDetails('piyush')">Read More</button>
+                </div>
+                <div class="card-detail">
+                    <p>Piyush is our UI/UX Designer, crafting exceptional experiences for our users. His creativity drives the innovation of our interfaces.</p>
+                </div>
+            </div>
+
+            <!-- Card for Snehal -->
+            <div class="card" id="snehal">
+                <div class="card-photo">
+                    <img src="{% static 'images/Snehal.jpg' %}" alt="Snehal Yadav's photo" />
+                </div>
+                <div class="card-content">
+                    <h2>Snehal Yadav</h2>
+                    <p style="font-weight: bold">Backend Engineer</p>
+                    <button class="read-more" onclick="toggleDetails('snehal')">Read More</button>
+                </div>
+                <div class="card-detail">
+                    <p>Snehal is a skilled Backend Engineer, ensuring the integrity and performance of our systems. She excels at building robust infrastructures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Personalized Learning. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleDetails(memberId) {
+            const card = document.getElementById(memberId);
+            const details = card.querySelector('.card-detail');
+            details.style.display = details.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,305 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Queries - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\dbms_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>SQL Queries: A Deep Dive</h1>
+    <p class="description">
+      SQL (Structured Query Language) is the standard language used to interact with databases. In this guide, we will explore how to write and execute SQL queries to manipulate and retrieve data from a relational database.
+    </p>
+
+    <h2>🔎 What is SQL?</h2>
+    <p>
+      SQL stands for Structured Query Language. It is a domain-specific language used for managing and querying relational databases. SQL is essential for data retrieval, insertion, updating, and deletion. SQL is divided into several types of commands:
+    </p>
+    <ul>
+      <li><strong>DML (Data Manipulation Language):</strong> Used for querying and modifying data (e.g., SELECT, INSERT, UPDATE, DELETE).</li>
+      <li><strong>DDL (Data Definition Language):</strong> Used to define database structures (e.g., CREATE, ALTER, DROP).</li>
+      <li><strong>DCL (Data Control Language):</strong> Used to manage permissions (e.g., GRANT, REVOKE).</li>
+      <li><strong>TCL (Transaction Control Language):</strong> Used to manage transactions (e.g., COMMIT, ROLLBACK).</li>
+    </ul>
+
+    <h2>📚 Basic SQL Queries</h2>
+    <p>Let’s begin with some basic SQL commands used to retrieve and modify data in a database.</p>
+
+    <h3>1. SELECT Query</h3>
+    <p>The SELECT statement is used to retrieve data from one or more tables. The basic syntax is:</p>
+    <pre>
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+    </pre>
+    <p><strong>Example:</strong></p>
+    <pre>
+SELECT first_name, last_name, email
+FROM customers
+WHERE country = 'USA';
+    </pre>
+    <p>This query retrieves the first name, last name, and email of all customers from the 'customers' table who live in the USA.</p>
+
+    <h3>2. INSERT INTO Query</h3>
+    <p>The INSERT INTO statement is used to insert new records into a table. The syntax is:</p>
+    <pre>
+INSERT INTO table_name (column1, column2, ...)
+VALUES (value1, value2, ...);
+    </pre>
+    <p><strong>Example:</strong></p>
+    <pre>
+INSERT INTO customers (first_name, last_name, email, country)
+VALUES ('John', 'Doe', 'john.doe@example.com', 'USA');
+    </pre>
+    <p>This query inserts a new customer into the 'customers' table with the specified values for first name, last name, email, and country.</p>
+
+    <h3>3. UPDATE Query</h3>
+    <p>The UPDATE statement is used to modify existing records in a table. The syntax is:</p>
+    <pre>
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+    </pre>
+    <p><strong>Example:</strong></p>
+    <pre>
+UPDATE customers
+SET email = 'new.email@example.com'
+WHERE customer_id = 1;
+    </pre>
+    <p>This query updates the email of the customer with `customer_id = 1` in the 'customers' table.</p>
+
+    <h3>4. DELETE Query</h3>
+    <p>The DELETE statement is used to remove records from a table. The syntax is:</p>
+    <pre>
+DELETE FROM table_name
+WHERE condition;
+    </pre>
+    <p><strong>Example:</strong></p>
+    <pre>
+DELETE FROM customers
+WHERE country = 'USA';
+    </pre>
+    <p>This query deletes all customers from the 'customers' table who live in the USA.</p>
+
+    <h2>📈 Advanced SQL Queries</h2>
+    <p>Now let’s explore more advanced SQL queries that are used for complex data retrieval and manipulation.</p>
+
+    <h3>1. JOIN Clauses</h3>
+    <p>JOIN operations are used to combine rows from two or more tables based on a related column. The most commonly used JOIN types are:</p>
+    <ul>
+      <li><strong>INNER JOIN:</strong> Returns rows when there is a match in both tables.</li>
+      <li><strong>LEFT JOIN (LEFT OUTER JOIN):</strong> Returns all rows from the left table and matched rows from the right table.</li>
+      <li><strong>RIGHT JOIN (RIGHT OUTER JOIN):</strong> Returns all rows from the right table and matched rows from the left table.</li>
+      <li><strong>FULL JOIN (FULL OUTER JOIN):</strong> Returns rows when there is a match in either the left or right table.</li>
+    </ul>
+
+    <!-- JOINS -->
+
+     <h3>1. INNER JOIN</h3>
+    <p>
+      The **INNER JOIN** returns records that have matching values in both tables. If there is no match, those rows are excluded from the result set.
+    </p>
+    <p><strong>Syntax:</strong></p>
+    <pre>
+      SELECT column1, column2, ...
+      FROM table1
+      INNER JOIN table2
+      ON table1.common_column = table2.common_column;
+    </pre>
+    <p><strong>Example:</strong></p>
+    <pre>
+      SELECT customers.first_name, customers.last_name, orders.order_date
+      FROM customers
+      INNER JOIN orders
+      ON customers.customer_id = orders.customer_id;
+    </pre>
+    <p>
+      In this example, the query returns the first name, last name, and order date from the **customers** and **orders** tables where the customer_id matches.
+    </p>
+
+    <h3>2. LEFT JOIN (or LEFT OUTER JOIN)</h3>
+    <p>
+      The **LEFT JOIN** (or **LEFT OUTER JOIN**) returns all records from the left table (table1), and the matched records from the right table (table2). If there is no match, NULL values are returned for columns of the right table.
+    </p>
+    <p><strong>Syntax:</strong></p>
+    <pre>
+      SELECT column1, column2, ...
+      FROM table1
+      LEFT JOIN table2
+      ON table1.common_column = table2.common_column;
+    </pre>
+    <p><strong>Example:</strong></p>
+    <pre>
+      SELECT customers.first_name, customers.last_name, orders.order_date
+      FROM customers
+      LEFT JOIN orders
+      ON customers.customer_id = orders.customer_id;
+    </pre>
+    <p>
+      This query returns all customers and their corresponding order dates. If a customer has not made an order, the order date will be returned as NULL.
+    </p>
+
+    <h3>3. RIGHT JOIN (or RIGHT OUTER JOIN)</h3>
+    <p>
+      The **RIGHT JOIN** (or **RIGHT OUTER JOIN**) is similar to the LEFT JOIN, but it returns all records from the right table (table2), and the matched records from the left table (table1). If there is no match, NULL values are returned for columns of the left table.
+    </p>
+    <p><strong>Syntax:</strong></p>
+    <pre>
+      SELECT column1, column2, ...
+      FROM table1
+      RIGHT JOIN table2
+      ON table1.common_column = table2.common_column;
+    </pre>
+    <p><strong>Example:</strong></p>
+    <pre>
+      SELECT customers.first_name, customers.last_name, orders.order_date
+      FROM customers
+      RIGHT JOIN orders
+      ON customers.customer_id = orders.customer_id;
+    </pre>
+    <p>
+      This query returns all orders and the corresponding customer details. If an order is placed by an unknown customer, customer details will be NULL.
+    </p>
+
+    <h3>4. FULL JOIN (or FULL OUTER JOIN)</h3>
+    <p>
+      The **FULL JOIN** (or **FULL OUTER JOIN**) returns all records when there is a match in either the left (table1) or right (table2) table. It returns NULL for non-matching rows from either table.
+    </p>
+    <p><strong>Syntax:</strong></p>
+    <pre>
+      SELECT column1, column2, ...
+      FROM table1
+      FULL JOIN table2
+      ON table1.common_column = table2.common_column;
+    </pre>
+    <p><strong>Example:</strong></p>
+    <pre>
+      SELECT customers.first_name, customers.last_name, orders.order_date
+      FROM customers
+      FULL JOIN orders
+      ON customers.customer_id = orders.customer_id;
+    </pre>
+    <p>
+      This query returns all customers and all orders. For customers who haven't placed an order, the order date will be NULL, and for orders with no corresponding customer, customer details will be NULL.
+    </p>
+
+    <h3>5. CROSS JOIN</h3>
+    <p>
+      The **CROSS JOIN** returns the Cartesian product of the two tables. That means it will return all possible combinations of rows from the left table with all rows from the right table. Be cautious when using CROSS JOINs on large tables, as it can result in a very large number of rows.
+    </p>
+    <p><strong>Syntax:</strong></p>
+    <pre>
+      SELECT column1, column2, ...
+      FROM table1
+      CROSS JOIN table2;
+    </pre>
+    <p><strong>Example:</strong></p>
+    <pre>
+      SELECT customers.first_name, orders.order_date
+      FROM customers
+      CROSS JOIN orders;
+    </pre>
+    <p>
+      This query returns every possible combination of a customer and an order, which might not be useful in most cases but could be useful for specific data analysis scenarios.
+    </p>
+
+    <h3>6. SELF JOIN</h3>
+    <p>
+      A **SELF JOIN** is a regular join, but the table is joined with itself. It is helpful when dealing with hierarchical or recursive data (e.g., organizational charts).
+    </p>
+    <p><strong>Syntax:</strong></p>
+    <pre>
+      SELECT a.column1, b.column2
+      FROM table a, table b
+      WHERE a.common_column = b.common_column;
+    </pre>
+    <p><strong>Example:</strong></p>
+    <pre>
+      SELECT emp1.name AS Employee, emp2.name AS Manager
+      FROM employees emp1, employees emp2
+      WHERE emp1.manager_id = emp2.employee_id;
+    </pre>
+    <p>
+      In this example, we join the employees table with itself to get a list of employees and their managers.
+    </p>
+
+    <!-- JOINS ENDS -->
+
+    <h3>2. GROUP BY Clause</h3>
+    <p>The GROUP BY statement is used to group rows that have the same values in specified columns into summary rows, like finding the average, sum, or count of values. The syntax is:</p>
+    <pre>
+SELECT column1, COUNT(*)
+FROM table_name
+GROUP BY column1;
+    </pre>
+    <p><strong>Example:</strong></p>
+    <pre>
+SELECT country, COUNT(*)
+FROM customers
+GROUP BY country;
+    </pre>
+    <p>This query groups the customers by country and returns the total number of customers from each country.</p>
+
+    <h3>3. HAVING Clause</h3>
+    <p>The HAVING clause is used to filter records after the GROUP BY operation, similar to the WHERE clause, but for aggregate functions.</p>
+    <pre>
+SELECT country, COUNT(*)
+FROM customers
+GROUP BY country
+HAVING COUNT(*) > 5;
+    </pre>
+    <p>This query groups customers by country and returns only those countries with more than 5 customers.</p>
+
+    <h3>4. Subqueries</h3>
+    <p>A subquery is a query nested inside another query. Subqueries can be used in SELECT, INSERT, UPDATE, or DELETE statements. The syntax for a subquery is:</p>
+    <pre>
+SELECT column1
+FROM table_name
+WHERE column2 IN (SELECT column2 FROM table_name WHERE condition);
+    </pre>
+    <p><strong>Example:</strong></p>
+    <pre>
+SELECT first_name, last_name
+FROM employees
+WHERE department_id IN (SELECT department_id FROM departments WHERE department_name = 'Sales');
+    </pre>
+    <p>This query retrieves the names of employees who work in the 'Sales' department by using a subquery to first find the department_id for 'Sales'.</p>
+
+    <h3>5. UNION Operator</h3>
+    <p>The UNION operator is used to combine the results of two or more SELECT statements. It removes duplicate rows by default.</p>
+    <pre>
+SELECT column1 FROM table1
+UNION
+SELECT column1 FROM table2;
+    </pre>
+    <p><strong>Example:</strong></p>
+    <pre>
+SELECT email FROM customers
+UNION
+SELECT email FROM suppliers;
+    </pre>
+    <p>This query combines the email addresses of customers and suppliers, ensuring there are no duplicates.</p>
+
+    <h2>💡 SQL Best Practices</h2>
+    <ul>
+      <li><strong>Use aliases:</strong> Aliases can make queries more readable. Use the `AS` keyword to assign an alias to a table or column.</li>
+      <li><strong>Be cautious with DELETE:</strong> Always use a WHERE clause with DELETE to avoid removing unintended records.</li>
+      <li><strong>Use indexing:</strong> Indexes improve the performance of SELECT queries by speeding up data retrieval, especially in large tables.</li>
+      <li><strong>Write comments:</strong> SQL supports comments to document queries. Use comments to describe complex queries and improve code maintainability.</li>
+    </ul>
+
+    <h2>❓ Common SQL Errors and Solutions</h2>
+    <ul>
+      <li><strong>Syntax Errors:</strong> These occur when there is a mistake in the SQL query structure. Double-check for missing commas, parentheses, or incorrect keywords.</li>
+      <li><strong>Data Type Mismatch:</strong> Ensure that the data types of the values match the column data types (e.g., string vs. integer).</li>
+      <li><strong>Ambiguous Column Name:</strong> When using JOINs, specify the table name before the column name to avoid ambiguity.</li>
+    </ul>
+
+    <a href="{% url 'dbms_course' %}" class="view-content-link">⬅ Back to DBMS Course</a>
+  </div>
+</body>
+</html>

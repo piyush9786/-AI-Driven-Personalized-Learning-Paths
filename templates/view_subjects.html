@@ -1,0 +1,311 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View Subjects - LearnSmart</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d0f2b;
+      color: white;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #00ffd5;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .accordion-item {
+      background-color: #1c1d32;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      /* new line */
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      /* ends */
+    }
+
+    .accordion-header {
+      padding: 1rem;
+      cursor: pointer;
+      background-color: #1c1d32;
+      transition: background-color 0.3s ease;
+      font-size: 1.2rem;
+      color: #00ffd5;
+      border: none;
+      width: 100%;
+      text-align: left;
+    }
+
+    .accordion-header:hover {
+      background-color: #272943;
+    }
+
+    .accordion-item:hover {
+      transform: scale(1.02);
+      /* box-shadow: 0 0 20px rgba(0, 255, 213, 0.2); */
+      box-shadow: 0 0 20px #00ffd5;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      padding: 0 1rem;
+    }
+
+    .accordion-content.open {
+      padding: 1rem;
+      max-height: 800px;
+    }
+
+    .section-title {
+      color: #00ffd5;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .roadmap ul {
+      padding-left: 1.5rem;
+      list-style-type: disc;
+      margin-top: 0.5rem;
+    }
+
+    .back-btn {
+      margin-top: 2rem;
+      padding: 0.7rem 1.5rem;
+      background-color: #01241d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+      display: block;
+    }
+
+    .back-btn:hover {
+      box-shadow: 0 0 10px #00ffd5;
+      transform: scale(1.05);
+    }
+
+    .back-link-btn {
+      margin-top: 2rem;
+      padding: 0.7rem 1.5rem;
+      background-color: #01241d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .back-link-btn:hover {
+      box-shadow: 0 0 10px #00ffd5;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Subjects Overview</h1>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Python</button>
+      <div class="accordion-content">
+        <p>Python is a high-level, interpreted language known for its simplicity and readability.</p>
+        <p class="section-title">Advantages:</p>
+        <ul>
+          <li>Easy syntax for beginners</li>
+          <li>Used in data science, AI, web development</li>
+          <li>Large community & support</li>
+        </ul>
+        <p class="section-title">Why Learn Python?</p>
+        <p>Python is a versatile language that's in high demand across industries. Its simplicity makes it ideal for
+          beginners.</p>
+        <p class="section-title">Roadmap:</p>
+        <div class="roadmap">
+          <ul>
+            <li>Variables & Data Types</li>
+            <li>Conditionals and Loops</li>
+            <li>Functions and Modules</li>
+            <li>File Handling</li>
+            <li>Object-Oriented Programming</li>
+            <li>Libraries: NumPy, Pandas, Matplotlib</li>
+            <li>Web Development (Flask/Django)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Java</button>
+      <div class="accordion-content">
+        <p>Java is a powerful, platform-independent language widely used for building robust applications.</p>
+        <p class="section-title">Advantages:</p>
+        <ul>
+          <li>Platform independence via JVM</li>
+          <li>Strong memory management</li>
+          <li>Used in Android & Enterprise systems</li>
+        </ul>
+        <p class="section-title">Why Learn Java?</p>
+        <p>Java's versatility makes it a go-to language for mobile apps, enterprise systems, and desktop tools.</p>
+        <p class="section-title">Roadmap:</p>
+        <div class="roadmap">
+          <ul>
+            <li>Java Basics & Data Types</li>
+            <li>OOP Concepts</li>
+            <li>Exception Handling</li>
+            <li>Collections Framework</li>
+            <li>Multithreading</li>
+            <li>JDBC</li>
+            <li>Spring Framework</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">C++</button>
+      <div class="accordion-content">
+        <p>C++ is a general-purpose, high-performance language known for its control over system resources.</p>
+        <p class="section-title">Advantages:</p>
+        <ul>
+          <li>Close to hardware (low-level)</li>
+          <li>Used in game dev, OS, and embedded systems</li>
+          <li>Supports both procedural and OOP</li>
+        </ul>
+        <p class="section-title">Why Learn C++?</p>
+        <p>Learning C++ helps understand how things work under the hood, like memory management and pointers.</p>
+        <p class="section-title">Roadmap:</p>
+        <div class="roadmap">
+          <ul>
+            <li>Basics & Syntax</li>
+            <li>Control Structures</li>
+            <li>Functions</li>
+            <li>Object-Oriented Programming</li>
+            <li>STL (Standard Template Library)</li>
+            <li>Pointers & Memory Management</li>
+            <li>File I/O</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">DBMS</button>
+      <div class="accordion-content">
+        <p>Database Management Systems help manage data efficiently, ensuring consistency and integrity.</p>
+        <p class="section-title">Advantages:</p>
+        <ul>
+          <li>Data security & multi-user access</li>
+          <li>Efficient query processing</li>
+          <li>Reduces redundancy</li>
+        </ul>
+        <p class="section-title">Why Learn DBMS?</p>
+        <p>Understanding DBMS is crucial for anyone working with applications that involve data storage and retrieval.
+        </p>
+        <p class="section-title">Roadmap:</p>
+        <div class="roadmap">
+          <ul>
+            <li>Introduction & Data Models</li>
+            <li>ER Diagrams</li>
+            <li>Relational Model</li>
+            <li>SQL Queries</li>
+            <li>Normalization</li>
+            <li>Transactions & Concurrency</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Operating Systems</button>
+      <div class="accordion-content">
+        <p>Operating Systems manage hardware and software resources and provide essential services.</p>
+        <p class="section-title">Advantages:</p>
+        <ul>
+          <li>Manages memory, CPU, devices</li>
+          <li>Supports multitasking</li>
+          <li>Essential for understanding system internals</li>
+        </ul>
+        <p class="section-title">Why Learn OS?</p>
+        <p>OS concepts are key to understanding how programs run and how resources are managed.</p>
+        <p class="section-title">Roadmap:</p>
+        <div class="roadmap">
+          <ul>
+            <li>Process Management</li>
+            <li>Threads & Concurrency</li>
+            <li>Memory Management</li>
+            <li>File Systems</li>
+            <li>Scheduling Algorithms</li>
+            <li>Virtual Memory</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Networking</button>
+      <div class="accordion-content">
+        <p>Computer Networking involves the exchange of data between devices via a medium.</p>
+        <p class="section-title">Advantages:</p>
+        <ul>
+          <li>Enables communication between devices</li>
+          <li>Foundation of the Internet</li>
+          <li>Essential for distributed computing</li>
+        </ul>
+        <p class="section-title">Why Learn Networking?</p>
+        <p>It’s vital to understand how data flows, how systems communicate, and how the internet works.</p>
+        <p class="section-title">Roadmap:</p>
+        <div class="roadmap">
+          <ul>
+            <li>OSI & TCP/IP Models</li>
+            <li>IP Addressing & Subnetting</li>
+            <li>Routing & Switching</li>
+            <li>HTTP, FTP, DNS protocols</li>
+            <li>Firewalls & Network Security</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <a href="{% url 'index' %}" class="back-link-btn">⬅ Go Back</a>
+
+
+  </div>
+
+  <script>
+
+    const headers = document.querySelectorAll(".accordion-header");
+    headers.forEach(header => {
+      header.addEventListener("click", () => {
+        const content = header.nextElementSibling;
+        content.classList.toggle("open");
+      });
+    });
+  </script>
+
+  <script src="{% static 'js/subjects.js' %}"></script>
+</body>
+
+
+</html>

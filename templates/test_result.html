@@ -1,0 +1,213 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Analysis Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a1a2e; /* Dark background */
+            color: #e5e5e5;
+            line-height: 1.6;
+            overflow-x: hidden;
+            animation: fadeInBody 1s ease-out;
+        }
+
+        h2, h4 {
+            color: #00ffcc; /* Accent color for headings */
+            font-weight: 600;
+        }
+
+        .container {
+            padding: 50px;
+            background-color: #2b2b3a; /* Dark background for main container */
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .card {
+            background-color: #33354b;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 255, 204, 0.6);
+        }
+
+        .card-body {
+            color: #e5e5e5; /* Light text color for content */
+        }
+
+        .card-body h5 {
+            color: #00ffcc; /* Light teal for topic titles */
+        }
+
+        .btn-primary, .btn-success {
+            border-radius: 8px;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            background-color: #00ffcc; /* Light teal color */
+            box-shadow: 0 4px 10px rgba(0, 255, 204, 0.3);
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover, .btn-success:hover {
+            background-color: #00e6b3;
+        }
+
+        .text-center a {
+            color:rgb(8, 10, 9);
+            text-decoration: none;
+        }
+
+        .text-center a:hover {
+            text-decoration: underline;
+        }
+
+        /* Light Effect for Study Material */
+        .study-material-card {
+            background-color: #42424e;
+            border-left: 5px solid #00ffcc;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin-top: 20px;
+            animation: fadeInMaterial 1s ease-in-out;
+        }
+
+        .study-material-card h5 {
+            color: #fff;
+            font-size: 1.4rem;
+        }
+
+        .study-material-card p {
+            color: #ccc; /* Lighter color for descriptions */
+            font-size: 1.1rem;
+        }
+
+        .study-material-card pre {
+            background-color: #2b2b3a;
+            color: #e5e5e5;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Animations */
+        @keyframes fadeInBody {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInMaterial {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Set default text color to black */
+        .custom-btn {
+            color: black;
+        }
+
+        /* Change text color to white on hover */
+        .custom-btn:hover {
+            color: white;
+        }
+
+    </style>
+</head>
+<body class="container mt-4">
+
+  <h2 class="text-center">Test Analysis Result</h2>
+
+  <!-- Display the Test Analysis -->
+  <div class="mt-4">
+    <h4>Test Analysis:</h4>
+    <p>{{ analysis|safe }}</p>
+  </div>
+
+  <!-- Study Material Based on Weaknesses -->
+  <div class="mt-4">
+    <h4>Study Material Based on Weaknesses:</h4>
+    {% for topic, material in study_material.items %}
+      <div class="study-material-card">
+        <h5>{{ topic }}</h5>
+        <p><strong>Topic Overview:</strong></p>
+        <pre>{{ material }}</pre>
+
+        {% if website_links %}
+          <p><strong>Further Learning Resources for {{ topic|title }}:</strong></p>
+          <ul>
+            <li>Websites:
+              {% for name, url in website_links.items %}
+                <a href="{{ url }}" target="_blank">{{ name|capfirst }}</a>{% if not forloop.last %}, {% endif %}
+              {% endfor %}
+            </li>
+          </ul>
+        {% else %}
+          <p>No websites available for this topic.</p>
+        {% endif %}
+
+        {% if youtube_link %}
+          <p><strong>YouTube Tutorial:</strong> <a href="{{ youtube_link }}" target="_blank">Watch Video</a></p>
+        {% else %}
+          <p>No YouTube video available for this topic.</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Button container using flexbox to align both buttons side by side -->
+  <div class="d-flex justify-content-center mt-4">
+    <!-- 'Download' Button -->
+    <a href="{% url 'generate_pdf' %}" class="btn btn-success custom-btn mx-2">Download Report as PDF</a>
+
+    <!-- 'Return to dashboard' Button -->
+    <a href="{% url 'user_dashboard' %}" class="btn btn-success custom-btn mx-2">Return to dashboard</a>
+  </div>
+
+  <!-- Button to Retake Test -->
+  <div class="text-center mt-5">
+    <a href="{% url 'create_test' %}" class="btn btn-primary">Take Another Test</a>
+  </div>
+
+</body>
+
+
+</html>
+

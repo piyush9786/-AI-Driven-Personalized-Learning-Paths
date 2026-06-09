@@ -1,0 +1,197 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Classes, Objects & OOP - Java Course</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\java_css.css' %}"> <!-- Linked CSS file -->
+</head>
+<body>
+  <div class="container">
+    <h1>Classes, Objects & OOP</h1>
+    <p><strong>Introduction:</strong> Object-Oriented Programming (OOP) is a programming paradigm that uses classes and objects. In Java, everything is an object, and OOP allows for better code organization and reusability.</p>
+
+    <p><strong>Class:</strong> A class is a blueprint for creating objects. It defines a datatype by bundling data and methods that work on that data.</p>
+    <pre>
+class Car {
+    String model;
+    int year;
+
+    // Constructor to initialize the object
+    Car(String model, int year) {
+        this.model = model;
+        this.year = year;
+    }
+
+    // Method to display car details
+    void displayDetails() {
+        System.out.println("Model: " + model + ", Year: " + year);
+    }
+}
+    </pre>
+
+    <p><strong>Object:</strong> An object is an instance of a class. It represents a specific entity with defined properties and behaviors.</p>
+    <pre>
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of class Car
+        Car myCar = new Car("Toyota", 2022);
+        myCar.displayDetails();  // Calling method of object
+    }
+}
+    </pre>
+
+    <p><strong>Encapsulation:</strong> The concept of wrapping data and methods into a single unit (class) to restrict access to some of the object's components. This is usually done using access modifiers (e.g., `private`, `public`).</p>
+    <pre>
+class Person {
+    private String name;
+    private int age;
+
+    // Getter method
+    public String getName() {
+        return name;
+    }
+
+    // Setter method
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+    </pre>
+
+    <p><strong>Inheritance:</strong> Inheritance allows a new class to inherit the properties and methods of an existing class, promoting code reusability.</p>
+
+    <p><strong>Single Inheritance:</strong> A class inherits from a single class.</p>
+    <pre>
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+    </pre>
+
+    <p><strong>Multiple Inheritance:</strong> Java does not support multiple inheritance directly via classes (to avoid ambiguity). However, you can achieve it using interfaces.</p>
+    <pre>
+interface Animal {
+    void sound();
+}
+
+interface AnimalFeatures {
+    void sleep();
+}
+
+class Dog implements Animal, AnimalFeatures {
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+
+    public void sleep() {
+        System.out.println("Dog sleeps");
+    }
+}
+    </pre>
+
+    <p><strong>Multilevel Inheritance:</strong> A class can inherit from another class that already inherits from another class.</p>
+    <pre>
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Puppy extends Dog {
+    void sound() {
+        System.out.println("Puppy barks softly");
+    }
+}
+    </pre>
+
+    <p><strong>Hierarchical Inheritance:</strong> Multiple classes inherit from a single parent class.</p>
+    <pre>
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    void sound() {
+        System.out.println("Cat meows");
+    }
+}
+    </pre>
+
+    <p><strong>Polymorphism:</strong> Polymorphism allows one object to take on many forms. It enables a single method to behave differently based on the object calling it.</p>
+
+    <p><strong>Compile-time Polymorphism (Method Overloading):</strong> It occurs when two or more methods have the same name but different parameters (either in number or type).</p>
+    <pre>
+class Calculator {
+    // Method to add two integers
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    // Method to add three integers (Overloading)
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Method to add two doubles (Overloading)
+    double add(double a, double b) {
+        return a + b;
+    }
+}
+    </pre>
+
+    <p><strong>Runtime Polymorphism (Method Overriding):</strong> It occurs when a subclass provides a specific implementation for a method that is already defined in its parent class.</p>
+    <pre>
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Animal myAnimal = new Animal();  // Animal reference and object
+        myAnimal.sound();  // Outputs: Animal makes a sound
+
+        Animal myDog = new Dog();  // Animal reference but Dog object
+        myDog.sound();  // Outputs: Dog barks (Method Overriding)
+    }
+}
+    </pre>
+
+    <p><strong>Additional Tip:</strong> OOP allows for modular and scalable code, making it easier to maintain and understand as your program grows.</p>
+
+    <a href="{% url 'java_course' %}" class="view-content-link">⬅ Back to Java Course</a>
+  </div>
+</body>
+</html>

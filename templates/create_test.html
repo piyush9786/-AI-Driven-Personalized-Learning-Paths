@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Test</title>
+    <style>
+        /* General reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #e0e0e0);
+            color: #333;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: flex-start;
+        }
+
+        nav {
+            background-color: #3498db;
+            padding: 15px 20px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.4em;
+            padding: 10px 20px;
+            display: block;
+            transition: background-color 0.3s ease, border-radius 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: #2980b9;
+            border-radius: 10px;
+        }
+
+        .container {
+            margin-top: 80px;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 1000px;
+            margin: 80px auto 0 auto;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        form {
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            animation: slideIn 0.8s ease-out;
+            border: 1px solid #ccc;
+        }
+
+        fieldset {
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        fieldset:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        legend {
+            font-size: 1.5em;
+            color: #34495e;
+            padding: 10px 20px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 1.2em;
+            display: block;
+            margin: 15px 0;
+            color: #34495e;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        label:hover {
+            color: #3498db;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+            transition: transform 0.2s ease;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.4em;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 20px;
+            font-size: 1.5em;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            max-width: 800px;
+        }
+
+        input[type="text"]:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+        }
+
+        /* Result container styles */
+        .result-container {
+            width: 100%;
+            margin: auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .result {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+        }
+
+        .result.correct {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .result.incorrect {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Styling for Question Section */
+        .question-container {
+            margin-bottom: 30px;
+            padding: 10px 0;
+            background: #f7f9fc;
+            border-radius: 8px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .question-container p {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+
+        .question-container label {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        /* Styling for the question number */
+        .question-number {
+            color: #2980b9;
+            font-weight: bold;
+        }
+
+        /* Flexbox style for aligning options */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Personalized MCQ Test</h1>
+        
+        <!-- Form for entering the topics -->
+        <form action="{% url 'create_test' %}" method="post">
+            {% csrf_token %}
+            <label for="topics">Enter Topics (comma separated):</label>
+            <input type="text" name="topics" id="topics" placeholder="Enter topics like Math, Science, History" required>
+
+            <button type="submit">Generate MCQs</button>
+        </form>
+
+        {% if mcqs %}
+        <!-- Form to display MCQs -->
+        <form action="{% url 'submit_test' %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Answer the questions</legend>
+                {% for question in mcqs %}
+                    <div class="question-container">
+                        <p><span class="question-number">{{ forloop.counter }}.</span> {{ question.question }} (Marks: {{ question.marks }})</p>
+                        
+                        <!-- Answer Options -->
+                        <div class="options">
+                            <label>
+                                <input type="radio" name="question_{{ forloop.counter }}" value="A" required> A. {{ question.option_a }}
+                            </label>
+                            <label>
+                                <input type="radio" name="question_{{ forloop.counter }}" value="B" required> B. {{ question.option_b }}
+                            </label>
+                            <label>
+                                <input type="radio" name="question_{{ forloop.counter }}" value="C" required> C. {{ question.option_c }}
+                            </label>
+                            <label>
+                                <input type="radio" name="question_{{ forloop.counter }}" value="D" required> D. {{ question.option_d }}
+                            </label>
+                        </div>
+                    </div>
+                {% endfor %}
+                <button type="submit">Submit Answers</button>
+            </fieldset>
+        </form>
+        {% endif %}
+    </div>
+</body>
+</html>

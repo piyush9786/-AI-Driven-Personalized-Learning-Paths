@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Achievements - LearnSmart</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d0f2b;
+      color: white;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffd5;
+      margin-bottom: 2rem;
+    }
+
+    .achievement {
+      background-color: #1c1d32;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .achievement:hover {
+      box-shadow: 0 0 15px #00ffd5;
+      transform: scale(1.02);
+    }
+
+    .achievement h3 {
+      color: #00ffd5;
+      margin-bottom: 0.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      margin: 1rem 0 0.5rem;
+      padding: 0.5rem 1.2rem;
+      font-weight: bold;
+      font-size: 0.9rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      animation: pulseGlow 2s infinite;
+      transition: transform 0.3s ease;
+      box-shadow: inset 0 0 5px #ffffff33;
+    }
+
+    .badge.milestone {
+      background: linear-gradient(145deg, #00ffd5, #00ffa1);
+      color: #0d0f2b;
+      box-shadow: 0 0 12px #00ffd5, inset 0 0 5px #ffffff55;
+    }
+
+    .badge.progress {
+      background: linear-gradient(145deg, #ffe600, #ffc800);
+      color: #0d0f2b;
+      box-shadow: 0 0 12px #ffe600, inset 0 0 5px #ffffff55;
+    }
+
+    .progress-container {
+      background-color: #272943;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 1rem;
+      height: 20px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(to right, #00ffd5, #00ffa1);
+      transition: width 2s ease-in-out;
+    }
+
+    .confetti {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 100px;
+      background-image: url('https://cdn.pixabay.com/photo/2016/03/31/20/15/confetti-1294131_960_720.png');
+      background-size: cover;
+      opacity: 0;
+      animation: pop 2s ease forwards;
+    }
+
+    @keyframes pop {
+      0% {
+        opacity: 1;
+        transform: translateX(-50%) scale(0.5);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) scale(1.5);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 10px #00ffd5, inset 0 0 5px #ffffff33;
+      }
+
+      50% {
+        box-shadow: 0 0 20px #00ffd5, inset 0 0 10px #ffffff99;
+      }
+
+      100% {
+        box-shadow: 0 0 10px #00ffd5, inset 0 0 5px #ffffff33;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Your Achievements</h1>
+
+    {% for item in progress_data %}
+    <div class="achievement">
+      <h3>{{ item.course_name }}</h3>
+
+      {% if item.is_complete %}
+      <div class="badge milestone">🏆 Milestone</div>
+      {% else %}
+      <div class="badge progress">🚧 In Progress</div>
+      {% endif %}
+
+      <div class="progress-container">
+        <div class="progress-bar" style="width: {{ item.completion_rate }}%;"></div>
+      </div>
+
+      {% if item.is_complete %}
+      <div class="confetti"></div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <script>
+    window.onload = () => {
+      const progressBars = document.querySelectorAll('.progress-bar');
+      progressBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => {
+          bar.style.width = width;
+        }, 100);
+      });
+
+      document.querySelectorAll('.confetti').forEach(confetti => {
+        confetti.style.animation = 'pop 2s ease';
+      });
+    };
+  </script>
+</body>
+
+</html>

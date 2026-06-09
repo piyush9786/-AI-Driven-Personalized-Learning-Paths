@@ -1,0 +1,176 @@
+{% load static %}
+<
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Functions & Arrays - C++ Course</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\cpp_css.css'%}"> <!-- Uses your main CSS -->
+</head>
+<body>
+  <div class="container">
+    <h1>Functions & Arrays</h1>
+    
+    <p><strong>Introduction:</strong> In C++, <em>functions</em> help organize code into reusable blocks, while <em>arrays</em> store multiple values of the same data type efficiently.</p>
+
+    <h2>Functions in C++</h2>
+
+    <p><strong>1. Basic Function:</strong></p>
+    <pre>
+void greet() {
+    cout &lt;&lt; "Hello from function!" &lt;&lt; endl;
+}
+
+int main() {
+    greet();
+    return 0;
+}
+    </pre>
+
+    <p><strong>2. Function with Parameters:</strong></p>
+    <pre>
+void add(int a, int b) {
+    cout &lt;&lt; "Sum: " &lt;&lt; a + b &lt;&lt; endl;
+}
+
+int main() {
+    add(5, 3);
+    return 0;
+}
+    </pre>
+
+    <p><strong>3. Function Returning a Value:</strong></p>
+    <pre>
+int square(int num) {
+    return num * num;
+}
+
+int main() {
+    cout &lt;&lt; "Square: " &lt;&lt; square(4);
+    return 0;
+}
+    </pre>
+
+    <p><strong>4. Default Arguments:</strong></p>
+    <pre>
+void welcome(string name = "User") {
+    cout &lt;&lt; "Welcome, " &lt;&lt; name &lt;&lt; "!" &lt;&lt; endl;
+}
+
+int main() {
+    welcome();
+    welcome("Alice");
+}
+    </pre>
+
+    <p><strong>5. Inline Functions:</strong> Used for small, frequently called functions.</p>
+    <pre>
+inline int cube(int n) {
+    return n * n * n;
+}
+
+int main() {
+    cout &lt;&lt; cube(3);
+}
+    </pre>
+
+    <h2>Arrays in C++</h2>
+
+    <p><strong>6. Declaring & Accessing Arrays:</strong></p>
+    <pre>
+int numbers[5] = {10, 20, 30, 40, 50};
+cout &lt;&lt; numbers[0];  // Prints 10
+    </pre>
+
+    <p><strong>7. Looping Through Arrays:</strong></p>
+    <pre>
+int numbers[3] = {1, 2, 3};
+for (int i = 0; i &lt; 3; i++) {
+    cout &lt;&lt; numbers[i] &lt;&lt; " ";
+}
+    </pre>
+
+    <p><strong>8. Taking Array Input:</strong></p>
+    <pre>
+int nums[3];
+for (int i = 0; i &lt; 3; i++) {
+    cin &gt;&gt; nums[i];
+}
+    </pre>
+
+    <h2>Passing Arrays to Functions</h2>
+
+    <p><strong>9. Function to Print Array Elements:</strong></p>
+    <pre>
+void printArray(int arr[], int size) {
+    for (int i = 0; i &lt; size; i++) {
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+    }
+}
+
+int main() {
+    int nums[4] = {5, 10, 15, 20};
+    printArray(nums, 4);
+}
+    </pre>
+
+    <h2>2D Arrays</h2>
+
+    <p><strong>10. Declaring & Accessing 2D Arrays:</strong></p>
+    <pre>
+int matrix[2][3] = {
+    {1, 2, 3},
+    {4, 5, 6}
+};
+
+cout &lt;&lt; matrix[1][2];  // Prints 6
+    </pre>
+
+    <p><strong>11. Looping Through 2D Array:</strong></p>
+    <pre>
+for (int i = 0; i &lt; 2; i++) {
+    for (int j = 0; j &lt; 3; j++) {
+        cout &lt;&lt; matrix[i][j] &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+}
+    </pre>
+
+    <h2>Extra Practice Examples</h2>
+
+    <p><strong>12. Find Max in Array:</strong></p>
+    <pre>
+int findMax(int arr[], int size) {
+    int max = arr[0];
+    for (int i = 1; i &lt; size; i++) {
+        if (arr[i] &gt; max)
+            max = arr[i];
+    }
+    return max;
+}
+
+int main() {
+    int nums[5] = {2, 8, 1, 9, 4};
+    cout &lt;&lt; "Max: " &lt;&lt; findMax(nums, 5);
+}
+    </pre>
+
+    <p><strong>13. Sum of Array Elements:</strong></p>
+    <pre>
+int sumArray(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i &lt; size; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+    </pre>
+
+    <h2>Tip:</h2>
+    <p>Functions make code modular and reusable. Arrays efficiently store and process data in bulk. Combined, they are powerful tools in C++ development!</p>
+
+    <a href="{% url 'cpp_course' %}" class="view-content-link">⬅ Back to C++ Course</a>
+  </div>
+</body>
+</html>

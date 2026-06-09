@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Feedbacks</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #f1f1f1;
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #00ffcc;
+        }
+
+        .feedback-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .feedback-card {
+            background: #1e1e1e;
+            border-left: 6px solid #00ffcc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+            animation: fadeIn 0.5s ease-in;
+            position: relative;
+        }
+
+        .feedback-card h3 {
+            margin-bottom: 5px;
+            font-size: 1.2em;
+            color: #ffffff;
+        }
+
+        .feedback-card h4 {
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: #aaaaaa;
+        }
+
+        .feedback-card p {
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 6px 10px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background-color: #e60000;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin: 30px auto;
+            text-align: center;
+            background-color: #00ffcc;
+            color: #1a1a1a;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #00e6b8;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<h1>User Feedbacks</h1>
+
+<div class="feedback-container">
+    {% for feedback in messages %}
+    <div class="feedback-card">
+        <form method="POST" style="display:inline;">
+            {% csrf_token %}
+            <input type="hidden" name="delete_id" value="{{ feedback.id }}">
+            <button type="submit" class="delete-btn">Delete</button>
+        </form>
+        <h3>{{ feedback.name }}</h3>
+        <h4>{{ feedback.email }}</h4>
+        <p>{{ feedback.message }}</p>
+    </div>
+    {% empty %}
+    <p style="text-align:center;">No feedbacks yet.</p>
+    {% endfor %}
+</div>
+
+<div style="text-align: center;">
+    <a href="{% url 'admin_dash' %}" class="back-btn">← Back to Dashboard</a>
+</div>
+
+</body>
+</html>

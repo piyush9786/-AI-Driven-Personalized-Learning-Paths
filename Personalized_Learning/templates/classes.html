@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Learning Classes</title>
+  <link rel="stylesheet" href="{% static 'css/admin_styles.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/classes.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+  <main class="main-content">
+    <h1>Learning Classes</h1>
+
+    <div class="class-table">
+      <div class="class-header">
+        <div>Subject</div>
+        <div>Schedule</div>
+        <div>Capacity</div>
+        <div>Level</div>
+        <div>Mode</div>
+        <div>Status</div>
+      </div>
+
+      <div class="class-row">
+        <div>
+          <strong>Programming in C++</strong><br>
+          <!-- <small>by John Doe</small> -->
+        </div>
+        <div>
+          <i class="fas fa-clock"></i> 09:00 - 10:00<br>
+          <i class="fas fa-calendar-alt"></i> Mon, Wed
+        </div>
+        <div>
+          <i class="fas fa-users"></i> 2 / 5<br>
+          <div class="capacity-bar">
+            <div style="width: 40%"></div>
+          </div>
+        </div>
+        <div><span class="tag beginner">Beginner</span></div>
+        <div>Online</div>
+        <div><i class="fas fa-check-circle status active"></i> Active</div>
+      </div>
+
+      <div class="class-row">
+        <div>
+          <strong>Data Structures</strong><br>
+          <!-- <small>by Sarah Lee</small> -->
+        </div>
+        <div>
+          <i class="fas fa-clock"></i> 14:00 - 15:30<br>
+          <i class="fas fa-calendar-alt"></i> Tue, Thu
+        </div>
+        <div>
+          <i class="fas fa-users"></i> 5 / 5<br>
+          <div class="capacity-bar">
+            <div style="width: 100%"></div>
+          </div>
+        </div>
+        <div><span class="tag intermediate">Intermediate</span></div>
+        <div>In-Person</div>
+        <div><i class="fas fa-check-circle status full"></i> Full</div>
+      </div>
+
+      <div class="class-row">
+        <div>
+          <strong>Operating Systems</strong><br>
+          <!-- <small>by Sarah Lee</small> -->
+        </div>
+        <div>
+          <i class="fas fa-clock"></i> 12:00 - 1:30<br>
+          <i class="fas fa-calendar-alt"></i> Wed, Thu
+        </div>
+        <div>
+          <i class="fas fa-users"></i> 3 / 5<br>
+          <div class="capacity-bar">
+            <div style="width: 60%"></div>
+          </div>
+        </div>
+        <div><span class="tag intermediate">Intermediate</span></div>
+        <div>In-Person</div>
+        <div><i class="fas fa-check-circle status active"></i> Active</div>
+      </div>
+
+      <div class="class-row">
+        <div>
+          <strong>Computer Networking</strong><br>
+          <!-- <small>by Sarah Lee</small> -->
+        </div>
+        <div>
+          <i class="fas fa-clock"></i> 15:00 - 16:30<br>
+          <i class="fas fa-calendar-alt"></i> Thu, Fri
+        </div>
+        <div>
+          <i class="fas fa-users"></i> 4 / 5<br>
+          <div class="capacity-bar">
+            <div style="width: 80%"></div>
+          </div>
+        </div>
+        <div><span class="tag intermediate">Intermediate</span></div>
+        <div>In-Person</div>
+        <div><i class="fas fa-check-circle status active"></i> Active</div>
+      </div>
+
+      <div class="class-row">
+        <div>
+          <strong>Web Development</strong><br>
+          <!-- <small>by Alex Kim</small> -->
+        </div>
+        <div>
+          <i class="fas fa-clock"></i> 16:00 - 17:30<br>
+          <i class="fas fa-calendar-alt"></i> Fri
+        </div>
+        <div>
+          <i class="fas fa-users"></i> 3 / 10<br>
+          <div class="capacity-bar">
+            <div style="width: 30%"></div>
+          </div>
+        </div>
+        <div><span class="tag advanced">Advanced</span></div>
+        <div>Hybrid</div>
+        <div><i class="fas fa-clock status pending"></i> Upcoming</div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

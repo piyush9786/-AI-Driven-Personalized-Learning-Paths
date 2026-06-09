@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Result</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #e0e0e0);
+            color: #333;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: flex-start;
+        }
+
+        nav {
+            background-color: #3498db;
+            padding: 15px 20px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.4em;
+            padding: 10px 20px;
+            display: block;
+            transition: background-color 0.3s ease, border-radius 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: #2980b9;
+            border-radius: 10px;
+        }
+
+        .container {
+            margin-top: 80px;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2980b9;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .result {
+            margin-bottom: 20px;
+        }
+
+        .result p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .status {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .correct {
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #2980b9;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Adding smooth animation to the container */
+        .container {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Result Cards Styling */
+        .result-card {
+            padding: 20px;
+            background-color: #ecf0f1;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-card p {
+            margin: 8px 0;
+        }
+
+        .result-card .question {
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        .result-card .status {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 0 10px;
+            }
+            .container {
+                margin-top: 20px;
+                padding: 10px;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Result Container -->
+    <div class="container">
+        <h1>Test Result</h1>
+
+        <div class="result">
+            <p><strong>Score: </strong>{{ score }} / {{ total_marks }}</p>
+            <p><strong>Correct Answers: </strong>{{ correct_count }}</p>
+            <p><strong>Incorrect Answers: </strong>{{ incorrect_count }}</p>
+        </div>
+
+        <h2>Answer Key:</h2>
+
+        <!-- Loop through the result to display questions and answers -->
+        {% for item in result %}
+            <div class="result-card">
+                <p class="question">{{ item.question }}</p>
+                <p><strong>Your Answer: </strong>{{ item.user_answer }} 
+                <span class="status {% if item.status == 'Correct' %}correct{% else %}incorrect{% endif %}">{{ item.status }}</span></p>
+                <p><strong>Correct Answer: </strong>{{ item.correct_answer }}</p>
+                <p><strong>Marks: </strong>{{ item.marks }}</p>
+            </div>
+        {% endfor %}
+
+        <!-- Footer with home link -->
+        <div class="footer">
+            <a href="/">Back to Home</a>
+        </div>
+    </div>
+
+</body>
+</html>

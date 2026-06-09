@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Basics & Syntax - C++ Course</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\cpp_css.css'%}">
+</head>
+<body>
+  <div class="container">
+    <h1>Basics & Syntax</h1>
+
+    <p><strong>Introduction:</strong> C++ is a powerful language with strong system-level capabilities. It uses a structured syntax derived from C, but adds object-oriented features.</p>
+
+    <p><strong>Basic Structure of C++ Program:</strong></p>
+    <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+  cout &lt;&lt; "Hello, World!";
+  return 0;
+}
+    </pre>
+
+    <p><strong>Comments in C++:</strong> Use comments to explain code:</p>
+    <pre>
+// This is a single-line comment
+
+/* This is
+   a multi-line comment */
+    </pre>
+
+    <p><strong>Input and Output:</strong> Using <code>cin</code> and <code>cout</code>:</p>
+    <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+  int age;
+  cout &lt;&lt; "Enter your age: ";
+  cin &gt;&gt; age;
+  cout &lt;&lt; "You are " &lt;&lt; age &lt;&lt; " years old.";
+  return 0;
+}
+    </pre>
+
+    <p><strong>Variables and Data Types:</strong> Declare variables like this:</p>
+    <pre>
+int myNum = 25;
+float myFloat = 3.14;
+char myChar = 'A';
+bool isCppFun = true;
+string greeting = "Hello";
+    </pre>
+
+    <p><strong>If-Else Condition Example:</strong></p>
+    <pre>
+int number = 10;
+if (number &gt; 0) {
+  cout &lt;&lt; "Positive number";
+} else {
+  cout &lt;&lt; "Non-positive number";
+}
+    </pre>
+
+    <p><strong>Loops Example (for loop):</strong></p>
+    <pre>
+for (int i = 1; i &lt;= 5; i++) {
+  cout &lt;&lt; i &lt;&lt; " ";
+}
+    </pre>
+
+    <p><strong>Function Example:</strong></p>
+    <pre>
+void greet() {
+  cout &lt;&lt; "Welcome to C++!";
+}
+
+int main() {
+  greet();
+  return 0;
+}
+    </pre>
+
+    <a href="{% url 'cpp_course' %}" class="view-content-link">⬅ Back to C++ Course</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Libraries and Modules - Python Course - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\python_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Libraries and Modules in Python</h1>
+    <p class="description">
+      In Python, libraries and modules play a critical role in extending the functionality of your programs. Python comes with a rich set of standard libraries, and you can also use third-party libraries to simplify complex tasks. This page will explore how to use and create Python libraries and modules.
+    </p>
+
+    <h2>🔎 What are Modules?</h2>
+    <p>
+      A <strong>module</strong> is simply a file containing Python code. It can define functions, classes, and variables, and it can include runnable code. Modules help you organize your code into manageable pieces.
+    </p>
+    <p>
+      Modules allow for code reuse and easy maintenance. Instead of writing the same code multiple times, you can import a module wherever needed.
+    </p>
+
+    <h2>🔄 Importing Modules</h2>
+    <p>
+      You can import a module into your program using the <code>import</code> statement. This allows you to access functions and variables defined in the module.
+    </p>
+    <p>Example:</p>
+    <pre>
+import math
+print(math.sqrt(16))  <!-- Using the sqrt function from the math module -->
+    </pre>
+    <p>
+      Here, the <code>math</code> module is imported, and we use the <code>sqrt()</code> function to calculate the square root of 16.
+    </p>
+
+    <h2>💡 Different Ways to Import Modules</h2>
+    <p>
+      There are several ways to import a module depending on your needs.
+    </p>
+    <ul>
+      <li><strong><code>import module_name</code></strong>: Imports the whole module. You need to reference the module name to access its functions.</li>
+      <li><strong><code>from module_name import function_name</code></strong>: Imports a specific function from a module, so you don’t need to reference the module name.</li>
+      <li><strong><code>import module_name as alias</code></strong>: Imports a module and gives it an alias, allowing you to use a shorter name to reference the module.</li>
+    </ul>
+    <p>Examples:</p>
+    <pre>
+import math
+print(math.pi)  <!-- Accessing pi from the math module -->
+
+from math import sqrt
+print(sqrt(25))  <!-- Directly using sqrt function -->
+
+import math as m
+print(m.factorial(5))  <!-- Using an alias 'm' for the math module -->
+    </pre>
+
+    <h2>🌍 Standard Library vs. Third-Party Libraries</h2>
+    <p>
+      Python comes with a rich set of built-in libraries known as the <strong>standard library</strong>, which includes modules for handling file I/O, working with dates and times, networking, and more.
+    </p>
+    <p>
+      In addition to the standard library, you can use <strong>third-party libraries</strong>, which are created by the community and can be installed using package managers like <code>pip</code>.
+    </p>
+    <p>Examples of third-party libraries:</p>
+    <ul>
+      <li><code>requests</code>: A library for making HTTP requests.</li>
+      <li><code>numpy</code>: A library for numerical computing.</li>
+      <li><code>pandas</code>: A library for data manipulation and analysis.</li>
+    </ul>
+
+    <h2>📦 Installing Third-Party Libraries</h2>
+    <p>
+      To install third-party libraries, you typically use <code>pip</code>, Python's package manager. You can install a package from the Python Package Index (PyPI) using the command:
+    </p>
+    <pre>
+pip install package_name
+    </pre>
+    <p>
+      For example, to install the <code>requests</code> library, you would run:
+    </p>
+    <pre>
+pip install requests
+    </pre>
+    <p>
+      After installation, you can import the library into your code like any other Python module.
+    </p>
+
+    <h2>📂 Creating Your Own Module</h2>
+    <p>
+      You can also create your own modules to organize your code. To create a module, simply write your Python code in a file with a <code>.py</code> extension. Then, you can import this module into other Python programs.
+    </p>
+    <p>Example:</p>
+    <ul>
+      <li>Create a file called <code>my_module.py</code> with the following content:</li>
+    </ul>
+    <pre>
+def greet(name):
+    return f"Hello, {name}!"
+    </pre>
+    <ul>
+      <li>In another Python file, you can import and use the module:</li>
+    </ul>
+    <pre>
+import my_module
+print(my_module.greet("Alice"))
+    </pre>
+    <p>
+      This will print: <code>Hello, Alice!</code>
+    </p>
+
+    <h2>🧩 Organizing Code with Packages</h2>
+    <p>
+      A <strong>package</strong> is a collection of Python modules organized in a directory hierarchy. A package typically contains an <code>__init__.py</code> file to indicate that the directory is a package.
+    </p>
+    <p>
+      For example, let's say you have a package called <code>my_package</code> with two modules: <code>module1.py</code> and <code>module2.py</code>. The structure looks like this:
+    </p>
+    <pre>
+my_package/
+    __init__.py
+    module1.py
+    module2.py
+    </pre>
+    <p>
+      You can import modules from the package like this:
+    </p>
+    <pre>
+from my_package import module1
+from my_package.module2 import function_name
+    </pre>
+
+    <h2>🔧 Working with Built-in Modules</h2>
+    <p>
+      Python's standard library includes modules that cover a wide range of functionalities. Here are some examples of built-in modules:
+    </p>
+    <ul>
+      <li><strong><code>os</code></strong>: Provides functions to interact with the operating system (e.g., file and directory management).</li>
+      <li><strong><code>sys</code></strong>: Provides access to system-specific parameters and functions.</li>
+      <li><strong><code>datetime</code></strong>: Provides functions to work with dates and times.</li>
+      <li><strong><code>random</code></strong>: Provides functions to generate random numbers.</li>
+    </ul>
+    <p>Example of using the <code>os</code> module:</p>
+    <pre>
+import os
+print(os.getcwd())  <!-- Get the current working directory -->
+    </pre>
+
+    <h2>🔄 Reloading a Module</h2>
+    <p>
+      If you've made changes to a module and want to reload it without restarting the Python interpreter, you can use the <code>reload()</code> function from the <code>importlib</code> module.
+    </p>
+    <p>Example:</p>
+    <pre>
+from importlib import reload
+reload(my_module)  <!-- Reload the 'my_module' after modifications -->
+    </pre>
+
+    <h2>🚨 Error Handling with Modules</h2>
+    <p>
+      When working with external modules, you may encounter errors such as a module not being found or incorrect function usage. To handle such errors gracefully, you can use the <code>try-except</code> block.
+    </p>
+    <p>Example:</p>
+    <pre>
+try:
+    import non_existent_module
+except ImportError:
+    print("Module not found.")
+    </pre>
+
+    <h2>📝 Summary</h2>
+    <p>
+      Python modules and libraries allow you to organize your code, reuse functionality, and access a wide range of pre-built tools. You can create your own modules, import external libraries using <code>pip</code>, and make use of Python's rich standard library to simplify tasks. 
+    </p>
+
+    <a href="{% url 'python_course' %}" class="view-content-link">⬅ Back to Python Course</a>
+  </div>
+</body>
+</html>

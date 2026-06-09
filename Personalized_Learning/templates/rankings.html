@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Leaderboard - LearnSmart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #121212;
+      color: #f1f1f1;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffcc;
+      font-size: 2.4rem;
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 80%;
+      margin: 0 auto 40px;
+      border-collapse: collapse;
+      background-color: #1e1e1e;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 14px 20px;
+      border: 1px solid #333;
+      text-align: center;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    th {
+      background-color: #121212;
+      color: #00ffcc;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #2b2b2b;
+    }
+
+    tr:hover {
+      background-color: #39ff14;
+      cursor: pointer;
+      transform: scale(1.01);
+    }
+
+    tr:hover td {
+      border-color: #39ff14;
+      box-shadow: 0 0 8px #39ff14, 0 0 16px #39ff14;
+      text-shadow: 0 0 6px #39ff14;
+      color: #000;
+      font-weight: bold;
+      background-color: #39ff14;
+    }
+
+    .gold {
+      color: gold;
+      font-weight: bold;
+      text-shadow: 0 0 2px gold, 0 0 6px rgba(255, 215, 0, 0.4);
+    }
+
+    .silver {
+      color: silver;
+      font-weight: bold;
+      text-shadow: 0 0 2px silver, 0 0 6px rgba(192, 192, 192, 0.4);
+    }
+
+    .bronze {
+      color: #cd7f32;
+      font-weight: bold;
+      text-shadow: 0 0 2px #cd7f32, 0 0 6px rgba(205, 127, 50, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🏆 Leaderboard - Personalized Learning</h1>
+
+  <table id="leaderboard">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>User Name</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in ranked_users %}
+        <tr>
+          <td class="{% if forloop.counter0 == 0 %}gold{% elif forloop.counter0 == 1 %}silver{% elif forloop.counter0 == 2 %}bronze{% endif %}">{{ forloop.counter }}</td>
+          <td class="{% if forloop.counter0 == 0 %}gold{% elif forloop.counter0 == 1 %}silver{% elif forloop.counter0 == 2 %}bronze{% endif %}">{{ user.username }}</td>
+          <td class="{% if forloop.counter0 == 0 %}gold{% elif forloop.counter0 == 1 %}silver{% elif forloop.counter0 == 2 %}bronze{% endif %}">{{ user.points }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</body>
+</html>

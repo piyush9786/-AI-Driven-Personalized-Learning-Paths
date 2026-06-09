@@ -1,0 +1,284 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CPU Scheduling Algorithms - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\os_css.css' %}">
+  <style>
+    .gantt {
+      display: flex;
+      margin: 1rem 0;
+      border: 2px solid #00ffd5;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .gantt div {
+      padding: 0.5rem;
+      text-align: center;
+      flex: 1;
+      background-color: #1c1d32;
+      border-right: 2px solid #00ffd5;
+      color: #00ffd5;
+      font-weight: bold;
+    }
+    .gantt div:last-child {
+      border-right: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>CPU Scheduling Algorithms</h1>
+    <p class="description">
+      CPU Scheduling is the process of deciding which process in the ready queue should be allocated to the CPU. Efficient scheduling increases CPU utilization and system responsiveness.
+    </p>
+
+    <h2>🔎 Why CPU Scheduling is Important?</h2>
+    <ul>
+      <li>Improves CPU utilization</li>
+      <li>Enhances system throughput</li>
+      <li>Minimizes waiting and response time</li>
+      <li>Allows multiple processes to share the CPU effectively</li>
+    </ul>
+
+
+    <h2>⚙️ CPU Scheduling Criteria</h2>
+    <ul>
+  <li><strong>CPU Utilization</strong>: Keep CPU as busy as possible.</li>
+  <li><strong>Throughput</strong>: Number of processes completed per unit time.</li>
+  <li><strong>Turnaround Time</strong>: Time taken from submission to completion.</li>
+  <li><strong>Waiting Time</strong>: Time spent in the ready queue.</li>
+  <li><strong>Response Time</strong>: Time from submission until the first response is produced.</li>
+    </ul>
+
+
+    <h2>⚡ Key Scheduling Algorithms</h2>
+    <ol>
+      <li>First-Come, First-Served (FCFS)</li>
+      <li>Shortest Job First (SJF)</li>
+      <li>Round Robin (RR)</li>
+      <li>Priority Scheduling</li>
+    </ol>
+
+    <!-- FCFS -->
+    <h2>1️⃣ First-Come, First-Served (FCFS)</h2>
+    <p>Processes are executed in the order they arrive in the ready queue.</p>
+
+    <h3>Example</h3>
+    <table>
+      <tr>
+        <th>Process</th>
+        <th>Burst Time</th>
+      </tr>
+      <tr>
+        <td>P1</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>P2</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>P3</td>
+        <td>8</td>
+      </tr>
+    </table>
+
+    <h3>🔢 Gantt Chart</h3>
+    <div class="gantt">
+      <div>P1</div>
+      <div>P2</div>
+      <div>P3</div>
+    </div>
+
+    <p><strong>Waiting Time:</strong> (0 + 5 + 8) / 3 = 4.33 units</p>
+    <p><strong>Turnaround Time:</strong> (5 + 8 + 16) / 3 = 9.67 units</p>
+
+    <h3>📚 Theory</h3>
+<p>
+  FCFS is the simplest scheduling algorithm. It works like a queue: the process that arrives first gets executed first.
+  While it's easy to implement, it suffers from the <strong>convoy effect</strong>, where short processes get stuck waiting behind a long process.
+</p>
+<p>
+  It's best suited for batch systems but performs poorly in interactive systems.
+</p>
+
+
+    <!-- SJF -->
+    <h2>2️⃣ Shortest Job First (SJF)</h2>
+    <p>Process with the smallest burst time gets executed first. It minimizes the average waiting time.</p>
+
+    <h3>Example</h3>
+    <table>
+      <tr>
+        <th>Process</th>
+        <th>Burst Time</th>
+      </tr>
+      <tr>
+        <td>P1</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>P2</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>P3</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td>P4</td>
+        <td>3</td>
+      </tr>
+    </table>
+
+    <h3>🔢 Gantt Chart</h3>
+    <div class="gantt">
+      <div>P4</div>
+      <div>P1</div>
+      <div>P3</div>
+      <div>P2</div>
+    </div>
+
+    <p><strong>Waiting Time:</strong> (3 + 0 + 6 + 16) / 4 = 6.25 units</p>
+    <p><strong>Turnaround Time:</strong> (6 + 16 + 13 + 24) / 4 = 14.75 units</p>
+
+    <h3>📚 Theory</h3>
+<p>
+  SJF minimizes average waiting time, making it the most optimal in that sense.
+  It can be either <strong>non-preemptive</strong> (once started, it runs to completion) or <strong>preemptive</strong> (also called Shortest Remaining Time First, SRTF).
+</p>
+<p>
+  The challenge is predicting the exact burst time before execution, which is often impractical in real-world systems.
+</p>
+
+
+    <!-- RR -->
+    <h2>3️⃣ Round Robin (RR)</h2>
+    <p>Each process gets a fixed time slot (quantum). It’s fair and great for time-sharing systems.</p>
+
+    <h3>Example (Time Quantum = 4 units)</h3>
+    <table>
+      <tr>
+        <th>Process</th>
+        <th>Burst Time</th>
+      </tr>
+      <tr>
+        <td>P1</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>P2</td>
+        <td>9</td>
+      </tr>
+      <tr>
+        <td>P3</td>
+        <td>6</td>
+      </tr>
+    </table>
+
+    <h3>🔢 Gantt Chart</h3>
+    <div class="gantt">
+      <div>P1</div>
+      <div>P2</div>
+      <div>P3</div>
+      <div>P2</div>
+      <div>P3</div>
+      <div>P2</div>
+    </div>
+
+    <p><strong>Waiting Time:</strong> (10 + 14 + 12) / 3 = 12 units</p>
+    <p><strong>Turnaround Time:</strong> (15 + 23 + 18) / 3 = 18.67 units</p>
+
+    <h3>📚 Theory</h3>
+<p>
+  Round Robin is designed for <strong>time-sharing systems</strong>, ensuring all processes get fair access to the CPU.
+  It uses a fixed time slice or quantum. If a process doesn’t finish in its time slice, it's placed back in the ready queue.
+</p>
+<p>
+  Choosing the right time quantum is critical:
+  <ul>
+    <li>If it's too large ➔ it behaves like FCFS.</li>
+    <li>If it's too small ➔ excessive context switches hurt performance.</li>
+  </ul>
+</p>
+
+
+    <!-- Priority -->
+    <h2>4️⃣ Priority Scheduling</h2>
+    <p>Each process is assigned a priority, and the CPU is allocated to the process with the highest priority (lower number = higher priority).</p>
+
+    <h3>Example</h3>
+    <table>
+      <tr>
+        <th>Process</th>
+        <th>Burst Time</th>
+        <th>Priority</th>
+      </tr>
+      <tr>
+        <td>P1</td>
+        <td>10</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>P2</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>P3</td>
+        <td>2</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>P4</td>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+    </table>
+
+    <h3>🔢 Gantt Chart</h3>
+    <div class="gantt">
+      <div>P2</div>
+      <div>P4</div>
+      <div>P1</div>
+      <div>P3</div>
+    </div>
+
+    <p><strong>Waiting Time:</strong> (1 + 0 + 12 + 2) / 4 = 3.75 units</p>
+    <p><strong>Turnaround Time:</strong> (11 + 1 + 14 + 4) / 4 = 7.5 units</p>
+
+    <h3>📚 Theory</h3>
+<p>
+  In Priority Scheduling, each process is assigned a priority. The CPU executes the process with the highest priority.
+</p>
+<p>
+  If multiple processes have the same priority, it uses FCFS among them.
+  The main issue with this method is <strong>starvation</strong>, where low-priority processes may never get executed.
+</p>
+<p>
+  To fix starvation, <strong>aging</strong> is used, which gradually increases the priority of waiting processes.
+</p>
+
+    <!-- Common Questions -->
+    <h2>❓ Common Questions</h2>
+    <p><strong>Q: Which scheduling algorithm is best?</strong></p>
+    <p>A: SJF gives the best average waiting time, but it's hard to predict burst time. Round Robin is fair and ideal for time-sharing systems.</p>
+
+    <p><strong>Q: What's the drawback of FCFS?</strong></p>
+    <p>A: It can cause the "convoy effect" where short processes wait for a long process to finish, increasing waiting time.</p>
+
+    <p><strong>Q: What happens if time quantum in Round Robin is too small?</strong></p>
+    <p>A: It increases context switching overhead, reducing CPU efficiency.</p>
+
+    <!-- Pro Tip -->
+    <h2>🎯 Pro Tip</h2>
+    <p>Always balance between responsiveness (short time quantum) and efficiency (less context switching) when designing a scheduler!</p>
+
+    <a href="{% url 'os_course' %}" class="view-content-link">⬅ Back to OS Course</a>
+  </div>
+</body>
+</html>

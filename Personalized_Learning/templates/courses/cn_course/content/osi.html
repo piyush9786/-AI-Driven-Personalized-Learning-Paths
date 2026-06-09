@@ -1,0 +1,171 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OSI & TCP/IP Models - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\cn_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>OSI & TCP/IP Models</h1>
+    <p class="description">
+      The OSI and TCP/IP models are frameworks that describe how data is transmitted over networks, layer by layer. Understanding them is crucial for anyone learning networking.
+    </p>
+
+    <h2>🔎 What is the OSI Model?</h2>
+    <p>
+      The OSI (Open Systems Interconnection) Model is a conceptual framework developed by ISO that standardizes the functions of a telecommunication or computing system into seven distinct layers. 
+      Each layer serves a specific role and communicates with the layers directly above and below it.
+    </p>
+
+    <h2>📚 OSI Model Layers (7 Layers)</h2>
+    <table>
+      <tr>
+        <th>Layer</th>
+        <th>Function</th>
+        <th>Examples</th>
+      </tr>
+      <tr>
+        <td><strong>7. Application</strong></td>
+        <td>Provides network services directly to user applications.</td>
+        <td>HTTP, FTP, SMTP, DNS</td>
+      </tr>
+      <tr>
+        <td><strong>6. Presentation</strong></td>
+        <td>Translates data formats, encrypts, and compresses data.</td>
+        <td>SSL/TLS, JPEG, MPEG</td>
+      </tr>
+      <tr>
+        <td><strong>5. Session</strong></td>
+        <td>Manages sessions (connections) between applications.</td>
+        <td>NetBIOS, RPC</td>
+      </tr>
+      <tr>
+        <td><strong>4. Transport</strong></td>
+        <td>Ensures reliable data transfer with error recovery and flow control.</td>
+        <td>TCP, UDP</td>
+      </tr>
+      <tr>
+        <td><strong>3. Network</strong></td>
+        <td>Handles logical addressing and routing of packets across networks.</td>
+        <td>IP, ICMP, IPsec</td>
+      </tr>
+      <tr>
+        <td><strong>2. Data Link</strong></td>
+        <td>Provides node-to-node data transfer and handles error detection/correction.</td>
+        <td>Ethernet, PPP, Switches</td>
+      </tr>
+      <tr>
+        <td><strong>1. Physical</strong></td>
+        <td>Transmits raw bits over a physical medium (cables, radio waves).</td>
+        <td>Cables, Hubs, Wi-Fi, Fiber</td>
+      </tr>
+    </table>
+
+    <h2>🔍 Deep Dive: Layer-wise Explanation</h2>
+    <ul>
+      <li><strong>Layer 7 - Application:</strong> User interacts with this layer. It enables services like browsing (HTTP) or email (SMTP).</li>
+      <li><strong>Layer 6 - Presentation:</strong> Converts data between machine formats and readable formats. Handles encryption (SSL/TLS) and compression.</li>
+      <li><strong>Layer 5 - Session:</strong> Manages dialog control and session restoration between applications.</li>
+      <li><strong>Layer 4 - Transport:</strong> Breaks data into segments, ensures error recovery, and controls flow. TCP provides reliability; UDP is faster but unreliable.</li>
+      <li><strong>Layer 3 - Network:</strong> Decides best path for data using IP addresses. Routers operate here.</li>
+      <li><strong>Layer 2 - Data Link:</strong> Manages MAC addresses, error detection (like CRC). Switches operate here.</li>
+      <li><strong>Layer 1 - Physical:</strong> Sends raw bits as electrical, light, or radio signals. Includes cables and physical ports.</li>
+    </ul>
+
+    <h2>🌐 What is the TCP/IP Model?</h2>
+    <p>
+      The TCP/IP (Transmission Control Protocol/Internet Protocol) Model is a practical framework used in real-world networks, including the Internet. 
+      It has 4 layers and is simpler than the OSI model.
+    </p>
+
+    <h2>📚 TCP/IP Model Layers (4 Layers)</h2>
+    <table>
+      <tr>
+        <th>Layer</th>
+        <th>Function</th>
+        <th>Examples</th>
+      </tr>
+      <tr>
+        <td><strong>4. Application</strong></td>
+        <td>Provides services directly to user applications.</td>
+        <td>HTTP, FTP, SMTP, DNS</td>
+      </tr>
+      <tr>
+        <td><strong>3. Transport</strong></td>
+        <td>Manages end-to-end communication and reliability.</td>
+        <td>TCP, UDP</td>
+      </tr>
+      <tr>
+        <td><strong>2. Internet</strong></td>
+        <td>Handles logical addressing and routing across networks.</td>
+        <td>IP, ICMP, ARP</td>
+      </tr>
+      <tr>
+        <td><strong>1. Network Access (Link)</strong></td>
+        <td>Manages data transfer between network devices and physical transmission.</td>
+        <td>Ethernet, Wi-Fi</td>
+      </tr>
+    </table>
+
+    <h2>🔄 OSI vs TCP/IP: Comparison</h2>
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>OSI Model</th>
+        <th>TCP/IP Model</th>
+      </tr>
+      <tr>
+        <td>Layers</td>
+        <td>7 Layers</td>
+        <td>4 Layers</td>
+      </tr>
+      <tr>
+        <td>Usage</td>
+        <td>Theoretical model, used for understanding</td>
+        <td>Practical model, used on the Internet</td>
+      </tr>
+      <tr>
+        <td>Layer Separation</td>
+        <td>Distinct Presentation and Session layers</td>
+        <td>Application layer handles Presentation & Session tasks</td>
+      </tr>
+      <tr>
+        <td>Development</td>
+        <td>Developed by ISO</td>
+        <td>Developed by DARPA (U.S. Dept of Defense)</td>
+      </tr>
+      <tr>
+        <td>Protocol Examples</td>
+        <td>Ideal protocols (not implemented directly)</td>
+        <td>TCP, IP, HTTP, FTP, etc.</td>
+      </tr>
+    </table>
+
+    <h2>✅ Real-world Example: Sending an Email</h2>
+    <ul>
+      <li><strong>Application Layer (OSI 7 / TCP-IP 4):</strong> User writes an email using an email client (SMTP protocol).</li>
+      <li><strong>Transport Layer (OSI 4 / TCP-IP 3):</strong> TCP divides the email into segments and ensures reliable delivery.</li>
+      <li><strong>Network Layer (OSI 3 / TCP-IP 2):</strong> IP assigns source and destination addresses and routes the data.</li>
+      <li><strong>Data Link & Physical Layer (OSI 2 & 1 / TCP-IP 1):</strong> Data frames are transmitted over Ethernet cables or Wi-Fi signals.</li>
+    </ul>
+
+    <h2>❓ Common Questions</h2>
+    <p><strong>Q: Why do we have two models (OSI and TCP/IP)?</strong></p>
+    <p>A: OSI is a teaching/reference model, while TCP/IP is the protocol suite that actually powers the Internet today.</p>
+
+    <p><strong>Q: Which model is used in real life?</strong></p>
+    <p>A: TCP/IP is used practically, but OSI helps understand concepts in depth.</p>
+
+    <p><strong>Q: Is TCP reliable?</strong></p>
+    <p>A: Yes, TCP ensures reliable delivery through acknowledgments and retransmission. UDP is faster but unreliable.</p>
+
+    <h2>🎯 Pro Tip</h2>
+    <p>Remember: "All People Seem To Need Data Processing" — a mnemonic for OSI's 7 layers from top to bottom (Application, Presentation, Session, Transport, Network, Data Link, Physical).</p>
+    <a href="{% url 'cn_course' %}" class="view-content-link">⬅ Back to Networking Course</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Git Version Control - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\devops_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Git Version Control</h1>
+    <p class="description">
+      Git is a distributed version control system that allows multiple developers to work on a project simultaneously, track changes, and collaborate efficiently.
+    </p>
+
+    <h2>🔎 What is Git?</h2>
+    <p>
+      Git is an open-source version control system (VCS) that helps track changes in source code during software development. It allows developers to manage different versions of a project and facilitates collaboration among multiple developers by tracking revisions and changes.
+    </p>
+
+    <h2>📊 Benefits of Using Git</h2>
+    <table>
+      <tr>
+        <th>Benefit</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Distributed Version Control</td>
+        <td>Every developer has their own local repository with a complete history of the project, making collaboration seamless even when offline.</td>
+      </tr>
+      <tr>
+        <td>Branching and Merging</td>
+        <td>Allows developers to work on different features in parallel by creating branches, which can later be merged back into the main project.</td>
+      </tr>
+      <tr>
+        <td>History Tracking</td>
+        <td>Git keeps track of every change made to the code, including who made the change and why, providing a detailed history.</td>
+      </tr>
+      <tr>
+        <td>Collaboration</td>
+        <td>Git enables seamless collaboration among multiple developers, allowing them to work on the same project without overwriting each other’s work.</td>
+      </tr>
+      <tr>
+        <td>Speed</td>
+        <td>Git is highly optimized for performance, especially when dealing with large projects or repositories.</td>
+      </tr>
+    </table>
+
+    <h2>🔄 Basic Git Commands</h2>
+    <table>
+      <tr>
+        <th>Command</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>git init</td>
+        <td>Initializes a new Git repository in the current directory.</td>
+      </tr>
+      <tr>
+        <td>git clone <i>url</i></td>
+        <td>Clones an existing repository from a remote server to your local machine.</td>
+      </tr>
+      <tr>
+        <td>git add <i>file</i></td>
+        <td>Adds changes to the staging area, preparing them to be committed.</td>
+      </tr>
+      <tr>
+        <td>git commit -m "message"</td>
+        <td>Commits the changes in the staging area to the repository with a commit message.</td>
+      </tr>
+      <tr>
+        <td>git push</td>
+        <td>Pushes local commits to the remote repository.</td>
+      </tr>
+      <tr>
+        <td>git pull</td>
+        <td>Fetches and merges changes from a remote repository to your local repository.</td>
+      </tr>
+      <tr>
+        <td>git branch</td>
+        <td>Lists, creates, or deletes branches in the repository.</td>
+      </tr>
+      <tr>
+        <td>git merge <i>branch</i></td>
+        <td>Merges the specified branch into the current branch.</td>
+      </tr>
+    </table>
+
+    <h2>⚙️ Git Workflows</h2>
+    <p>
+      Git workflows are strategies for managing branches and repositories. Below are the common Git workflows:
+    </p>
+    <ul>
+      <li><strong>Centralized Workflow:</strong> A single main branch, typically used in small teams or projects.</li>
+      <li><strong>Feature Branch Workflow:</strong> Developers create feature branches for each new feature, which are later merged into the main branch.</li>
+      <li><strong>Gitflow Workflow:</strong> A structured branching model where features, releases, and hotfixes have their dedicated branches.</li>
+      <li><strong>Forking Workflow:</strong> Used by open-source projects where contributors fork the project, make changes, and submit pull requests.</li>
+    </ul>
+
+    <h2>🔧 Git Best Practices</h2>
+    <ul>
+      <li>Commit often with clear and descriptive commit messages.</li>
+      <li>Use feature branches to isolate work on new features or bug fixes.</li>
+      <li>Pull frequently to keep your local repository updated with the remote repository.</li>
+      <li>Review pull requests before merging to ensure quality and consistency.</li>
+      <li>Don't commit sensitive data such as passwords or API keys. Use .gitignore to exclude such files.</li>
+    </ul>
+
+    <h2>📚 Popular Git Hosting Services</h2>
+    <table>
+      <tr>
+        <th>Service</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>GitHub</td>
+        <td>A cloud-based Git repository hosting service. Popular for open-source projects and collaboration.</td>
+      </tr>
+      <tr>
+        <td>GitLab</td>
+        <td>A web-based DevOps lifecycle tool that offers Git repository management along with CI/CD and monitoring.</td>
+      </tr>
+      <tr>
+        <td>Bitbucket</td>
+        <td>A Git-based platform for code collaboration, primarily used for private repositories and integrates with Jira.</td>
+      </tr>
+    </table>
+
+    <h2>✅ Git Workflow Example</h2>
+    <p>Let’s look at a typical Git workflow:</p>
+    <ul>
+      <li>Clone the repository using <code>git clone <i>repo-url</i></code></li>
+      <li>Create a new branch for your feature: <code>git checkout -b feature-name</code></li>
+      <li>Make changes and commit them: <code>git commit -m "Added feature"</code></li>
+      <li>Push your branch to the remote repository: <code>git push origin feature-name</code></li>
+      <li>Open a pull request (PR) for merging the feature into the main branch.</li>
+    </ul>
+
+    <h2>❓ Common Questions</h2>
+    <p><strong>Q: What is the difference between Git and GitHub?</strong></p>
+    <p>A: Git is a version control system, while GitHub is a platform to host Git repositories and facilitate collaboration.</p>
+
+    <p><strong>Q: What is a commit?</strong></p>
+    <p>A: A commit is a snapshot of changes made to files in a Git repository. It includes a message describing the change.</p>
+
+    <p><strong>Q: Can I undo a commit?</strong></p>
+    <p>A: Yes, you can use <code>git reset</code> or <code>git revert</code> to undo changes or commits.</p>
+
+    <h2>🎯 Pro Tip</h2>
+    <p>Always pull the latest changes from the main branch before starting new work to avoid conflicts.</p>
+
+    <a href="{% url 'devops_course' %}" class="view-content-link">⬅ Back to DevOps Course</a>
+  </div>
+</body>
+</html>

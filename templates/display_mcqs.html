@@ -1,0 +1,135 @@
+<!-- display_mcqs.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated MCQs - {{ topic }}</title>
+    <style>
+        /* General reset and styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f5f7fb;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            width: 85%;
+            max-width: 800px;
+            text-align: center;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            color: #4A90E2;
+            margin-bottom: 20px;
+        }
+
+        /* MCQ Card styling */
+        .mcq-card {
+            background: #f8f9fb;
+            border: 1px solid #e1e5ec;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .mcq-question {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .mcq-options {
+            margin-left: 20px;
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .mcq-options li {
+            padding: 12px;
+            background-color: #f1f4f8;
+            border-radius: 5px;
+            margin: 8px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .mcq-options li:hover {
+            background-color: #e6eff9;
+        }
+
+        /* Correct answer styles */
+        .correct-answer {
+            background-color: #4CAF50 !important;
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn {
+            background: #4A90E2;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Generated MCQs for {{ topic }}</h1>
+        
+        <!-- Displaying MCQs -->
+        <div id="mcqs-list">
+            {% if mcqs %}
+                {% for question in mcqs %}
+                    <div class="mcq-card">
+                        <div class="mcq-question">
+                            {{ question.question }}
+                        </div>
+                        <ul class="mcq-options">
+                            {% for option in question.options %}
+                                <li class="{% if option == question.correct_answer %}correct-answer{% endif %}">
+                                    {{ option }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <span>Topic: {{ question.topic }}</span>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No MCQs generated yet. Please enter a topic and generate the MCQs.</p>
+            {% endif %}
+        </div>
+
+        <a href="{% url 'create_test' %}" class="btn">Create another test</a>
+    </div>
+
+</body>
+</html>

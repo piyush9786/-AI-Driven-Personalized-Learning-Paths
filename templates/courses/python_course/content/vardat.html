@@ -1,0 +1,178 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Variables & Data Types - Python Course - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\python_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Variables & Data Types</h1>
+    <p class="description">
+      In Python, variables are used to store values, and the data type defines the type of value a variable can hold. Understanding how to properly use variables and their associated data types is crucial to writing Python programs effectively. This guide will help you understand the concept of variables, how to assign values, and how to use data types correctly.
+    </p>
+
+    <h2>🔎 What are Variables?</h2>
+    <p>
+      A <strong>variable</strong> in Python is a symbolic name that refers to a value. You can think of a variable as a container where you can store data, and later retrieve or modify that data. Unlike some programming languages, Python doesn't require you to declare a variable type before assigning a value; it infers the type based on the value you assign to the variable.
+    </p>
+    <p>
+      Example:
+      <code>age = 25</code> assigns the value 25 to the variable <code>age</code>.
+    </p>
+    <p>
+      Variables can hold data of any type and can be reassigned to a new value, regardless of the type of the original value. Python is dynamically typed, meaning that the type of a variable is determined at runtime.
+    </p>
+    <h3>Variable Naming Rules</h3>
+    <p>
+      When naming variables, follow these rules:
+    </p>
+    <ul>
+      <li>Variable names must begin with a letter (a-z, A-Z) or an underscore (_).</li>
+      <li>Variable names can include letters, numbers (0-9), and underscores, but they cannot start with a number.</li>
+      <li>Variable names are case-sensitive (e.g., <code>age</code> is different from <code>Age</code>).</li>
+      <li>Avoid using Python keywords and built-in function names as variable names (e.g., <code>class</code>, <code>def</code>, <code>print</code>).</li>
+    </ul>
+
+    <h2>📊 Data Types in Python</h2>
+    <p>
+      Python supports several built-in data types, each serving a different purpose. Understanding these data types will allow you to work with various kinds of data effectively. Here’s an overview of the most commonly used data types in Python.
+    </p>
+    
+    <h3>1. Numeric Types</h3>
+    <ul>
+      <li><strong>int</strong>: Integer numbers. These are whole numbers (positive or negative) without decimal points. Examples: <code>1</code>, <code>-23</code>, <code>0</code>.</li>
+      <li><strong>float</strong>: Floating-point numbers. These are real numbers that contain a decimal point. Examples: <code>3.14</code>, <code>-0.99</code>, <code>2.0</code>.</li>
+    </ul>
+    <p>
+      Example:
+      <pre>
+age = 25  <!-- int -->
+height = 5.8  <!-- float -->
+      </pre>
+    
+    <h3>2. Text Type</h3>
+    <ul>
+      <li><strong>str</strong>: A string is a sequence of characters enclosed in single, double, or triple quotes. Strings can hold text and also represent data like numbers, addresses, or even entire paragraphs of information. Examples: <code>"Hello"</code>, <code>'Python'</code>, <code>"""Welcome to LearnSmart"""</code>.</li>
+    </ul>
+    <p>
+      Example:
+      <pre>
+name = "Alice"  <!-- str -->
+message = 'Hello, World!'  <!-- str -->
+      </pre>
+    
+    <h3>3. Boolean Type</h3>
+    <ul>
+      <li><strong>bool</strong>: A boolean type can only have two values: <code>True</code> or <code>False</code>. Booleans are typically used for conditional statements and logic control (e.g., <code>if</code>, <code>while</code>). Examples: <code>True</code>, <code>False</code>.</li>
+    </ul>
+    <p>
+      Example:
+      <pre>
+is_active = True  <!-- bool -->
+is_sunny = False  <!-- bool -->
+      </pre>
+
+    <h3>4. Sequence Types</h3>
+    <ul>
+      <li><strong>list</strong>: A list is an ordered collection of items. Lists are mutable, meaning their content can be changed after creation. Lists can contain any type of data (e.g., numbers, strings, other lists). Examples: <code>[1, 2, 3]</code>, <code>["apple", "banana"]</code>.</li>
+      <li><strong>tuple</strong>: A tuple is similar to a list, but it is immutable, meaning once it is created, it cannot be modified. Examples: <code>(1, 2, 3)</code>, <code>("a", "b", "c")</code>.</li>
+    </ul>
+    <p>
+      Example:
+      <pre>
+numbers = [1, 2, 3, 4]  <!-- list -->
+coordinates = (4, 5)  <!-- tuple -->
+      </pre>
+
+    <h3>5. Set Type</h3>
+    <ul>
+      <li><strong>set</strong>: A set is an unordered collection of unique items. Sets are useful for eliminating duplicate values and performing mathematical operations like unions and intersections. Examples: <code>{1, 2, 3}</code>, <code>{"apple", "banana"}</code>.</li>
+    </ul>
+    <p>
+      Example:
+      <pre>
+unique_numbers = {1, 2, 3}  <!-- set -->
+fruits = {"apple", "banana"}  <!-- set -->
+      </pre>
+
+    <h3>6. Mapping Type</h3>
+    <ul>
+      <li><strong>dict</strong>: A dictionary is an unordered collection of key-value pairs. The keys are unique and are used to retrieve the corresponding values. Examples: <code>{"name": "Alice", "age": 25}</code>.</li>
+    </ul>
+    <p>
+      Example:
+      <pre>
+person = {"name": "Alice", "age": 25}  <!-- dict -->
+      </pre>
+
+    <h3>7. None Type</h3>
+    <ul>
+      <li><strong>None</strong>: The special value <code>None</code> represents the absence of a value or a null value. It is commonly used for default values or when a variable is intentionally left uninitialized.</li>
+    </ul>
+    <p>
+      Example:
+      <pre>
+result = None  <!-- None type -->
+      </pre>
+
+    <h2>📝 Assigning Values to Variables</h2>
+    <p>
+      Variables can be assigned values using the assignment operator <code>=</code>. In Python, you do not need to specify the type of data while declaring a variable. Python automatically identifies the type of data based on the value assigned to the variable.
+    </p>
+    <h3>Example:</h3>
+    <pre>
+x = 10  <!-- int -->
+name = "John"  <!-- str -->
+price = 15.75  <!-- float -->
+is_valid = True  <!-- bool -->
+      </pre>
+    
+    <h2>⚙️ Type Conversion</h2>
+    <p>
+      Sometimes, you need to convert between different data types. Python provides built-in functions to convert values from one data type to another.
+    </p>
+    <h3>Common Type Conversion Functions:</h3>
+    <ul>
+      <li><code>int()</code>: Converts a value to an integer (if possible). E.g., <code>int("10")</code> converts the string "10" to the integer 10.</li>
+      <li><code>float()</code>: Converts a value to a float. E.g., <code>float("3.14")</code> converts the string "3.14" to the float 3.14.</li>
+      <li><code>str()</code>: Converts a value to a string. E.g., <code>str(10)</code> converts the integer 10 to the string "10".</li>
+    </ul>
+    <p>
+      Example of Type Conversion:
+      <pre>
+age = "30"
+age_int = int(age)  <!-- Converts string "30" to int 30 -->
+height = 5.8
+height_str = str(height)  <!-- Converts float 5.8 to string "5.8" -->
+      </pre>
+
+    <h2>⚡ Common Operations on Variables</h2>
+    <p>Python allows various operations to be performed on variables depending on their data type. Here are some common operations:</p>
+    <ul>
+      <li><strong>Arithmetic operations</strong>: <code>+ - * / % // **</code> for numeric data types.</li>
+      <li><strong>String concatenation</strong>: Using <code>+</code> to combine strings: <code>"Hello " + "World"</code> results in <code>"Hello World"</code>.</li>
+      <li><strong>Membership operations</strong>: <code>in</code> checks if a value is present in a collection (list, tuple, set, or dictionary): <code>2 in [1, 2, 3]</code> returns <code>True</code>.</li>
+      <li><strong>Comparison operations</strong>: <code>== != &lt; &gt; &lt;= &gt;=</code> for comparing variables.</li>
+    </ul>
+
+    <h2>🧐 Common Questions</h2>
+    <p><strong>Q: Can a variable hold multiple data types?</strong></p>
+    <p>A: Yes, a variable can hold any data type. However, it can only hold one data type at a time. Python allows you to reassign a variable to a different type during execution.</p>
+
+    <p><strong>Q: How do I check the data type of a variable?</strong></p>
+    <p>A: You can check the data type of a variable using the <code>type()</code> function. Example: <code>type(age)</code> returns <code>&lt;class 'int'&gt;</code>.</p>
+
+    <p><strong>Q: What is the difference between mutable and immutable types?</strong></p>
+    <p>A: Immutable types cannot be modified after they are created (e.g., strings, tuples), whereas mutable types can be modified (e.g., lists, dictionaries).</p>
+
+    <h2>🎯 Pro Tip</h2>
+    <p>Use descriptive variable names that make your code easy to understand. Avoid using single-letter variables unless they are used for common conventions (e.g., <code>i</code> for loops).</p>
+
+    <a href="{% url 'python_course' %}" class="view-content-link">⬅ Back to Python Course</a>
+  </div>
+</body>
+</html>

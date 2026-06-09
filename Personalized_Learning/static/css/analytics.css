@@ -1,0 +1,97 @@
+/* Root & Layout */
+:root {
+    --primary-bg: #1a103d;
+    --card-bg: #24114d;
+    --text-color: #ffffff;
+    --accent-color: #00ffe0;
+    --inactive-color: #ff6b6b;
+    --highlight-color: #6c5ce7;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+  }
+  
+  /* Main Layout */
+  .main-content {
+    padding: 2rem;
+    max-width: 100%;
+  }
+  
+  h1 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+  }
+  
+  /* Analytics Cards */
+  .analytics-overview {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+  
+  .analytics-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    flex: 1 1 200px;
+    min-width: 250px;
+    box-shadow: 0 0 10px rgba(0, 255, 224, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .analytics-card:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+  
+  
+  .analytics-card h2 {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--accent-color);
+  }
+  
+  .analytics-card small {
+    color: #ccc;
+    display: block;
+    margin-top: 0.3rem;
+  }
+  
+  /* Chart Section */
+  .charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+  }
+  
+  /* Chart Containers */
+  .chart-box {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  }
+  
+  .chart-box h3 {
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Tooltip override for Chart.js */
+  .chartjs-tooltip {
+    color: #000;
+    background: var(--accent-color);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+  

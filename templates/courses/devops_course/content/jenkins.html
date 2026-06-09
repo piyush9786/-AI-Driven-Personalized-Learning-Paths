@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Continuous Integration with Jenkins - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\devops_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Continuous Integration with Jenkins</h1>
+    <p class="description">
+      Continuous Integration (CI) is a key practice in modern DevOps that ensures code is integrated frequently and consistently. Jenkins is one of the most popular open-source tools for implementing CI.
+    </p>
+
+    <h2>🔎 What is Continuous Integration?</h2>
+    <p>
+      Continuous Integration is a development practice where developers integrate code into a shared repository frequently, usually multiple times a day. Automated builds and tests are run on each integration to detect issues early, ensuring that the software is always in a deployable state.
+    </p>
+
+    <h2>📊 Benefits of Continuous Integration</h2>
+    <table>
+      <tr>
+        <th>Benefit</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Faster Detection of Bugs</td>
+        <td>By integrating code frequently, issues are detected early, reducing the time to fix bugs.</td>
+      </tr>
+      <tr>
+        <td>Improved Software Quality</td>
+        <td>Automated tests run on every integration ensure that the code meets quality standards.</td>
+      </tr>
+      <tr>
+        <td>Reduced Integration Problems</td>
+        <td>Smaller, more frequent changes prevent large, difficult-to-debug issues that occur in large integrations.</td>
+      </tr>
+      <tr>
+        <td>Faster Development</td>
+        <td>Automation of repetitive tasks like testing and building speeds up the development process.</td>
+      </tr>
+      <tr>
+        <td>Better Collaboration</td>
+        <td>CI encourages collaboration among team members by ensuring the code is constantly integrated and tested.</td>
+      </tr>
+    </table>
+
+    <h2>🔄 Jenkins Overview</h2>
+    <p>
+      Jenkins is an open-source automation server used to implement Continuous Integration and Continuous Delivery (CI/CD). It provides a robust, extensible, and highly customizable platform to automate repetitive tasks like testing, building, and deployment of code.
+    </p>
+
+    <h2>📚 Key Features of Jenkins</h2>
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Automation</td>
+        <td>Automates the entire CI/CD pipeline, including build, test, and deployment processes.</td>
+      </tr>
+      <tr>
+        <td>Extensibility</td>
+        <td>Supports a wide range of plugins for integration with various tools like Git, Docker, Maven, etc.</td>
+      </tr>
+      <tr>
+        <td>Distributed Builds</td>
+        <td>Supports distributed build environments, allowing Jenkins to manage builds on multiple machines simultaneously.</td>
+      </tr>
+      <tr>
+        <td>Real-Time Monitoring</td>
+        <td>Offers a detailed, real-time view of your CI/CD pipeline, including build status, history, and logs.</td>
+      </tr>
+    </table>
+
+    <h2>🔧 Jenkins Workflow</h2>
+    <p>
+      A typical Jenkins CI workflow involves the following steps:
+    </p>
+    <ul>
+      <li><strong>Code Commit:</strong> Developers commit code to the version control system (e.g., Git).</li>
+      <li><strong>Jenkins Build Trigger:</strong> Jenkins automatically detects the new commit and triggers the build process.</li>
+      <li><strong>Build Process:</strong> Jenkins fetches the code, compiles it, and runs automated tests (unit tests, integration tests).</li>
+      <li><strong>Test Execution:</strong> Automated test suites run to ensure code quality.</li>
+      <li><strong>Build Status Report:</strong> Jenkins provides feedback on the build status (success or failure) to the team.</li>
+      <li><strong>Deployment:</strong> If the build is successful, Jenkins can deploy the code to the staging or production environment.</li>
+    </ul>
+
+    <h2>⚙️ Setting Up Jenkins</h2>
+    <p>Follow these steps to set up Jenkins for Continuous Integration:</p>
+    <ol>
+      <li><strong>Install Jenkins:</strong> Download and install Jenkins on your server (Windows, macOS, or Linux).</li>
+      <li><strong>Install Required Plugins:</strong> Jenkins supports a wide range of plugins for version control, build tools, testing frameworks, etc. Popular plugins include Git, Maven, Gradle, JUnit, and Docker.</li>
+      <li><strong>Create a New Job:</strong> Jenkins jobs are the tasks that define your build process. Create a new job (e.g., Freestyle project or Pipeline).</li>
+      <li><strong>Configure the Job:</strong> Set up version control (Git), build triggers (e.g., commit pushes), and build scripts (e.g., Maven or Gradle).</li>
+      <li><strong>Run the Job:</strong> Trigger the job manually or set it up to run automatically with each code commit or at scheduled intervals.</li>
+    </ol>
+
+    <h2>⚙️ Common Jenkins Commands</h2>
+    <table>
+      <tr>
+        <th>Command</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>java -jar jenkins.war</td>
+        <td>Starts Jenkins server (run in terminal/command prompt).</td>
+      </tr>
+      <tr>
+        <td>curl -X GET http://localhost:8080</td>
+        <td>Checks if Jenkins is running locally.</td>
+      </tr>
+      <tr>
+        <td>git clone <i>repo-url</i></td>
+        <td>Clones the repository to your local machine for Jenkins to build.</td>
+      </tr>
+      <tr>
+        <td>mvn clean install</td>
+        <td>Builds the project using Maven.</td>
+      </tr>
+      <tr>
+        <td>docker build -t <i>image-name</i></td>
+        <td>Builds a Docker image for your project.</td>
+      </tr>
+    </table>
+
+    <h2>📚 Jenkins Pipelines</h2>
+    <p>
+      Jenkins Pipelines are an advanced feature that allow for defining your entire build, test, and deployment process as code. Pipelines use a Domain-Specific Language (DSL) that allows you to configure CI/CD workflows programmatically.
+    </p>
+    <ul>
+      <li><strong>Declarative Pipeline:</strong> A simple and structured way to define your Jenkins pipeline with stages like build, test, and deploy.</li>
+      <li><strong>Scripted Pipeline:</strong> Offers full flexibility and customization by using Groovy scripts for more complex workflows.</li>
+    </ul>
+
+    <h2>✅ Jenkins Best Practices</h2>
+    <ul>
+      <li>Ensure your pipeline is idempotent—each execution should produce the same result regardless of the previous state.</li>
+      <li>Use version control (e.g., Git) for Jenkinsfiles and pipeline configurations.</li>
+      <li>Regularly clean up old Jenkins jobs to avoid system overload.</li>
+      <li>Monitor your Jenkins environment and set up alerts for failed builds or any system errors.</li>
+      <li>Use parallel execution for faster builds when possible, especially in large projects.</li>
+    </ul>
+
+    <h2>❓ Common Jenkins Questions</h2>
+    <p><strong>Q: What is the difference between Jenkins Freestyle project and Jenkins Pipeline?</strong></p>
+    <p>A: A Freestyle project is a simple job configuration, whereas a Jenkins Pipeline provides a more flexible and scalable solution, enabling you to define the build, test, and deployment process in code.</p>
+
+    <p><strong>Q: Can Jenkins integrate with Docker?</strong></p>
+    <p>A: Yes, Jenkins can integrate with Docker for building, testing, and deploying applications using Docker containers.</p>
+
+    <p><strong>Q: How do I monitor Jenkins performance?</strong></p>
+    <p>A: Jenkins provides built-in monitoring features like job logs and status pages. Additionally, you can integrate Jenkins with monitoring tools like Prometheus for real-time performance tracking.</p>
+
+    <h2>🎯 Pro Tip</h2>
+    <p>Master <strong>Jenkins Pipelines</strong> and <strong>Jenkinsfiles</strong>—these will enable you to define complex CI/CD workflows programmatically and scale your automation efforts.</p>
+
+    <a href="{% url 'devops_course' %}" class="view-content-link">⬅ Back to DevOps Course</a>
+  </div>
+</body>
+</html>

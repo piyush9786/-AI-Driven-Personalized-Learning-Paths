@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CI/CD - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\devops_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Continuous Integration and Continuous Delivery (CI/CD)</h1>
+    <p class="description">
+      CI/CD is a software development practice that allows development teams to automatically test, build, and deploy applications. It reduces the time required to deliver new features, updates, and fixes by automating the steps between code development and deployment.
+    </p>
+
+    <h2>🔍 What is CI/CD?</h2>
+    <p>
+      CI/CD stands for Continuous Integration (CI) and Continuous Delivery (CD). CI is the practice of frequently integrating code into a shared repository, where it is automatically tested. CD is the practice of automatically deploying this code to production or staging environments once it's tested successfully.
+    </p>
+
+    <h2>🚀 Benefits of CI/CD</h2>
+    <table>
+      <tr>
+        <th>Benefit</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Faster Development</td>
+        <td>Automates integration, testing, and deployment processes, leading to faster delivery of features.</td>
+      </tr>
+      <tr>
+        <td>Improved Quality</td>
+        <td>Automated tests ensure that code is of high quality, reducing bugs and errors.</td>
+      </tr>
+      <tr>
+        <td>Reduced Risk</td>
+        <td>Small, frequent updates make it easier to identify and fix issues quickly, reducing the risk of failure.</td>
+      </tr>
+      <tr>
+        <td>Enhanced Collaboration</td>
+        <td>CI/CD promotes collaboration between development, testing, and operations teams.</td>
+      </tr>
+    </table>
+
+    <h2>💡 Continuous Integration (CI)</h2>
+    <p>
+      Continuous Integration involves automatically integrating code changes into a shared repository several times a day. The changes are automatically tested to ensure that the new code doesn't break the existing application.
+    </p>
+
+    <h3>📦 CI Workflow</h3>
+    <ul>
+      <li><strong>Developer commits code</strong> to the version control system (e.g., Git).</li>
+      <li><strong>Build server (e.g., Jenkins)</strong> automatically detects the commit and starts the build process.</li>
+      <li><strong>Automated tests</strong> (unit tests, integration tests) run to validate the changes.</li>
+      <li><strong>Code coverage</strong> tools ensure that all relevant code paths are tested.</li>
+      <li><strong>If tests pass</strong>, the code is merged into the main branch and can be deployed to staging.</li>
+    </ul>
+
+    <h2>🔧 Continuous Delivery (CD)</h2>
+    <p>
+      Continuous Delivery extends CI by automatically deploying the tested code to a staging or production environment, ensuring that the application is always in a deployable state.
+    </p>
+
+    <h3>🚀 CD Workflow</h3>
+    <ul>
+      <li><strong>Code from CI</strong> (after passing tests) is deployed to staging environments.</li>
+      <li><strong>Staging deployment</strong> allows QA teams to manually verify the changes.</li>
+      <li><strong>Automated deployment</strong> can occur to production if everything passes the tests and approval processes.</li>
+      <li><strong>Monitoring tools</strong> check for issues after deployment and automatically alert the team for any failures.</li>
+    </ul>
+
+    <h2>📚 Key Tools for CI/CD</h2>
+    <table>
+      <tr>
+        <th>Category</th>
+        <th>Examples</th>
+      </tr>
+      <tr>
+        <td>Version Control</td>
+        <td>Git, GitHub, GitLab</td>
+      </tr>
+      <tr>
+        <td>CI Tools</td>
+        <td>Jenkins, GitHub Actions, CircleCI, Travis CI</td>
+      </tr>
+      <tr>
+        <td>CD Tools</td>
+        <td>Argo CD, Spinnaker, Kubernetes, AWS CodePipeline</td>
+      </tr>
+      <tr>
+        <td>Testing Frameworks</td>
+        <td>Selenium, JUnit, Mocha, Jest</td>
+      </tr>
+      <tr>
+        <td>Containerization</td>
+        <td>Docker, Kubernetes</td>
+      </tr>
+    </table>
+
+    <h2>🎯 Example CI/CD Pipeline</h2>
+    <p>Here’s an example of a CI/CD pipeline:</p>
+    <ul>
+      <li><strong>Code Commit:</strong> Developer pushes code to the GitHub repository.</li>
+      <li><strong>CI Stage:</strong> Jenkins picks up the commit and triggers the build process.</li>
+      <li><strong>Build & Test:</strong> Code is compiled, unit tests are executed, and integration tests are run.</li>
+      <li><strong>Deployment to Staging:</strong> After passing all tests, code is deployed to a staging environment.</li>
+      <li><strong>Manual Approval:</strong> QA team manually verifies the changes in the staging environment.</li>
+      <li><strong>CD Stage:</strong> If approved, the code is deployed automatically to production.</li>
+      <li><strong>Monitoring:</strong> Tools like Prometheus or Grafana monitor the application for any issues.</li>
+    </ul>
+
+    <h2>⚙️ Best Practices in CI/CD</h2>
+    <ul>
+      <li>Automate the entire pipeline to reduce manual errors.</li>
+      <li>Use feature flags for easier control of which features are enabled in production.</li>
+      <li>Keep the pipeline fast; a long pipeline can delay the feedback loop.</li>
+      <li>Use versioned artifacts to ensure reproducibility of builds.</li>
+      <li>Implement canary deployments or blue-green deployments for safer production rollouts.</li>
+    </ul>
+
+    <h2>✅ CI/CD Challenges</h2>
+    <ul>
+      <li>Managing large and complex pipelines with multiple environments.</li>
+      <li>Ensuring proper testing at each stage of the pipeline.</li>
+      <li>Handling failures in the pipeline effectively without impacting the delivery process.</li>
+      <li>Maintaining a balance between automation and manual testing when necessary.</li>
+    </ul>
+
+    <h2>❓ Common Questions</h2>
+    <p><strong>Q: What’s the difference between CI and CD?</strong></p>
+    <p>A: CI is the practice of automatically testing and integrating code changes into a shared repository, while CD automates the delivery and deployment of this code to production or staging environments.</p>
+
+    <p><strong>Q: Do we need manual intervention in CI/CD?</strong></p>
+    <p>A: While most steps can be automated, manual intervention may be required for tasks like code review, approval for production releases, or complex testing scenarios.</p>
+
+    <h2>🎯 Pro Tip</h2>
+    <p>Start small with a simple pipeline and gradually automate more steps as your process matures. It’s essential to ensure that the pipeline is fast and efficient to maintain developer productivity.</p>
+
+    <a href="{% url 'devops_course' %}" class="view-content-link">⬅ Back to DevOps Course</a>
+  </div>
+</body>
+</html>

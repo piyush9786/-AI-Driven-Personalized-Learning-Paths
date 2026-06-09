@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Introduction to DevOps - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\devops_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Introduction to DevOps</h1>
+    <p class="description">
+      DevOps stands for Development and Operations. It's a set of practices that combines software development (Dev) and IT operations (Ops) aimed at shortening the development lifecycle and providing continuous delivery with high software quality.
+    </p>
+
+    <h2>🔎 What is DevOps?</h2>
+    <p>
+      DevOps is not a tool or framework; it's a cultural shift where development and operations teams collaborate more effectively. The main goal is to improve deployment frequency, achieve faster time to market, lower failure rate of new releases, and shorten the lead time between fixes.
+    </p>
+
+    <h2>🏗️ Why DevOps is Needed?</h2>
+    <ul>
+      <li>Traditionally, Development and Operations worked in silos.</li>
+      <li>Development team focuses on writing code, while Operations team focuses on stability.</li>
+      <li>This gap led to longer release cycles and poor communication.</li>
+      <li>DevOps bridges this gap, ensuring faster delivery with better collaboration and fewer bugs.</li>
+    </ul>
+
+   <h2>📊 Benefits of DevOps</h2>
+<table>
+  <tr>
+    <th>Benefit</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Faster Delivery</td>
+    <td>Enables frequent releases and faster time-to-market with continuous integration and delivery pipelines.</td>
+  </tr>
+  <tr>
+    <td>Better Collaboration</td>
+    <td>Bridges the gap between development and operations teams through shared responsibilities.</td>
+  </tr>
+  <tr>
+    <td>Improved Quality</td>
+    <td>Automated testing and monitoring improve software quality, reducing human errors.</td>
+  </tr>
+  <tr>
+    <td>Scalability</td>
+    <td>Helps scale infrastructure through Infrastructure as Code (IaC) practices.</td>
+  </tr>
+  <tr>
+    <td>Continuous Feedback</td>
+    <td>Monitoring tools provide real-time feedback from production, enabling quick fixes.</td>
+  </tr>
+</table>
+
+
+    <h2>🔄 DevOps Lifecycle</h2>
+    <p>The DevOps lifecycle consists of the following phases:</p>
+    <ul>
+      <li><strong>1. Plan:</strong> Requirements are gathered and planned.</li>
+      <li><strong>2. Develop:</strong> Code is written using version control systems like Git.</li>
+      <li><strong>3. Build:</strong> Code is built using build tools (Maven, Gradle).</li>
+      <li><strong>4. Test:</strong> Automated testing frameworks validate the code (Selenium, JUnit).</li>
+      <li><strong>5. Release:</strong> Software is packaged and released.</li>
+      <li><strong>6. Deploy:</strong> Deployed on production environments using tools like Kubernetes or AWS.</li>
+      <li><strong>7. Operate:</strong> The application is monitored for performance and uptime.</li>
+      <li><strong>8. Monitor:</strong> Logs and metrics are analyzed using tools like Prometheus, Grafana.</li>
+    </ul>
+
+    <h2>⚙️ Key Practices in DevOps</h2>
+    <ul>
+      <li>🔧 <strong>Continuous Integration (CI):</strong> Code changes are integrated frequently and tested automatically.</li>
+      <li>🚀 <strong>Continuous Delivery (CD):</strong> Code is automatically delivered to production-ready environments.</li>
+      <li>📦 <strong>Infrastructure as Code (IaC):</strong> Infrastructure setup is managed using code (Terraform, Ansible).</li>
+      <li>📝 <strong>Automated Testing:</strong> Ensures quality with unit tests, integration tests, and end-to-end tests.</li>
+      <li>📊 <strong>Monitoring and Logging:</strong> Proactively identify issues through log analysis and monitoring dashboards.</li>
+    </ul>
+
+   <h2>📚 Popular DevOps Tools</h2>
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Examples</th>
+  </tr>
+  <tr>
+    <td>Version Control</td>
+    <td>Git, GitHub, GitLab</td>
+  </tr>
+  <tr>
+    <td>CI/CD</td>
+    <td>Jenkins, GitHub Actions, CircleCI</td>
+  </tr>
+  <tr>
+    <td>Containerization</td>
+    <td>Docker, Podman</td>
+  </tr>
+  <tr>
+    <td>Orchestration</td>
+    <td>Kubernetes, OpenShift</td>
+  </tr>
+  <tr>
+    <td>Monitoring</td>
+    <td>Prometheus, Grafana, ELK Stack</td>
+  </tr>
+  <tr>
+    <td>IaC</td>
+    <td>Terraform, Ansible, Pulumi</td>
+  </tr>
+</table>
+
+
+
+    <h2>🚀 Example DevOps Workflow</h2>
+    <p>Let’s look at a real-world scenario:</p>
+    <ul>
+      <li>Developer pushes code to <strong>GitHub</strong>.</li>
+      <li><strong>Jenkins</strong> detects the push and starts CI pipeline.</li>
+      <li>Code is built using <strong>Maven</strong> and tested with <strong>JUnit</strong>.</li>
+      <li><strong>Docker</strong> creates a container image.</li>
+      <li>Image is deployed on <strong>Kubernetes</strong>.</li>
+      <li><strong>Prometheus</strong> and <strong>Grafana</strong> monitor application health.</li>
+    </ul>
+
+    <h2>✅ Advantages Over Traditional Development</h2>
+    <ul>
+      <li>Shorter development cycles</li>
+      <li>More frequent deployments</li>
+      <li>Reduced failure rate of releases</li>
+      <li>Quicker recovery from failures</li>
+    </ul>
+
+    <h2>❓ Common Questions</h2>
+    <p><strong>Q: Is DevOps a tool?</strong></p>
+    <p>A: No, DevOps is a culture and practice, supported by various tools.</p>
+
+    <p><strong>Q: Is coding required for DevOps?</strong></p>
+    <p>A: Yes, basic scripting knowledge (Bash, Python) and familiarity with automation tools is essential.</p>
+
+    <p><strong>Q: Can DevOps be applied in all projects?</strong></p>
+    <p>A: Yes, but it's most beneficial in projects requiring frequent releases and scalability.</p>
+
+    <h2>🎯 Pro Tip</h2>
+    <p>Learn <strong>Git</strong> and <strong>Docker</strong> deeply. These are the most fundamental tools in the DevOps world. Mastering them gives you a solid head start!</p>
+
+   <a href="{% url 'devops_course' %}" class="view-content-link">⬅ Back to DevOps Course</a>
+  </div>
+</body>
+</html>

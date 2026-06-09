@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>My Notes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      border-bottom: 1px solid #333;
+      background-color: #121212;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .top-bar h2 {
+      color: #00ffcc;
+      font-size: 1.5rem;
+      text-align: center;
+      flex: 1;
+      margin: 0;
+    }
+
+    .back-btn {
+      background-color: #333;
+      color: #f1f1f1;
+      border: 1px solid #555;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #444;
+    }
+
+    .top-bar .spacer {
+      width: 120px; /* Equal to .back-btn width to center title visually */
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .note {
+      background: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.1);
+    }
+
+    .timestamp {
+      font-size: 0.85em;
+      color: #bbbbbb;
+      margin-bottom: 8px;
+    }
+
+    p {
+      text-align: center;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-bar">
+    <a href="{% url 'chatbot' %}" class="back-btn">⬅ Back to Chat</a>
+    <h2>My Saved Notes</h2>
+    <div class="spacer"></div> <!-- Placeholder to balance the layout -->
+  </div>
+
+  <div class="container">
+    {% for note in notes %}
+    <div class="note">
+      <div class="timestamp">{{ note.created_at }}</div>
+      <div>{{ note.content|linebreaksbr }}</div>
+    </div>
+    {% empty %}
+    <p>You haven't saved any notes yet.</p>
+    {% endfor %}
+  </div>
+
+</body>
+
+</html>

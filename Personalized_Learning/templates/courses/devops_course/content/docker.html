@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Docker and Containerization - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\devops_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Docker and Containerization</h1>
+    <p class="description">
+      Docker is an open-source platform that enables developers to automate the deployment of applications inside lightweight, portable containers. Containerization encapsulates an application with all its dependencies into a single package, making it easy to deploy across various environments.
+    </p>
+
+    <h2>🔎 What is Docker?</h2>
+    <p>
+      Docker is a platform that allows you to package applications and their dependencies into a standardized unit called a "container". Containers are lightweight, portable, and isolated from the underlying infrastructure, making them ideal for continuous integration, deployment, and scalability.
+    </p>
+
+    <h2>📊 Benefits of Docker and Containerization</h2>
+    <table>
+      <tr>
+        <th>Benefit</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Portability</td>
+        <td>Containers encapsulate applications with their environment, allowing them to run consistently across different systems (dev, staging, production).</td>
+      </tr>
+      <tr>
+        <td>Scalability</td>
+        <td>Docker containers can be easily replicated or scaled horizontally, allowing applications to handle increased traffic without performance degradation.</td>
+      </tr>
+      <tr>
+        <td>Isolation</td>
+        <td>Each container is isolated from the host system and other containers, preventing conflicts and allowing multiple versions of the same application to run concurrently.</td>
+      </tr>
+      <tr>
+        <td>Faster Deployment</td>
+        <td>Docker allows for faster deployment by packaging all dependencies, reducing the time needed to install and configure components.</td>
+      </tr>
+      <tr>
+        <td>Consistency</td>
+        <td>Docker ensures that the application will run the same way across different environments, reducing the “it works on my machine” problem.</td>
+      </tr>
+    </table>
+
+    <h2>📚 Docker Key Concepts</h2>
+    <p>Here are some essential Docker concepts:</p>
+    <ul>
+      <li><strong>Docker Image:</strong> A read-only template that contains the instructions to create a Docker container. It includes the application and all dependencies.</li>
+      <li><strong>Docker Container:</strong> A running instance of a Docker image. Containers are isolated and can run on any system with Docker installed.</li>
+      <li><strong>Dockerfile:</strong> A script containing instructions for building a Docker image. It defines the environment, dependencies, and actions needed to run the application.</li>
+      <li><strong>Docker Registry:</strong> A repository for storing Docker images. Docker Hub is the default public registry, but private registries can also be set up.</li>
+    </ul>
+
+    <h2>⚙️ How Docker Works</h2>
+    <p>Docker uses a client-server architecture to manage containers. Here's how it works:</p>
+    <ul>
+      <li><strong>Docker Client:</strong> The user interacts with the Docker client, which sends commands to the Docker daemon.</li>
+      <li><strong>Docker Daemon:</strong> The Docker daemon is responsible for managing containers, images, networks, and volumes. It listens for requests from the Docker client and performs operations like starting, stopping, or building containers.</li>
+      <li><strong>Docker Images:</strong> When the client requests to create a container, the daemon uses Docker images to create an isolated container for the application.</li>
+      <li><strong>Docker Containers:</strong> Containers are the execution environment for your application, and they can communicate with each other and the host system.</li>
+    </ul>
+
+    <h2>🔧 Docker Commands</h2>
+    <table>
+      <tr>
+        <th>Command</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>docker run <i>image-name</i></td>
+        <td>Runs a container from the specified Docker image.</td>
+      </tr>
+      <tr>
+        <td>docker build -t <i>image-name</i> .</td>
+        <td>Builds a Docker image from a Dockerfile in the current directory.</td>
+      </tr>
+      <tr>
+        <td>docker ps</td>
+        <td>Lists all currently running containers.</td>
+      </tr>
+      <tr>
+        <td>docker stop <i>container-id</i></td>
+        <td>Stops a running container.</td>
+      </tr>
+      <tr>
+        <td>docker pull <i>image-name</i></td>
+        <td>Downloads a Docker image from a registry (e.g., Docker Hub).</td>
+      </tr>
+      <tr>
+        <td>docker exec -it <i>container-id</i> <i>command</i></td>
+        <td>Executes a command inside a running container (e.g., to access a container’s shell).</td>
+      </tr>
+    </table>
+
+    <h2>🚀 Creating and Running Docker Containers</h2>
+    <p>To create a Docker container, follow these steps:</p>
+    <ol>
+      <li><strong>Step 1:</strong> Create a Dockerfile for your application. The Dockerfile defines how to build the Docker image.</li>
+      <li><strong>Step 2:</strong> Build the Docker image by running the command: <code>docker build -t my-app .</code></li>
+      <li><strong>Step 3:</strong> Run the Docker container with the command: <code>docker run -d -p 8080:8080 my-app</code>. This runs your app in the background and maps port 8080 of the container to port 8080 on the host.</li>
+      <li><strong>Step 4:</strong> Access the application by navigating to <code>http://localhost:8080</code> (assuming the app runs on port 8080).</li>
+    </ol>
+
+    <h2>🔄 Docker Compose</h2>
+    <p>Docker Compose is a tool used to define and run multi-container Docker applications. It allows you to use a simple YAML file to configure your application's services, networks, and volumes.</p>
+    <p>Here’s a simple example of a <code>docker-compose.yml</code> file:</p>
+    <pre>
+      version: '3'
+      services:
+        web:
+          image: nginx
+          ports:
+            - "8080:80"
+        db:
+          image: postgres
+          environment:
+            POSTGRES_PASSWORD: example
+    </pre>
+    <p>In this example, Docker Compose will run an Nginx web server and a Postgres database as separate containers.</p>
+
+    <h2>📚 Docker Networking</h2>
+    <p>Docker provides several networking options for containers:</p>
+    <ul>
+      <li><strong>Bridge Network:</strong> Default network for containers. It allows containers on the same host to communicate with each other.</li>
+      <li><strong>Host Network:</strong> The container shares the host’s network stack, making it useful for performance-sensitive applications.</li>
+      <li><strong>Overlay Network:</strong> Used for multi-host communication when containers are running on different Docker hosts (e.g., in Docker Swarm mode).</li>
+      <li><strong>None Network:</strong> Containers have no network interface and cannot communicate with the outside world.</li>
+    </ul>
+
+    <h2>✅ Best Practices for Docker</h2>
+    <ul>
+      <li>Keep your Docker images small by using multi-stage builds and minimizing the number of layers in the Dockerfile.</li>
+      <li>Use the official images from Docker Hub, as they are optimized and maintained regularly.</li>
+      <li>Don’t run containers as root—use non-privileged users for better security.</li>
+      <li>Use volumes for persistent storage to ensure data is not lost when containers are removed or recreated.</li>
+      <li>Regularly update your Docker images to keep up with security patches and updates.</li>
+    </ul>
+
+    <h2>❓ Common Docker Questions</h2>
+    <p><strong>Q: What is the difference between a Docker image and a Docker container?</strong></p>
+    <p>A: A Docker image is a blueprint for creating containers. It is a read-only template containing all the dependencies needed to run an application. A Docker container is a running instance of a Docker image, isolated from other containers and the host system.</p>
+
+    <p><strong>Q: Can Docker run on any operating system?</strong></p>
+    <p>A: Docker can run on Linux, macOS, and Windows. On Windows and macOS, Docker runs inside a virtual machine due to the underlying differences in OS kernel architectures.</p>
+
+    <p><strong>Q: What is Docker Swarm?</strong></p>
+    <p>A: Docker Swarm is a native clustering tool for Docker that allows you to manage a cluster of Docker hosts as a single virtual machine. It provides high availability, load balancing, and scaling for containerized applications.</p>
+
+    <h2>🎯 Pro Tip</h2>
+    <p>Master the <strong>Dockerfile</strong> syntax and the concept of <strong>multi-stage builds</strong> to optimize your Docker images and containers for performance and size.</p>
+
+   <a href="{% url 'devops_course' %}" class="view-content-link">⬅ Back to DevOps Course</a>
+  </div>
+</body>
+</html>

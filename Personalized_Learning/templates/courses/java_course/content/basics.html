@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Basics & Data Types - Java Course</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\java_css.css' %}"> <!-- Linked CSS file -->
+</head>
+<body>
+  <div class="container">
+    <h1>Basics & Data Types</h1>
+    <p><strong>Introduction:</strong> Java offers a rich set of data types...</p>
+
+    <p><strong>Primitive Data Types:</strong></p>
+    <ul>
+      <li><strong>byte</strong> (8-bit) - Range: -128 to 127</li>
+      <li><strong>short</strong> (16-bit) - Range: -32,768 to 32,767</li>
+      <li><strong>int</strong> (32-bit) - Range: -2,147,483,648 to 2,147,483,647</li>
+      <li><strong>long</strong> (64-bit) - Range: very large integers</li>
+      <li><strong>float</strong> (32-bit) - Decimal numbers, e.g., 3.14f</li>
+      <li><strong>double</strong> (64-bit) - More precise decimal numbers</li>
+      <li><strong>char</strong> (16-bit) - Single character, e.g., 'A'</li>
+      <li><strong>boolean</strong> - true or false</li>
+    </ul>
+
+    <p><strong>Variables Example:</strong></p>
+    <pre>
+int myNum = 5;              // Integer (whole number)
+float myFloat = 5.99f;      // Floating point number
+char myLetter = 'D';        // Character
+boolean isJavaFun = true;   // Boolean
+    </pre>
+
+    <p><strong>Type Casting:</strong> Converting between types...</p>
+    <pre>
+int myInt = 9;
+double myDouble = myInt;  // Automatic casting: int to double
+
+// Manual casting
+double myDouble2 = 9.78;
+int myInt2 = (int) myDouble2;  // Narrowing conversion
+    </pre>
+
+    <p><strong>Strings:</strong> A non-primitive but vital data type to handle text.</p>
+    <pre>
+String greeting = "Hello, World!";
+System.out.println(greeting);
+    </pre>
+
+    <p><strong>Additional Tip:</strong> Always choose the data type that best fits the value range and memory efficiency...</p>
+
+   <a href="{% url 'java_course' %}" class="view-content-link">⬅ Back to Java Course</a>
+  </div>
+</body>
+</html>

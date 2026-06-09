@@ -1,0 +1,141 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Introduction to Operating Systems - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\os_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Introduction to Operating Systems</h1>
+    <p class="description">
+      An <strong>Operating System (OS)</strong> is a system software that manages computer hardware and software resources and provides services for computer programs. It acts as a bridge between users and the computer hardware.
+    </p>
+
+    <h2>🔎 What is an Operating System?</h2>
+    <p>
+      The OS is responsible for resource management, user interaction, and running applications. Without an operating system, a user cannot interact with the computer hardware directly.
+    </p>
+
+    <h2>📊 Why Operating Systems are Important?</h2>
+    <table>
+      <tr>
+        <th>Function</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Resource Management</td>
+        <td>Manages CPU, memory, storage, and I/O devices efficiently.</td>
+      </tr>
+      <tr>
+        <td>User Interface</td>
+        <td>Provides CLI or GUI to allow users to interact with the system.</td>
+      </tr>
+      <tr>
+        <td>Multitasking</td>
+        <td>Enables multiple programs to run at the same time without conflict.</td>
+      </tr>
+      <tr>
+        <td>Security</td>
+        <td>Ensures protection of data and resources from unauthorized access.</td>
+      </tr>
+      <tr>
+        <td>File Management</td>
+        <td>Organizes and controls the storage and retrieval of data.</td>
+      </tr>
+    </table>
+
+    <h2>⚙️ Basic Functions of an Operating System</h2>
+    <ul>
+      <li><strong>Process Management:</strong> Manages process creation, scheduling, and termination.</li>
+      <li><strong>Memory Management:</strong> Allocates and deallocates memory to programs as needed.</li>
+      <li><strong>File System Management:</strong> Controls how data is stored and accessed on storage devices.</li>
+      <li><strong>Device Management:</strong> Manages communication between the system and peripheral devices.</li>
+      <li><strong>Security & Access Control:</strong> Protects data and resources against threats.</li>
+    </ul>
+
+    <h2>🗂️ Types of Operating Systems</h2>
+    <table>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Batch OS</td>
+        <td>Executes batches of jobs without user interaction (e.g., early IBM systems).</td>
+      </tr>
+      <tr>
+        <td>Time-Sharing OS</td>
+        <td>Allows multiple users to access the system simultaneously (e.g., UNIX).</td>
+      </tr>
+      <tr>
+        <td>Distributed OS</td>
+        <td>Links multiple computers to act as a single system (e.g., Amoeba).</td>
+      </tr>
+      <tr>
+        <td>Real-Time OS</td>
+        <td>Responds instantly to input, used in embedded systems (e.g., VxWorks).</td>
+      </tr>
+      <tr>
+        <td>Mobile OS</td>
+        <td>Designed for mobile devices (e.g., Android, iOS).</td>
+      </tr>
+    </table>
+
+    <h2>💻 Popular Operating Systems</h2>
+    <ul>
+      <li>Windows</li>
+      <li>Linux (Ubuntu, Fedora, CentOS)</li>
+      <li>macOS</li>
+      <li>Android</li>
+      <li>iOS</li>
+    </ul>
+
+    <h2>🧩 Components of an Operating System</h2>
+    <table>
+      <tr>
+        <th>Component</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Kernel</td>
+        <td>Core component managing CPU, memory, and device control.</td>
+      </tr>
+      <tr>
+        <td>Shell</td>
+        <td>Interface between user and kernel (e.g., Bash in Linux).</td>
+      </tr>
+      <tr>
+        <td>File System</td>
+        <td>Organizes files and directories on storage devices.</td>
+      </tr>
+      <tr>
+        <td>Device Drivers</td>
+        <td>Control specific hardware devices connected to the system.</td>
+      </tr>
+    </table>
+
+    <h2>✅ Bonus: Simple OS Command Example</h2>
+    <p>Here’s a basic command to list files in a directory using a Unix shell:</p>
+    <code>ls -l</code>
+
+    <h2>❓ Common Questions</h2>
+    <p><strong>Q: Can an OS run multiple programs at once?</strong></p>
+    <p>A: Yes, modern OS support multitasking, enabling multiple applications to run simultaneously.</p>
+
+    <p><strong>Q: Is Linux an OS or just a kernel?</strong></p>
+    <p>A: Technically, Linux is a kernel, but popular distributions like Ubuntu or Fedora are complete operating systems built around the Linux kernel.</p>
+
+    <p><strong>Q: What makes Real-Time OS different?</strong></p>
+    <p>A: Real-Time OS are designed for tasks that require immediate processing, such as robotics or embedded systems.</p>
+
+    <h2>🎯 Pro Tip</h2>
+    <p>Understanding how your OS manages processes and memory can help you optimize application performance!</p>
+
+    <a href="{% url 'os_course' %}" class="view-content-link">⬅ Back to OS Course</a>
+  </div>
+</body>
+</html>

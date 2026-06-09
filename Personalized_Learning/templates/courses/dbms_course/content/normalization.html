@@ -1,0 +1,389 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Normalization - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\dbms_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Normalization in DBMS</h1>
+    <p class="description">
+      Normalization is a database design technique that organizes tables in a way that reduces redundancy and dependency. It ensures data integrity and efficiency in the database. In this section, we'll explore the different normal forms (1NF, 2NF, 3NF, BCNF) and how to apply them to database tables.
+    </p>
+
+    <h2>🔍 What is Normalization?</h2>
+    <p>
+      Normalization is the process of organizing data in a relational database to avoid redundancy and dependency. It involves breaking down larger tables into smaller, more manageable ones while maintaining relationships between them.
+    </p>
+
+    <h2>📊 Why Normalize?</h2>
+    <ul>
+      <li><strong>Reduces Data Redundancy:</strong> By splitting large tables into smaller ones, normalization eliminates unnecessary repetition of data.</li>
+      <li><strong>Improves Data Integrity:</strong> Ensures that data is consistent and accurate across the database.</li>
+      <li><strong>Increases Query Efficiency:</strong> Helps in optimizing queries by simplifying the structure of data.</li>
+      <li><strong>Avoids Anomalies:</strong> Helps prevent update, insert, and delete anomalies that can occur with poorly designed databases.</li>
+    </ul>
+
+    <h2>🔢 Normal Forms (NF)</h2>
+    <p>
+      There are several levels of normalization, each with specific rules. The most common normal forms are:
+      <ol>
+        <li><strong>First Normal Form (1NF)</strong></li>
+        <li><strong>Second Normal Form (2NF)</strong></li>
+        <li><strong>Third Normal Form (3NF)</strong></li>
+        <li><strong>Boyce-Codd Normal Form (BCNF)</strong></li>
+      </ol>
+    </p>
+
+    <h3>1. First Normal Form (1NF)</h3>
+    <p>
+      A table is in **First Normal Form (1NF)** if it meets the following conditions:
+      <ul>
+        <li>All columns contain atomic values (indivisible values).</li>
+        <li>Each column contains values of a single type.</li>
+        <li>Each record (row) in the table must be unique, and there must be a primary key.</li>
+      </ul>
+    </p>
+    <p><strong>Example:</strong></p>
+    <p>Consider the following table that violates 1NF:</p>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Order_ID</th>
+          <th>Customer</th>
+          <th>Products</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>John</td>
+          <td>Pen, Notebook</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Alice</td>
+          <td>Pencil, Eraser</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      In this table, the "Products" column contains multiple values (Pen, Notebook, Pencil, Eraser), which violates 1NF.
+    </p>
+    <p><strong>Normalized 1NF Table:</strong></p>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Order_ID</th>
+          <th>Customer</th>
+          <th>Product</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>John</td>
+          <td>Pen</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>John</td>
+          <td>Notebook</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Alice</td>
+          <td>Pencil</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Alice</td>
+          <td>Eraser</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2. Second Normal Form (2NF)</h3>
+    <p>
+      A table is in **Second Normal Form (2NF)** if:
+      <ul>
+        <li>It is in 1NF.</li>
+        <li>There is no partial dependency, i.e., non-prime attributes (attributes that are not part of the primary key) are fully functionally dependent on the whole primary key.</li>
+      </ul>
+    </p>
+    <p><strong>Example:</strong></p>
+    <p>Consider the following table that violates 2NF:</p>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Order_ID</th>
+          <th>Product_ID</th>
+          <th>Quantity</th>
+          <th>Product_Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>101</td>
+          <td>2</td>
+          <td>Pen</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>102</td>
+          <td>3</td>
+          <td>Notebook</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>101</td>
+          <td>1</td>
+          <td>Pen</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Here, the "Product_Name" depends only on "Product_ID" but not on the entire primary key ("Order_ID", "Product_ID"). This is a partial dependency, violating 2NF.
+    </p>
+    <p><strong>Normalized 2NF Tables:</strong></p>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Order_ID</th>
+          <th>Customer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>John</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Alice</td>
+        </tr>
+      </tbody>
+    </table>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Product_ID</th>
+          <th>Product_Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>101</td>
+          <td>Pen</td>
+        </tr>
+        <tr>
+          <td>102</td>
+          <td>Notebook</td>
+        </tr>
+      </tbody>
+    </table>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Order_ID</th>
+          <th>Product_ID</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>101</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>102</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>101</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>3. Third Normal Form (3NF)</h3>
+    <p>
+      A table is in **Third Normal Form (3NF)** if:
+      <ul>
+        <li>It is in 2NF.</li>
+        <li>There is no transitive dependency, i.e., non-prime attributes are dependent only on the primary key and not on other non-prime attributes.</li>
+      </ul>
+    </p>
+    <p><strong>Example:</strong></p>
+    <p>Consider the following table that violates 3NF:</p>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Emp_ID</th>
+          <th>Emp_Name</th>
+          <th>Department</th>
+          <th>Dept_Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>John</td>
+          <td>HR</td>
+          <td>New York</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Alice</td>
+          <td>IT</td>
+          <td>San Francisco</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      In this case, the "Dept_Location" is dependent on "Department" and not on the primary key ("Emp_ID"). This is a transitive dependency, violating 3NF.
+    </p>
+    <p><strong>Normalized 3NF Tables:</strong></p>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Emp_ID</th>
+          <th>Emp_Name</th>
+          <th>Dept_ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>John</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Alice</td>
+          <td>2</td>
+        </tr>
+      </tbody>
+    </table>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Dept_ID</th>
+          <th>Dept_Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>New York</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>San Francisco</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>4. Boyce-Codd Normal Form (BCNF)</h3>
+    <p>
+      A table is in **Boyce-Codd Normal Form (BCNF)** if:
+      <ul>
+        <li>It is in 3NF.</li>
+        <li>For every functional dependency, X → Y, X is a superkey.</li>
+      </ul>
+    </p>
+    <p><strong>Example:</strong></p>
+    <p>Consider the following table that violates BCNF:</p>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Student_ID</th>
+          <th>Course_ID</th>
+          <th>Instructor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>CSE101</td>
+          <td>Dr. Smith</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>CSE101</td>
+          <td>Dr. Smith</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>CSE102</td>
+          <td>Dr. Johnson</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Here, "Instructor" depends on "Course_ID" and not on the primary key ("Student_ID", "Course_ID"). Since "Course_ID" is not a superkey, this violates BCNF.
+    </p>
+    <p><strong>Normalized BCNF Tables:</strong></p>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Course_ID</th>
+          <th>Instructor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CSE101</td>
+          <td>Dr. Smith</td>
+        </tr>
+        <tr>
+          <td>CSE102</td>
+          <td>Dr. Johnson</td>
+        </tr>
+      </tbody>
+    </table>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Student_ID</th>
+          <th>Course_ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>CSE101</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>CSE101</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>CSE102</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>❓ Common Questions</h2>
+    <p><strong>Q: When do I stop normalizing?</strong></p>
+    <p>A: You should stop normalizing once you reach BCNF or the level of normalization that suits your data needs and performance considerations.</p>
+
+    <p><strong>Q: What is the impact of normalization on performance?</strong></p>
+    <p>A: While normalization helps to reduce redundancy and improve data integrity, it can also result in more complex queries and joins. It's important to balance normalization with performance requirements.</p>
+
+    <h2>🎯 Pro Tip</h2>
+    <p>It's crucial to find the right balance between normalization and performance. In some cases, denormalization (combining normalized tables) might be used to optimize query performance, but be aware that it may introduce redundancy.</p>
+
+    <a href="{% url 'dbms_course' %}" class="view-content-link">⬅ Back to DBMS Course</a>
+  </div>
+</body>
+</html>

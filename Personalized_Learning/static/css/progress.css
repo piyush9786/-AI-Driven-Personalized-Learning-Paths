@@ -1,0 +1,268 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    background-color: #34495e;
+    line-height: 1.6;
+    overflow-x: hidden;
+    animation: fadeInBody 1s ease-out; /* Fade in effect */
+}
+
+/* Navbar */
+.navbar {
+    /* background-color: #1abc9c; */
+    background-color: black;
+    padding: 15px 0;
+    animation: slideDownNav 0.5s ease-out; /* Slide down effect */
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar .logo {
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    animation: fadeInLogo 1s ease-out; /* Fade in effect */
+}
+
+/* Navigation links */
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 20px;
+}
+
+.navbar .nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.navbar .nav-links li a:hover {
+    color: #34495e;
+}
+
+/* Hero Section */
+.hero {
+    /* background-color: #16a085; */
+    background-color: green;
+    padding: 80px 0;
+    text-align: center;
+    animation: fadeInHero 1.5s ease-out; /* Hero section fade-in */
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: fadeInText 1.2s ease-out; /* Fade-in text */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    animation: fadeInText 1.5s ease-out; /* Fade-in text */
+}
+
+.hero button {
+    padding: 10px 30px;
+    font-size: 1.1rem;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(44, 62, 80, 0.7); /* Glow effect */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Button hover effect */
+}
+
+.hero button:hover {
+    background-color: #34495e;
+    box-shadow: 0 0 20px rgba(44, 62, 80, 1), 0 0 30px rgba(44, 62, 80, 0.8); /* Glow effect on hover */
+}
+
+/* Progress Tracker Section */
+.progress-section {
+    background-color: #34495e;
+    padding: 40px 0;
+}
+
+.progress-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #00ffcc;
+}
+
+.progress-container {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#progress-bar {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+#task-counter {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#task-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#task-list li {
+    background-color: #1abc9c;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease; /* Hover effect */
+}
+
+#task-list li.completed {
+    text-decoration: line-through;
+    color: #7f8c8d;
+}
+
+#task-list li:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+/* Task Input Section */
+.task-input {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.task-input input {
+    padding: 10px;
+    font-size: 1rem;
+    width: 70%;
+    border-radius: 5px;
+    border: none;
+    margin-right: 10px;
+}
+
+.task-input button {
+    padding: 10px 20px;
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Button hover effect */
+    box-shadow: 0 0 10px rgba(26, 188, 156, 0.7); /* Glow effect */
+}
+
+.task-input button:hover {
+    background-color: #16a085;
+    box-shadow: 0 0 20px rgba(26, 188, 156, 1), 0 0 30px rgba(26, 188, 156, 0.8); /* Glow effect on hover */
+}
+
+/* Footer Section */
+.footer {
+    /* background-color: #2c3e50; */
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+    animation: fadeInFooter 1s ease-out; /* Footer fade-in */
+}
+
+.footer p {
+    margin-bottom: 10px;
+    color: #d3d3d3;
+}
+
+.footer nav a {
+    color: #00ffcc;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.footer nav a:hover {
+    text-decoration: underline;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInBody {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDownNav {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLogo {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInHero {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInFooter {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

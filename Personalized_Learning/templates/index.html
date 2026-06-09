@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LearnSmart - Personalized Learning App</title>
+
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #1a1a2e;
+      color: #d3d3d3;
+      line-height: 1.6;
+      overflow-x: hidden;
+      animation: fadeInBody 1s ease-out;
+    }
+
+    /* Full Page Background */
+    .full-page-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://source.unsplash.com/1600x900/?technology,learning');
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      opacity: 0.3;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: rgba(18, 18, 18, 0.8);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideDownNav 0.5s ease-out;
+    }
+
+    .navbar .logo {
+      font-size: 2rem;
+      color: #00ffcc;
+      font-weight: bold;
+      letter-spacing: 2px;
+      animation: fadeInLogo 1s ease-out;
+    }
+
+    .cta-button {
+      background-color: #00ffcc;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.6);
+      animation: pulseButton 1s ease-in-out infinite;
+    }
+
+    .cta-button:hover {
+      background-color: #00e6b3;
+      box-shadow: 0 0 25px rgba(0, 255, 204, 1), 0 0 35px rgba(0, 255, 204, 0.8);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 120px 20px;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(26, 26, 46, 0.8));
+      color: #fff;
+      animation: fadeInHero 2s ease-out;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: slideUpHero 1s ease-out;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      animation: fadeInHeroText 1.5s ease-out;
+    }
+
+    /* Features Section */
+    .features {
+      display: flex;
+      justify-content: space-around;
+      padding: 80px 10%;
+      text-align: center;
+      animation: fadeInFeatures 2s ease-out;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .card {
+      background-color: #2b2b3a;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      width: 280px;
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: fadeInCard 1s ease-out forwards;
+    }
+
+    .card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 15px 35px rgba(0, 255, 204, 0.7);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #00ffcc;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    /* About Us Section */
+    .about {
+      background-color: #121212;
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      background-color: #121212;
+      padding: 40px 20px;
+      color: #fff;
+      margin-top: 100px;
+    }
+
+    /* Animations */
+    @keyframes fadeInBody {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes slideDownNav {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes fadeInLogo {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes fadeInHero {
+      0% { opacity: 0; transform: translateY(50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUpHero {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInHeroText {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes fadeInFeatures {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes fadeInCard {
+      0% { opacity: 0; transform: translateY(50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulseButton {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full Background Image -->
+  <div class="full-page-bg"></div>
+
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <div class="logo">LearnSmart</div>
+    <nav>
+      <a href="{% url 'register' %}" class="cta-button">Register</a>
+      <a href="{% url 'login_view' %}" class="cta-button">Login</a>
+      <a href="{% url 'about' %}" class="cta-button">About Us</a>
+      <a href="{% url 'contact' %}" class="cta-button">Contact Us</a>
+      <a href="{% url 'admin_login' %}" class="cta-button">Admin Login</a>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Empower Your Learning Journey</h1>
+    <p>Personalized paths and AI-driven recommendations tailored for your success!</p>
+    <a href="{% url 'login_view' %}" class="cta-button">Get Started</a>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <a href="{% url 'quiz' %}" class="card" style="text-decoration: none; color: inherit;">
+      <h3>Take a Sample Quiz</h3>
+      <p>Test your knowledge with a short quiz and see your score instantly—no login needed.</p>
+    </a>
+    <a href="{% url 'view_subjects' %}" class="card" style="text-decoration: none; color: inherit;">
+      <h3>View Subjects</h3>
+      <p>Explore subjects you're currently enrolled in or new ones to add to your learning journey.</p>
+    </a>
+    <a href="{% url 'thirdcard' %}" class="card" style="text-decoration: none; color: inherit;">
+      <h3>Explore All Features</h3>
+      <p>Discover everything we offer—from courses and tests to AI tutors, study rooms, and more.</p>
+    </a>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" class="about">
+    <h2>About LearnSmart</h2>
+    <p>
+      LearnSmart is an AI-powered platform designed to help learners achieve their goals through personalized learning experiences.
+      With our advanced recommendation system, we analyze your strengths and weaknesses and suggest content that suits your needs.
+      Whether you're a student or a professional looking to enhance your skills, LearnSmart offers tailored learning paths to maximize your growth.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 LearnSmart. All Rights Reserved.</p>
+    <nav>
+      <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a>
+    </nav>
+  </footer>
+
+</body>
+</html>

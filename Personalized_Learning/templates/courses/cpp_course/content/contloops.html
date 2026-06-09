@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Control Flow & Loops - C++ Course</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\cpp_css.css'%}"> 
+</head>
+<body>
+  <div class="container">
+    <h1>Control Flow & Loops</h1>
+    
+    <p><strong>Introduction:</strong> Control flow statements determine the order in which code executes. Loops allow repeating actions multiple times.</p>
+
+    <h2>Conditional Statements</h2>
+
+    <p><strong>1. If-Else Example:</strong></p>
+    <pre>
+int age = 20;
+if (age >= 18) {
+    cout &lt;&lt; "You are an adult." &lt;&lt; endl;
+} else {
+    cout &lt;&lt; "You are a minor." &lt;&lt; endl;
+}
+    </pre>
+
+    <p><strong>2. Else If Ladder:</strong></p>
+    <pre>
+int marks = 85;
+if (marks >= 90) {
+    cout &lt;&lt; "Grade A" &lt;&lt; endl;
+} else if (marks >= 75) {
+    cout &lt;&lt; "Grade B" &lt;&lt; endl;
+} else {
+    cout &lt;&lt; "Grade C" &lt;&lt; endl;
+}
+    </pre>
+
+    <p><strong>3. Switch-Case Example:</strong></p>
+    <pre>
+int day = 3;
+switch (day) {
+    case 1: cout &lt;&lt; "Monday"; break;
+    case 2: cout &lt;&lt; "Tuesday"; break;
+    case 3: cout &lt;&lt; "Wednesday"; break;
+    default: cout &lt;&lt; "Another day";
+}
+    </pre>
+
+    <h2>Loops</h2>
+
+    <p><strong>4. For Loop (Print 1 to 5):</strong></p>
+    <pre>
+for (int i = 1; i &lt;= 5; i++) {
+    cout &lt;&lt; i &lt;&lt; " ";
+}
+    </pre>
+
+    <p><strong>5. While Loop (Countdown):</strong></p>
+    <pre>
+int count = 5;
+while (count &gt; 0) {
+    cout &lt;&lt; count &lt;&lt; " ";
+    count--;
+}
+    </pre>
+
+    <p><strong>6. Do-While Loop:</strong></p>
+    <pre>
+int num = 1;
+do {
+    cout &lt;&lt; num &lt;&lt; " ";
+    num++;
+} while (num &lt;= 3);
+    </pre>
+
+    <h2>Break & Continue</h2>
+
+    <p><strong>7. Using Break:</strong></p>
+    <pre>
+for (int i = 1; i &lt;= 10; i++) {
+    if (i == 5) break;
+    cout &lt;&lt; i &lt;&lt; " ";
+}
+    </pre>
+
+    <p><strong>8. Using Continue:</strong></p>
+    <pre>
+for (int i = 1; i &lt;= 5; i++) {
+    if (i == 3) continue;
+    cout &lt;&lt; i &lt;&lt; " ";
+}
+    </pre>
+
+    <h2>Combined Example: Sum of Even Numbers (1 to 10)</h2>
+
+    <p><strong>9. Full Example with If & Loop:</strong></p>
+    <pre>
+int sum = 0;
+for (int i = 1; i &lt;= 10; i++) {
+    if (i % 2 == 0) {
+        sum += i;
+    }
+}
+cout &lt;&lt; "Sum of even numbers: " &lt;&lt; sum;
+    </pre>
+
+    <h2>Additional Tip</h2>
+    <p>Use loops to reduce repetitive code. Use <strong>break</strong> to exit early and <strong>continue</strong> to skip the current iteration!</p>
+
+    <button class="back-btn" onclick="window.location.href='../cpp-course.html' ">⬅ Back to Modules</button>
+    <a href="{% url 'cpp_course' %}" class="view-content-link">⬅ Back to C++ Course</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ER Diagram and Schema Design - DBMS</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\dbms_css.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>ER Diagram and Schema Design for DBMS</h1>
+    
+    <p class="description">
+      In this section, we’ll dive deep into the Entity-Relationship (ER) Diagram and the Schema Design for a typical Database Management System (DBMS) used in managing courses, students, and instructors.
+    </p>
+
+    <h2>🔎 Entity-Relationship (ER) Diagram</h2>
+    <p>
+      An ER Diagram visually represents the entities within a system, their attributes, and the relationships between them. 
+    </p>
+
+    <!-- ER Diagram Section (This can be an image if you have one) -->
+    <div class="er-diagram">
+      <img src="{% static 'images/ER.webp' %}" alt="ER Diagram for DBMS" />
+    </div>
+    <p><i>Note: The above diagram represents how the entities like Production, Product, Employee, and Customer are connected with relationships.</i></p>
+
+    <h2>🏗️ Schema Design</h2>
+    <p>
+      Based on the ER diagram, here is the schema design for the database, which defines the structure of the tables and relationships between them.
+    </p>
+
+    <h3>📜 Table Definitions</h3>
+    <h4>1. Student Table</h4>
+    <pre>
+CREATE TABLE Student (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE
+);
+    </pre>
+
+    <h4>2. Instructor Table</h4>
+    <pre>
+CREATE TABLE Instructor (
+    instructor_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE
+);
+    </pre>
+
+    <h4>3. Course Table</h4>
+    <pre>
+CREATE TABLE Course (
+    course_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    description TEXT,
+    instructor_id INT,
+    FOREIGN KEY (instructor_id) REFERENCES Instructor(instructor_id)
+);
+    </pre>
+
+    <h4>4. Enrollment Table</h4>
+    <pre>
+CREATE TABLE Enrollment (
+    enrollment_id INT PRIMARY KEY,
+    student_id INT,
+    course_id INT,
+    FOREIGN KEY (student_id) REFERENCES Student(student_id),
+    FOREIGN KEY (course_id) REFERENCES Course(course_id)
+);
+    </pre>
+
+    <h4>5. Schedule Table</h4>
+    <pre>
+CREATE TABLE Schedule (
+    schedule_id INT PRIMARY KEY,
+    course_id INT,
+    day_of_week VARCHAR(10),
+    start_time TIME,
+    end_time TIME,
+    FOREIGN KEY (course_id) REFERENCES Course(course_id)
+);
+    </pre>
+
+    <h3>📋 Relationships</h3>
+    <ul>
+      <li><strong>Student - Enrollment - Course:</strong> A student can enroll in multiple courses, and each course can have many students (Many-to-Many).</li>
+      <li><strong>Instructor - Course:</strong> An instructor can teach many courses (One-to-Many).</li>
+      <li><strong>Course - Schedule:</strong> A course can have multiple schedules for different times and days (One-to-Many).</li>
+    </ul>
+
+    <h2>📚 Final Thoughts</h2>
+    <p>
+      The design outlined above ensures that data related to courses, students, and instructors is stored efficiently and can be easily queried. The relationships between tables are clear and help maintain data integrity.
+    </p>
+
+    <a href="{% url 'dbms_course' %}" class="view-content-link">⬅ Back to DBMS Course</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Control Statements & Loops - Java Course</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\java_css.css' %}"> <!-- Linked CSS file -->
+</head>
+<body>
+  <div class="container">
+    <h1>Control Statements & Loops</h1>
+    <p><strong>Introduction:</strong> In Java, control statements allow you to control the flow of execution of a program. Loops are used to repeat a block of code multiple times.</p>
+
+    <p><strong>If-Else Statement:</strong> Used for decision-making. It executes a block of code if a condition is true, otherwise, it executes an alternative block of code.</p>
+    <pre>
+int age = 18;
+if (age >= 18) {
+    System.out.println("You are an adult.");
+} else {
+    System.out.println("You are a minor.");
+}
+    </pre>
+
+    <p><strong>Switch Statement:</strong> An alternative to multiple if-else statements, used when you have multiple conditions to check.</p>
+    <pre>
+int day = 3;
+switch (day) {
+    case 1:
+        System.out.println("Monday");
+        break;
+    case 2:
+        System.out.println("Tuesday");
+        break;
+    case 3:
+        System.out.println("Wednesday");
+        break;
+    default:
+        System.out.println("Invalid day");
+}
+    </pre>
+
+    <p><strong>Loops:</strong> Used to repeat a block of code multiple times.</p>
+    
+    <p><strong>For Loop:</strong> Repeats a block of code a fixed number of times.</p>
+    <pre>
+for (int i = 0; i < 5; i++) {
+    System.out.println("Iteration " + i);
+}
+    </pre>
+
+    <p><strong>While Loop:</strong> Repeats a block of code as long as a condition is true.</p>
+    <pre>
+int i = 0;
+while (i < 5) {
+    System.out.println("Iteration " + i);
+    i++;
+}
+    </pre>
+
+    <p><strong>Do-While Loop:</strong> Similar to the while loop, but the block of code will run at least once before checking the condition.</p>
+    <pre>
+int i = 0;
+do {
+    System.out.println("Iteration " + i);
+    i++;
+} while (i < 5);
+    </pre>
+
+    <p><strong>Additional Tip:</strong> Loops are powerful tools for automating repetitive tasks and controlling the program flow effectively.</p>
+
+    <a href="{% url 'java_course' %}" class="view-content-link">⬅ Back to Java Course</a>
+  </div>
+</body>
+</html>

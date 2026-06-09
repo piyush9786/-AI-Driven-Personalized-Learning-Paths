@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <title>Register</title>
+</head>
+
+<body>
+    <div class="square">
+        <i style="--clr:#00ff0a;"></i>
+        <i style="--clr:#ff0057;"></i>
+        <i style="--clr:#fffd44;"></i>
+
+        <!-- Register Form -->
+        <form method="POST" class="signup" id="register-form">
+            {% csrf_token %}
+            <h2>Create Account</h2>
+
+            {% if messages %}
+            <div class="message-container">
+                {% for message in messages %}
+                {% if forloop.first %}
+                <div class="message {{ message.tags }}">{{ message }}</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="inputBx">
+                <input type="text" name="username" placeholder="Enter your username" required />
+            </div>
+
+            <div class="inputBx">
+                <input type="email" name="email" placeholder="Enter your email" required />
+            </div>
+
+            <div class="inputBx">
+                <input type="password" name="password" placeholder="Enter your password" required />
+            </div>
+
+            <div class="inputBx">
+                <input type="password" name="confirm_password" placeholder="Confirm your password" required />
+            </div>
+
+            <div class="inputBx">
+                <input type="submit" value="Register" />
+            </div>
+
+            <div class="links">
+                <a href="{% url 'login_view' %}">Already have an account? Login</a>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

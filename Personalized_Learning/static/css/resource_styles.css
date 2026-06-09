@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #0a0a0a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+nav {
+    background: #007bff;
+    padding: 15px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.8);
+}
+
+button {
+    background: white;
+    color: #007bff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #0056b3;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 123, 255, 1), 0 0 40px rgba(0, 123, 255, 0.9);
+}
+
+#home {
+    margin-top: 20px;
+}
+
+.resource-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.resource-card {
+    background: #111;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.8), 0 0 30px rgba(0, 123, 255, 0.6);
+    transition: 0.3s;
+    border: 2px solid rgba(0, 123, 255, 0.7);
+}
+
+.resource-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(0, 123, 255, 1), 0 0 60px rgba(0, 123, 255, 0.9);
+    border-color: rgba(0, 123, 255, 1);
+}
+
+.resource-card h3 {
+    color: #00aaff;
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
+}
+
+.resource-card p {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.resource-card a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    color: white;
+    background: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.9);
+}
+
+.resource-card a:hover {
+    background: #0056b3;
+    box-shadow: 0 0 20px rgba(0, 123, 255, 1), 0 0 40px rgba(0, 123, 255, 0.9);
+}
+

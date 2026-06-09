@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Analysis - Personalized Learning</title>
+  <link rel="stylesheet" href="{% static 'css/ai_analysis.css' %}">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">AI Analysis</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Unlock Your Learning Potential with AI</h1>
+      <p style="font-weight: bold;">
+        Leverage AI-driven insights to discover your strengths and focus areas.
+      </p>
+      <a href="{% url 'quiz' %}" class="btn-primary">
+        Start Your Analysis
+      </a>
+    </div>
+  </section>
+
+  <section id="features" class="features">
+    <h2>Features</h2>
+    <div class="features-cards">
+      <a href="{% url 'quiz' %}" class="card">
+        <h3>Interactive Quiz</h3>
+        <p>Select your area of interest and take an AI-generated quiz.</p>
+      </a>
+      <a href="{% url 'resourse_recommendations' %}" class="card">
+        <h3>Personalized Resources</h3>
+        <p>Get recommended study materials based on your strengths.</p>
+      </a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2>About AI Analysis</h2>
+    <p style="font-weight: bold;">
+      AI Analysis helps you understand your learning style and focuses on the areas where you need to improve.
+    </p>
+  </section>
+
+  <footer class="footer">
+    <p style="font-weight: bold;">
+      &copy; 2025 AI Analysis. All Rights Reserved.
+    </p>
+    <nav>
+    </nav>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LearnSmart - User Dashboard</title>
+
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #1a1a2e;
+      color: #e5e5e5;
+      line-height: 1.6;
+      overflow-x: hidden;
+      animation: fadeInBody 1s ease-out;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: rgba(18, 18, 18, 0.9);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      font-size: 2rem;
+      color: #00ffcc;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .navbar .menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .menu a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px 20px;
+      background-color: rgb(10, 49, 41);
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .navbar .menu a:hover {
+      background-color: #00e6b3;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background-color: #121212;
+      padding: 30px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      z-index: 999;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    .sidebar .profile {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .sidebar .profile h2 {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .sidebar .profile p {
+      color: #bbb;
+    }
+
+    .sidebar .menu {
+      margin-top: 50px;
+    }
+
+    .sidebar .menu a {
+      display: block;
+      color: #fff;
+      padding: 12px 15px;
+      margin-bottom: 10px;
+      background-color: #2b2b3a;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar .menu a:hover {
+      background-color: #00ffcc;
+    }
+
+    /* Main Dashboard Content */
+    .dashboard-content {
+      margin-left: 270px;
+      padding: 30px;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .dashboard-header h1 {
+      font-size: 2.5rem;
+      color: #fff;
+    }
+
+    .dashboard-header .greeting {
+      font-size: 1.2rem;
+      color: #aaa;
+    }
+
+    /* Cards */
+    .card-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background-color: #2b2b3a;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      color: #fff;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0, 255, 204, 0.6);
+    }
+
+    .card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      color: #00ffcc;
+    }
+
+    .card p {
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+
+    /* Progress Bar */
+    .progress-bar-container {
+      background-color: #333;
+      height: 20px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background-color: #00ffcc;
+
+      border-radius: 10px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      background-color: #121212;
+      padding: 40px 20px;
+      color: #fff;
+      margin-top: 50px;
+    }
+
+    footer a {
+      color: #00ffcc;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeInBody {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <div class="logo">LearnSmart</div>
+    <div class="menu">
+      <!-- <a href="#">Dashboard</a>
+      <a href="{% url 'create_test' %}">Take test</a> -->
+      <a href="{% url 'contact' %}">Contact us</a>
+      <a href="{% url 'logout' %}">Logout</a>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="profile">
+      <!-- Dynamically show the logged-in user's profile -->
+      <img src="https://via.placeholder.com/100" alt="User Profile">
+      <h2>{{ user.username }}</h2> <!-- Dynamically rendered username -->
+      <p>Learning Enthusiast</p>
+    </div>
+    <div class="menu">
+      <a href="{% url 'progress' %}">To-Do List</a>
+      <a href="{% url 'resourse_recommendations' %}">Recommended Resourses</a>
+      <a href="{% url 'rankings' %}">Leaderboard</a>
+    </div>
+  </div>
+
+  <!-- Main Dashboard Content -->
+  <div class="dashboard-content">
+    <div class="dashboard-header">
+      <h1>Welcome Back, {{ user.username }}!</h1> <!-- Dynamically rendered username -->
+      <p class="greeting">Let's continue your learning journey</p>
+    </div>
+
+    <div class="card-container">
+      <a href="{% url 'current_course' %}" class="card" style="text-decoration: none; color: inherit;">
+        <h3>Courses</h3>
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: {{ overall_progress }}%;"></div>
+
+        </div>
+        <p>Progress: {{ overall_progress }}%</p>
+
+      </a>
+
+      <a href="/create_test/" class="card" style="text-decoration: none; color: inherit;">
+        <h3>Take a Test</h3>
+        <p>Test your knowledge and track your progress with personalized quizzes and exams.</p>
+      </a>
+
+      <a href="{% url 'your_achievements' %}" class="card" style="text-decoration: none; color: inherit;">
+        <h3>Your Achievements</h3>
+        <p>Completed {{ completed_courses }} course{{ completed_courses|pluralize }}</p>
+        <p>Earned {{ total_points }} learning points</p>
+      </a>
+
+    </div>
+
+    <!-- New Section for Subjects & Tests -->
+    <div class="card-container">
+
+      <div class="card">
+        <h3>AI Tutor Chatbot</h3>
+        <p>Ask questions and get helpful explanations powered by an AI assistant.</p>
+        <a href="{% url 'chatbot' %}" style="display:block; color:#00ffcc; margin-top:10px; text-decoration:none;">Chat
+          Now</a>
+      </div>
+
+      <div class="card">
+        <h3>Study room</h3>
+        <p>Join a room and study together.</p>
+        <a href="/study_rooms/" style="display:block; color:#00ffcc; margin-top:10px; text-decoration:none;">Join</a>
+      </div>
+
+    </div>
+
+    <footer>
+      <p>&copy; 2025 LearnSmart. All Rights Reserved.</p>
+      <nav>
+        <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a>
+      </nav>
+    </footer>
+  </div>
+
+</body>
+
+</html>

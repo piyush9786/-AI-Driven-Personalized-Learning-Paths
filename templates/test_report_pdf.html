@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Analysis Report</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #ffffff;
+            padding: 25px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        h4 {
+            color: #34495e;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .study-material {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .study-material h5 {
+            color: #2980b9;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .links {
+            margin-top: 15px;
+            padding: 12px;
+            background: #e8f6ff;
+            border-left: 5px solid #3498db;
+            border-radius: 5px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #2980b9;
+            font-weight: bold;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .download-btn {
+            background-color: #27ae60;
+            color: white;
+            padding: 14px 24px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 8px;
+            display: inline-block;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-btn:hover {
+            background-color: #219150;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Test Analysis Report</h2>
+
+        <div class="section">
+            <h4>Test Analysis:</h4>
+            <p>{{ analysis|safe }}</p>
+        </div>
+
+        <div class="section">
+            <h4>Study Material Based on Weaknesses:</h4>
+            {% for topic, material in study_material.items %}
+                <div class="study-material">
+                    <h5>{{ topic }}</h5>
+                    <p>{{ material }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <h4>Further Learning Resources:</h4>
+        {% for youtube in youtube_links %}
+            <div class="links">
+                <p><strong>YouTube:</strong> <a href="{{ youtube.url }}" target="_blank">{{ youtube.url }}</a></p>
+            </div>
+        {% endfor %}
+        {% for google in google_links %}
+            <div class="links">
+                <p><strong>Google Search:</strong> <a href="{{ google.url }}" target="_blank">{{ google.url }}</a></p>
+            </div>
+        {% endfor %}
+
+        <div class="button-container">
+            <a href="{% url 'generate_pdf' %}" class="download-btn">Download Report as PDF</a>
+        </div>
+    </div>
+</body>
+</html>
+

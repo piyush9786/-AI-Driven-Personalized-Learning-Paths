@@ -1,0 +1,143 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deadlock & Synchronization - LearnSmart</title>
+  <link rel="stylesheet" href="{% static 'css\courses_css\os_css.css' %}">
+</head>
+<body>
+  <div class="container">
+
+    <h1>🛑 Deadlock & Synchronization in Operating Systems</h1>
+
+    <h2>🔎 What is Deadlock?</h2>
+    <p>
+      Deadlock is a situation in operating systems where a set of processes get stuck waiting for each other indefinitely, and none of them can proceed. 
+      This usually happens when multiple processes hold some resources and wait to acquire others that are currently held by other processes.
+    </p>
+
+    <h3>🚩 Example of Deadlock</h3>
+    <p>
+      Process A holds Resource 1 and waits for Resource 2.<br>
+      Process B holds Resource 2 and waits for Resource 1.<br>
+      Both processes are waiting for each other forever — this is deadlock.
+    </p>
+
+    <h2>🔄 Necessary Conditions for Deadlock (Coffman Conditions)</h2>
+    <ul>
+      <li><strong>Mutual Exclusion:</strong> At least one resource must be held in a non-shareable mode.</li>
+      <li><strong>Hold and Wait:</strong> A process holding at least one resource is waiting to acquire additional resources.</li>
+      <li><strong>No Preemption:</strong> Resources cannot be forcibly taken; they must be released voluntarily.</li>
+      <li><strong>Circular Wait:</strong> A closed chain of processes exists, each waiting for a resource held by the next process.</li>
+    </ul>
+
+    <h2>✅ Deadlock Prevention</h2>
+    <p>
+      Deadlock prevention aims to eliminate one or more of the necessary conditions:
+    </p>
+    <ul>
+      <li><strong>Mutual Exclusion:</strong> Make resources sharable (not always possible).</li>
+      <li><strong>Hold and Wait:</strong> Require processes to request all resources at once.</li>
+      <li><strong>No Preemption:</strong> Allow preemption (forcefully take resources).</li>
+      <li><strong>Circular Wait:</strong> Impose an ordering on resource requests to prevent a cycle.</li>
+    </ul>
+
+    <h2>🔎 Deadlock Avoidance (Banker's Algorithm)</h2>
+    <p>
+      The Banker's Algorithm is a deadlock avoidance algorithm that checks whether granting a resource will keep the system in a safe state.
+    </p>
+    <h3>🔄 Steps of Banker's Algorithm:</h3>
+    <ul>
+      <li>Check if the requested resources can be allocated without leading to deadlock.</li>
+      <li>Use a "safe sequence" to verify that all processes can complete.</li>
+      <li>If yes, allocate resources; if not, deny the request to avoid deadlock.</li>
+    </ul>
+
+    <h2>🔎 Deadlock Detection</h2>
+    <p>
+      If prevention/avoidance is not used, the system can allow deadlocks to occur but must detect and recover from them.
+    </p>
+
+    <h3>🔗 Deadlock Detection Using Resource Allocation Graph (RAG)</h3>
+    <ul>
+      <li>Processes and resources are represented as nodes.</li>
+      <li>Edges show requests and assignments.</li>
+      <li>If the graph contains a cycle → deadlock has occurred.</li>
+    </ul>
+
+    <h3>📊 Example of Resource Allocation Graph</h3>
+    <p>
+      <strong>Cycle detected ⇒ Deadlock</strong><br>
+      <em>No cycle ⇒ Safe</em>
+    </p>
+
+    <h3>💥 Deadlock Recovery Methods</h3>
+    <ul>
+      <li>Terminate one or more processes involved in deadlock.</li>
+      <li>Preempt resources forcibly and reassign them.</li>
+    </ul>
+
+    <h2>🔐 Process Synchronization</h2>
+    <p>
+      Synchronization ensures that multiple processes can execute safely when they share resources. It avoids race conditions where two processes modify shared data at the same time.
+    </p>
+
+    <h3>🎯 Critical Section Problem</h3>
+    <p>
+      The critical section is a part of code where shared resources are accessed. Synchronization ensures only one process enters the critical section at a time.
+    </p>
+
+    <h3>✅ Solutions to Critical Section Problem</h3>
+    <ul>
+      <li><strong>Mutex (Mutual Exclusion):</strong> A lock mechanism that allows only one process to access the critical section.</li>
+      <li><strong>Semaphore:</strong> An integer variable used for signaling between processes (supports wait() and signal() operations).</li>
+      <li><strong>Monitors:</strong> High-level synchronization constructs provided by some programming languages.</li>
+    </ul>
+
+    <h2>🔄 Types of Semaphores</h2>
+    <ul>
+      <li><strong>Binary Semaphore:</strong> Takes only 0 and 1 (like a mutex lock).</li>
+      <li><strong>Counting Semaphore:</strong> Can take non-negative integer values (useful for resource pools).</li>
+    </ul>
+
+    <h2>🕹️ Classical Synchronization Problems</h2>
+    <ul>
+      <li><strong>Producer-Consumer Problem:</strong> Synchronization between producer adding items and consumer removing them.</li>
+      <li><strong>Readers-Writers Problem:</strong> Synchronization where multiple readers can read but writers need exclusive access.</li>
+      <li><strong>Dining Philosophers Problem:</strong> Classic example of deadlock and synchronization.</li>
+    </ul>
+
+    <h2>🆚 Deadlock vs Synchronization</h2>
+    <table>
+      <tr>
+        <th>Deadlock</th>
+        <th>Synchronization</th>
+      </tr>
+      <tr>
+        <td>Occurs when processes wait indefinitely for resources.</td>
+        <td>Ensures safe access to shared resources.</td>
+      </tr>
+      <tr>
+        <td>Results in processes getting stuck forever.</td>
+        <td>Prevents race conditions and inconsistency.</td>
+      </tr>
+      <tr>
+        <td>Needs detection, prevention, or avoidance.</td>
+        <td>Implemented using mutexes, semaphores, monitors.</td>
+      </tr>
+    </table>
+
+    <h2>🎯 Pro Tip</h2>
+    <p>
+      Always use synchronization mechanisms properly to avoid both race conditions and deadlocks. 
+      For example, always acquire locks in a defined order to prevent circular wait deadlocks!
+    </p>
+
+    <a href="{% url 'os_course' %}" class="view-content-link">⬅ Back to OS Course</a>
+
+  </div>
+</body>
+</html>
