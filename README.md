@@ -1,1 +1,1 @@
-# Project_Repo_Django
+AI-Driven Personalized Learning Paths – An intelligent learning platform that analyzes a learner’s goals, skill level, and progress to dynamically generate tailored study plans. Uses AI to recommend resources, track performance, and adapt learning paths in real-time for maximum efficiency.
